@@ -83,7 +83,7 @@
               </div>
             </div>
             <div class="nav-main-btn">
-              <a href="javascript:;" @click="handleExchange">
+              <a href="https://derify.exchange">
                 <img src="../../assets/svg/exchange-btn.svg" alt="" srcset="" />
               </a>
             </div>
