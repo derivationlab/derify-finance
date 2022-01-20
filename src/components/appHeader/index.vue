@@ -56,27 +56,50 @@
                     </svg>
                   </div>
                   <div class="sub-nav">
-                    <a href="https://github.com/derivationlab" target="_blank"
-                      >
-                      <img src="../../assets/svg/nav-icons-github.svg" alt="" srcset="">
+                    <a href="https://github.com/derivationlab" target="_blank">
+                      <img
+                        src="../../assets/svg/nav-icons-github.svg"
+                        alt=""
+                        srcset=""
+                      />
                       Github</a
                     >
                     <a href="https://twitter.com/DerifyProtocol" target="_black"
-                      ><img src="../../assets/svg/nav-icons-twitter.svg" alt="" srcset="">Twitter</a
+                      ><img
+                        src="../../assets/svg/nav-icons-twitter.svg"
+                        alt=""
+                        srcset=""
+                      />Twitter</a
                     >
                     <a href="https://discord.gg/kSR6tz2pdm" target="_black"
-                      ><img src="../../assets/svg/nav-discord-icon.svg" alt="" srcset="">Discord</a
+                      ><img
+                        src="../../assets/svg/nav-discord-icon.svg"
+                        alt=""
+                        srcset=""
+                      />Discord</a
                     >
                     <a href="https://derify.medium.com/" target="_black"
-                      ><img src="../../assets/svg/nav-medium-icon.svg" alt="" srcset="">Medium</a
+                      ><img
+                        src="../../assets/svg/nav-medium-icon.svg"
+                        alt=""
+                        srcset=""
+                      />Medium</a
                     >
                     <a
                       href="https://t.me/DerifyProtocol_Official"
                       target="_black"
-                      ><img src="../../assets/svg/nav-tele-icon.svg" alt="" srcset="">Tele</a
+                      ><img
+                        src="../../assets/svg/nav-tele-icon.svg"
+                        alt=""
+                        srcset=""
+                      />Tele</a
                     >
                     <a href="mailto:contact@derify.org" target="_black"
-                      ><img src="../../assets/svg/nav-email-icon.svg" alt="" srcset="">Email</a
+                      ><img
+                        src="../../assets/svg/nav-email-icon.svg"
+                        alt=""
+                        srcset=""
+                      />Email</a
                     >
                   </div>
                 </div>
@@ -108,6 +131,13 @@
                     <a href="https://derify.medium.com/" target="_blank"
                       >Community</a
                     >
+                    <a href="https://derify.exchange">
+                      <img
+                        src="../../assets/svg/exchange-btn.svg"
+                        alt=""
+                        srcset=""
+                      />
+                    </a>
                   </div>
                 </div>
               </div>
@@ -199,7 +229,7 @@ export default {
                 position: absolute;
                 top: 6rem;
                 left: 3rem;
-                background-color: rgba(255, 255, 255, .1);
+                background-color: rgba(255, 255, 255, 0.1);
                 min-width: 100%;
                 border-radius: 2px;
                 box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.2),
@@ -211,10 +241,10 @@ export default {
                   height: 4.6rem;
                   line-height: 4.6rem;
                   text-align: left;
-                  img{
+                  img {
                     margin-right: 1rem;
                   }
-                  &:hover{
+                  &:hover {
                     background-color: rgba(255, 255, 255, 0.05);
                   }
                 }
@@ -266,7 +296,7 @@ export default {
                 position: absolute;
                 top: 6rem;
                 right: 1rem;
-                background-color: rgba(255, 255, 255, .1);
+                background-color: rgba(255, 255, 255, 0.1);
                 border-radius: 2px;
                 box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.2),
                   0 3px 4px 0 rgba(0, 0, 0, 0.14),
@@ -280,7 +310,7 @@ export default {
                   min-width: 140px;
                   padding: 1rem 2rem;
                   line-height: 1.5;
-                  &.router-link-active{
+                  &.router-link-active {
                     color: #fff;
                   }
                 }
