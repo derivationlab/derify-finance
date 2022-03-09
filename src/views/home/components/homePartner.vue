@@ -100,7 +100,7 @@ export default {
       .content {
         justify-content: space-around;
         img {
-          margin: 0 0 40px;
+          margin: 0 0 10px;
         }
       }
     }
