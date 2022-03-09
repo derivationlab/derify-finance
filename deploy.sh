@@ -4,7 +4,7 @@ theFolder=/var/www/html/homepage/
 echo "will deploy to folder"$theFolder
 
 echo "start building"
-# npm run build
+npm run build
 
 echo "start rsync file"
 rsync -azPv --delete --progress ./dist/ $theServer:$theFolder
