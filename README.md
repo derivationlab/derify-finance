@@ -13,26 +13,37 @@ This is the repo for source code of the [derify.finance](https://derify.finance)
 ## Development
 
 ### Dependencies setup
+
 ```
 npm install
 ```
 
 ### Compiles and hot-reloads for development
+
 ```
 npm run serve
 ```
 
 ### Compiles and minifies for production
+
 ```
 npm run build
 ```
 
 ### Run your tests
+
 ```
 npm run test
 ```
 
 ### Lints and fixes files
+
 ```
 npm run lint
+```
+
+### fix node-sass problem
+
+```bash
+npm i node-sass@npm:sass --force
 ```
