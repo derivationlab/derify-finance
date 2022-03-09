@@ -9,7 +9,26 @@
         <span></span>
       </div>
       <div class="partner-main">
-        <div class="content"></div>
+        <div class="content">
+          <div class="row">
+            <img src="../../../assets/partner/bsc.svg" />
+            <img src="../../../assets/partner/mw.svg" />
+            <img src="../../../assets/partner/portico.svg" />
+            <img src="../../../assets/partner/r8.svg" />
+          </div>
+          <div class="row">
+            <img src="../../../assets/partner/three.svg" />
+            <img src="../../../assets/partner/mgc.svg" />
+            <img src="../../../assets/partner/inkrypto.svg" />
+            <img src="../../../assets/partner/daostarter.svg" />
+          </div>
+          <div class="row">
+            <img src="../../../assets/partner/chainstride.svg" />
+            <img src="../../../assets/partner/leos.svg" />
+            <img src="../../../assets/partner/deficalendar.svg" />
+            <img src="../../../assets/partner/ernx.svg" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -26,7 +45,7 @@ export default {
 .partner {
   position: relative;
   padding: 12rem 2rem;
-  background: #120621;
+  background: #140b32;
   &-bg {
     position: absolute;
     top: 50%;
@@ -65,10 +84,12 @@ export default {
   &-main {
     .content {
       text-align: center;
-      p {
-        margin: 1rem 0;
-        font-size: 2.4rem;
-        color: #96a7c7;
+      .row {
+        display: flex;
+        justify-content: space-between;
+        img {
+          margin: 0 10px;
+        }
       }
     }
     .link {
