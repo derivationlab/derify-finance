@@ -10,24 +10,18 @@
       </div>
       <div class="partner-main">
         <div class="content">
-          <div class="row">
-            <img src="../../../assets/partner/bsc.svg" />
-            <img src="../../../assets/partner/mw.svg" />
-            <img src="../../../assets/partner/portico.svg" />
-            <img src="../../../assets/partner/r8.svg" />
-          </div>
-          <div class="row">
-            <img src="../../../assets/partner/three.svg" />
-            <img src="../../../assets/partner/mgc.svg" />
-            <img src="../../../assets/partner/inkrypto.svg" />
-            <img src="../../../assets/partner/daostarter.svg" />
-          </div>
-          <div class="row">
-            <img src="../../../assets/partner/chainstride.svg" />
-            <img src="../../../assets/partner/leos.svg" />
-            <img src="../../../assets/partner/deficalendar.svg" />
-            <img src="../../../assets/partner/ernx.svg" />
-          </div>
+          <img src="../../../assets/partner/bsc.svg" />
+          <img src="../../../assets/partner/mw.svg" />
+          <img src="../../../assets/partner/portico.svg" />
+          <img src="../../../assets/partner/r8.svg" />
+          <img src="../../../assets/partner/three.svg" />
+          <img src="../../../assets/partner/mgc.svg" />
+          <img src="../../../assets/partner/inkrypto.svg" />
+          <img src="../../../assets/partner/daostarter.svg" />
+          <img src="../../../assets/partner/chainstride.svg" />
+          <img src="../../../assets/partner/leos.svg" />
+          <img src="../../../assets/partner/deficalendar.svg" />
+          <img src="../../../assets/partner/ernx.svg" />
         </div>
       </div>
     </div>
@@ -42,10 +36,12 @@ export default {
 };
 </script>
 <style lang='scss' scoped>
+@import "@/assets/media-queries.scss";
 .partner {
   position: relative;
-  padding: 12rem 2rem;
+  padding: 12rem 2rem 2rem;
   background: #140b32;
+  border-bottom: 1px solid #899dbe;
   &-bg {
     position: absolute;
     top: 50%;
@@ -83,12 +79,28 @@ export default {
   }
   &-main {
     .content {
-      text-align: center;
-      .row {
-        display: flex;
-        justify-content: space-between;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      img {
+        width: 285px;
+        height: 95px;
+        margin: 0 20px 95px;
+      }
+    }
+    @include lt-md {
+      .content {
+        justify-content: space-around;
         img {
-          margin: 0 10px;
+          margin: 0 0 60px;
+        }
+      }
+    }
+    @include lt-sm {
+      .content {
+        justify-content: space-around;
+        img {
+          margin: 0 0 40px;
         }
       }
     }
