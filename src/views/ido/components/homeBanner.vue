@@ -409,6 +409,8 @@ export default {
 .lernmore-btn{
   background: transparent url('../../../assets/svg/ido-learnmore-btn.svg') center center no-repeat;
   background-size: 100% 100%;
+  height: 31px;
+  width: 154px;
 }
 
 .ido-aodo-logo{
