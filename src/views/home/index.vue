@@ -1,10 +1,3 @@
-<!--
- * @Author: kim
- * @Date: 2021-04-03 11:08:27
- * @LastEditors: kim
- * @LastEditTime: 2021-05-06 20:35:04
- * @FilePath: /derify-finance/src/views/home/index.vue
--->
 <template>
   <div class="home">
     <home-banner></home-banner>
@@ -37,13 +30,20 @@ export default {
   methods: {},
 };
 </script>
+<style>
+body{
+  background-color: #0e0314;
+}
+.app-header{
+  position: relative;
+}
+</style>
 <style lang='scss' scoped>
 .home {
   .banner {
     width: 100%;
-    height: 100vh;
     padding: 40vh 0.8rem 20vh;
-    background: #0e0314 url("../../assets/svg/home-banner.svg") no-repeat;
+    background: #0e0314 url('../../assets/svg/ido-home.svg') no-repeat;
     background-size: 100% 100%;
     position: relative;
     overflow: hidden;

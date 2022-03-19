@@ -12,8 +12,13 @@ export default [
     component: () => import("@/views/error/index.vue"),
   },
   {
+    path: "/ido",
+    name: "ido",
+    component: () => import("@/views/ido"),
+  },
+  {
     path: "/",
     name: "home",
     component: () => import("@/views/home"),
-  },
+  }
 ];
