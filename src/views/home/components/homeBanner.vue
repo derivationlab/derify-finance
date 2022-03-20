@@ -19,7 +19,9 @@
             </p>
             <p>25% on TGE, followed by a 3-mouth linear</p>
 
-            <div class="pool-wrap" style="padding: 1rem;">
+            <!-- pool A-->
+            <a href="https://app.bounce.finance/auction/fixed/377" target="_blank">
+              <div class="pool-wrap" style="padding: 1rem;">
               <div class="pool-row">
                 <div class="pool-left">
                   <h2>Official Pool A <span class="buy-btn" @click="() => {this.detailShow=true}">Details</span></h2>
@@ -51,8 +53,11 @@
                 </div>
               </div>
             </div>
+            </a>
 
-            <div class="pool-wrap" style="padding: 1rem;">
+            <!-- pool B-->
+            <a href="https://app.bounce.finance/auction/fixed/378" target="_blank">
+              <div class="pool-wrap" style="padding: 1rem;">
               <div class="pool-row">
                 <div class="pool-left">
                   <h2>Official Pool B <span class="buy-btn" @click="() => {this.detailShow=true}">Details</span></h2>
@@ -84,6 +89,7 @@
                 </div>
               </div>
             </div>
+            </a>
 
             <!-- dodo -->
             <a href="https://legacy.dodoex.io/cp/join?network=bsc-mainnet" target="_blank">
