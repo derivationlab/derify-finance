@@ -7,24 +7,20 @@
         </div>
         <div class="sub-title">
           <p>
-            Official Listing ( ApeSwap, PancakeSwap ) on April 1, 2022 00:00UTC
+            Official Listing ( <a style="text-decoration: underline;color: inherit" href="https://apeswap.finance/" target="_blank">ApeSwap</a> , <a style="text-decoration: underline;color: inherit" href="https://pancakeswap.finance/" target="_blank">PancakeSwap</a> ) on April 1, 2022 00:00UTC
           </p>
         </div>
 
         <div class="entrance-wrap">
           <div class="entrance-block">
-            <h2 class="fc-32">Free Entrance</h2>
-            <p>
-              <span class="fb fz-20">1</span> DRF = <span class="fb fz-20">$0.6</span> BUSD
-            </p>
-            <p>25% on TGE, followed by a 3-mouth linear</p>
+            <h2 class="fc-32">Community Entrance</h2>
 
             <!-- pool A-->
             <a href="https://app.bounce.finance/auction/fixed/377" target="_blank">
               <div class="pool-wrap" style="padding: 1rem;">
               <div class="pool-row">
                 <div class="pool-left">
-                  <h2>Official Pool A <span class="buy-btn" @click="() => {this.detailShow=true}">Details</span></h2>
+                  <h2>Official Pool A <span class="lernmore-btn" @click="() => {this.detailShow=true}"><span class="btn-box"><span class="text-color-linear">Details</span></span></span></h2>
                   <p>powered by <span class="fb">Bounce.finance</span></p>
                   <p><span class="fb fz-20">$0.6</span> BUSD per DRF, <span class="fb">release at May 1</span>.</p>
                 </div>
@@ -60,7 +56,7 @@
               <div class="pool-wrap" style="padding: 1rem;">
               <div class="pool-row">
                 <div class="pool-left">
-                  <h2>Official Pool B <span class="buy-btn" @click="() => {this.detailShow=true}">Details</span></h2>
+                  <h2>Official Pool B <span class="lernmore-btn" @click="() => {this.detailShow=true}"><span class="btn-box"><span class="text-color-linear">Details</span></span></span></h2>
                   <p>powered by <span class="fb">Bounce.finance</span></p>
                   <p><span class="fb fz-20">$0.8</span> BUSD per DRF, <span class="fb">no lockup</span>.</p>
                 </div>
@@ -128,12 +124,8 @@
           </div>
 
           <div class="entrance-block">
-            <h2 class="fc-32">Community Entrance</h2>
-            <p>
-              <span class="fb fz-20">1</span> DRF = <span class="fb fz-20">$0.8</span> BUSD
-            </p>
-            <p>No Lockup after TGE</p>
-
+            <h2 class="fc-32">Special Entrance</h2>
+            <p style="text-align: center">platform native token required</p>
 
             <!-- acy -->
             <a href="https://app.acy.finance/#/launchpad/project/17
@@ -450,13 +442,22 @@ export default {
 }
 
 .lernmore-btn{
-  background: transparent url('../../../assets/svg/ido-learnmore-btn.svg') center center no-repeat;
-  background-size: 100% 100%;
-  height: 3.1rem;
-  width: 15.4rem;
+  background: linear-gradient(90deg, #e7446b, #fae247 100%);
   border-radius: 1.5rem;
   cursor: pointer;
   display: inline-block;
+  padding: 0.2rem;
+  height: 3rem;
+  line-height: 3rem;
+  font-size: 1.6rem;
+  .btn-box{
+    display: inline-block;
+    background: rgba(39, 27, 81, 1);
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5rem;
+    padding: 0 1rem;
+  }
 }
 
 .ido-aodo-logo{
@@ -502,7 +503,7 @@ export default {
 }
 
 .buy-btn{
-  padding:0 1.5rem;
+  padding:0 3rem;
   height: 3rem;
   background: linear-gradient(90deg,#e7446b, #fae247 100%);
   border-radius: 1.5rem;
