@@ -54,19 +54,19 @@
 
                 <div class="pool-right">
                   <div class="tar">
-                    <template v-if="dodoStatus.showStatus">
-                      <div class="status-btn">{{ dodoStatus.statusText }}</div>
+                    <template v-if="officalStatus.showStatus">
+                      <div class="status-btn">{{ officalStatus.statusText }}</div>
                     </template>
-                    <template v-if="dodoStatus.showWait">
-                      <p style="line-height: 2.4rem; height: 2.4rem;"><span>start in {{dodoStatus.time.hours}} h {{dodoStatus.time.minutes}} m {{dodoStatus.time.seconds}} s</span></p>
+                    <template v-if="officalStatus.showWait">
+                      <p style="line-height: 2.4rem; height: 2.4rem;"><span>start in {{officalStatus.time.hours}} h {{officalStatus.time.minutes}} m {{officalStatus.time.seconds}} s</span></p>
                     </template>
 
-                    <template v-if="dodoStatus.showSale">
+                    <template v-if="officalStatus.showSale">
                       <div class="buy-btn" style="margin-bottom: 1rem;">Encore Pool</div>
-                      <p style="line-height: 2.4rem; height: 2.4rem;"><span>end in {{dodoStatus.time.hours}} h {{dodoStatus.time.minutes}} m {{dodoStatus.time.seconds}} s</span></p>
+                      <p style="line-height: 2.4rem; height: 2.4rem;"><span>end in {{officalStatus.time.hours}} h {{officalStatus.time.minutes}} m {{officalStatus.time.seconds}} s</span></p>
                     </template>
 
-                    <template v-if="dodoStatus.showClaim">
+                    <template v-if="officalStatus.showClaim">
                       <div class="buy-btn" style="margin-left: 1rem;">Claim</div>
                     </template>
 
@@ -246,7 +246,7 @@
 </template>
 <script>
 
-const claimEndDate = '2022-04-01 00:00:00UTC'
+const claimEndDate = new Date('2022-04-01 00:00:00UTC')
 Date.prototype.format = function (fmt) {
   var o = {
     'M+': this.getUTCMonth() + 1, // month
@@ -269,8 +269,8 @@ export default {
     return {
       now: new Date(),
       official:{
-        start: '2022-03-28 00:00:00:UTC',
-        end: '2022-03-30 00:00:00:UTC'
+        start: '2022-03-28 12:00:00:UTC',
+        end: '2022-03-30 12:00:00:UTC'
       },
       dodo: {
         start: '2022-03-31 00:00:00:UTC',
@@ -302,7 +302,7 @@ export default {
     },
     getSaleStatus(cfg,type,now){
       var start = new Date(cfg.start);
-      var end = new Date(cfg.start);
+      var end = new Date(cfg.end);
 
       var sencMilSec = 1000;
       var minMilSec = 60 * 1000;
@@ -320,7 +320,7 @@ export default {
         }};
       }
 
-      if(getTime() < end.getTime()){
+      if(now.getTime() < end.getTime()){
         var timeGap = end.getTime() - now.getTime();
         return {status: 'saling', statusText: '', showStatus: false, showWait: false, showSale: true, time: {days: Math.floor(timeGap/dayMilSec)
             , hours: Math.floor((timeGap%dayMilSec)/hourMilSec)
@@ -409,6 +409,9 @@ export default {
 .lernmore-btn{
   background: transparent url('../../../assets/svg/ido-learnmore-btn.svg') center center no-repeat;
   background-size: 100% 100%;
+  height: 3.1rem;
+  width: 15.4rem;
+  border-radius: 1.5rem;
 }
 
 .ido-aodo-logo{

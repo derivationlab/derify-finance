@@ -42,7 +42,7 @@ body{
 .home {
   .banner {
     width: 100%;
-    padding: 40vh 0.8rem 20vh;
+    padding: 30vh 0.8rem 20vh;
     background: #0e0314 url('../../assets/svg/ido-home.svg') no-repeat;
     background-size: 100% 100%;
     position: relative;
