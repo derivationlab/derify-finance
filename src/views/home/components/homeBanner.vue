@@ -22,7 +22,7 @@
             <div class="pool-wrap" style="padding: 1rem;">
               <div class="pool-row">
                 <div class="pool-left">
-                  <h2>Official Pool A <span class="buy-btn" @click="this.detailShow=true">Details</span></h2>
+                  <h2>Official Pool A <span class="buy-btn" @click="() => {this.detailShow=true}">Details</span></h2>
                   <p>powered by <span class="fb">Bounce.finance</span></p>
                   <p><span class="fb fz-20">$0.6</span> BUSD per DRF, <span class="fb">release at May 1</span>.</p>
                 </div>
@@ -55,7 +55,7 @@
             <div class="pool-wrap" style="padding: 1rem;">
               <div class="pool-row">
                 <div class="pool-left">
-                  <h2>Official Pool B <span class="buy-btn" @click="this.detailShow=true">Details</span></h2>
+                  <h2>Official Pool B <span class="buy-btn" @click="() => {this.detailShow=true}">Details</span></h2>
                   <p>powered by <span class="fb">Bounce.finance</span></p>
                   <p><span class="fb fz-20">$0.8</span> BUSD per DRF, <span class="fb">no lockup</span>.</p>
                 </div>
