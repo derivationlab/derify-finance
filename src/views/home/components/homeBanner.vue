@@ -543,7 +543,7 @@ export default {
 .text-color-linear {
   background: linear-gradient(90deg, #e7446b, #fae247 100%);
   color: transparent;
-  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 .time-wrap {
