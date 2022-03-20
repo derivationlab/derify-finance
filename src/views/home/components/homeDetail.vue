@@ -7,43 +7,64 @@
         <div class="title">The much anticipated Derify protocol (DRF) community IDO will start soon!</div>
         <div class="card-ctn">
           <div class="flex-row">
-            <div class="flex-col left">
-              <p>IDO Total Amount</p>
-              <p>IDO Price</p>
-              <p>Personal Cap</p>
-              <p>IDO Date</p>
-              <p>Vesting</p>
-            </div>
+            <div class="flex-col left">IDO Total Amount</div>
+            <div class="flex-col right">500,000 DRF</div>
+          </div>
+
+          <div class="flex-row">
+            <div class="flex-col left">IDO Price</div>
             <div class="flex-col right">
-              <p>500,000 DRF</p>
               <p>1 DRF = 0.6 BUSD</p>
+              <p>1 DRF = 0.8 BUSD (Pool B)</p>
+            </div>
+          </div>
+
+          <div class="flex-row">
+            <div class="flex-col left">Personal Cap</div>
+            <div class="flex-col right">
               <p>100 DRF min - 1000 DRF max</p>
-              <p>1 month cliff + 100% release(Pool A)</p>
-              <p>100% TGE(Pool B)</p>
+              <p>50 DRF min - 500 DRF max</p>
+            </div>
+          </div>
+
+          <div class="flex-row">
+            <div class="flex-col left">IDO Date</div>
+            <div class="flex-col right">
+              <p>March 28, 2022 12:00 UTC - March 30, 2022 12:00 UTC</p>
+            </div>
+          </div>
+
+          <div class="flex-row">
+            <div class="flex-col left">Vesting</div>
+            <div class="flex-col right">
+              <p>Pool A: 1 month Cliff and 100% release</p>
+              <p>Pool B: 100% TGE</p>
             </div>
           </div>
         </div>
       </div>
       <div class="detail-text">
-        <p id="8b20" class="pw-post-body-paragraph jg jh hy ji b jj jk jl jm jn jo jp jq jr js jt ju jv jw jx jy jz ka kb kc kd hr gi" data-selectable-paragraph="">The official IDO pool will be hosted on <strong class="ji hz">Bounce </strong>(BSC).</p>
-        <p id="97ca" class="pw-post-body-paragraph jg jh hy ji b jj jk jl jm jn jo jp jq jr js jt ju jv jw jx jy jz ka kb kc kd hr gi" data-selectable-paragraph="">Derify Official Pool A: <a class="au kq" href="https://app.bounce.finance/auction/fixed/377" rel="noopener ugc nofollow" target="_blank">https://app.bounce.finance/auction/fixed/377</a></p>
-        <p id="e45a" class="pw-post-body-paragraph jg jh hy ji b jj jk jl jm jn jo jp jq jr js jt ju jv jw jx jy jz ka kb kc kd hr gi" data-selectable-paragraph="">Derify Official Pool B: <a class="au kq" href="https://app.bounce.finance/auction/fixed/378" rel="noopener ugc nofollow" target="_blank">https://app.bounce.finance/auction/fixed/378</a></p>
-        <p id="899e" class="pw-post-body-paragraph jg jh hy ji b jj jk jl jm jn jo jp jq jr js jt ju jv jw jx jy jz ka kb kc kd hr gi" data-selectable-paragraph="">Official IDO start time: <strong class="ji hz">Mar 28 12:00 UTC</strong></p>
-        <p id="4e8c" class="pw-post-body-paragraph jg jh hy ji b jj jk jl jm jn jo jp jq jr js jt ju jv jw jx jy jz ka kb kc kd hr gi" data-selectable-paragraph="">Official IDO end time: <strong class="ji hz">Mar 30 12:00 UTC</strong></p>
-        <p id="e6d2" class="pw-post-body-paragraph jg jh hy ji b jj jk jl jm jn jo jp jq jr js jt ju jv jw jx jy jz ka kb kc kd hr gi" data-selectable-paragraph="">The official IDO will be conducted in Fixed Sale Auction mode, the purchase asset will be <strong class="ji hz">BUSD</strong> on <strong class="ji hz">BSC</strong> network.</p>
-        <p id="7210" class="pw-post-body-paragraph jg jh hy ji b jj jk jl jm jn jo jp jq jr js jt ju jv jw jx jy jz ka kb kc kd hr gi" data-selectable-paragraph="">The Auction Sale will have two pools, total DRF on sale will be 600,000 DRF (0.6% of total supply), total raise amount is 420,000 BUSD.</p>
-        <p id="a342" class="pw-post-body-paragraph jg jh hy ji b jj jk jl jm jn jo jp jq jr js jt ju jv jw jx jy jz ka kb kc kd hr gi" data-selectable-paragraph="">Derify Official Pool A has a price of <strong class="ji hz">0.6 BUSD</strong> per DRF, the vesting will be 1 month cliff after TGE;</p>
-        <p id="380b" class="pw-post-body-paragraph jg jh hy ji b jj jk jl jm jn jo jp jq jr js jt ju jv jw jx jy jz ka kb kc kd hr gi" data-selectable-paragraph="">Derify Official Pool B has a price of <strong class="ji hz">0.8 BUSD</strong> per DRF, the vesting will be 100% unlock on TGE.</p>
-        <p id="4ad4" class="pw-post-body-paragraph jg jh hy ji b jj jk jl jm jn jo jp jq jr js jt ju jv jw jx jy jz ka kb kc kd hr gi" data-selectable-paragraph="">The token will be distributed and claimable on Bounce.</p>
-        <p id="0256" class="pw-post-body-paragraph jg jh hy ji b jj jk jl jm jn jo jp jq jr js jt ju jv jw jx jy jz ka kb kc kd hr gi" data-selectable-paragraph="">The account purchase cap for DRF will be 1000 DRF maximum, and 100 DRF minimum, apply to both pools.</p>
-        <p id="453d" class="pw-post-body-paragraph jg jh hy ji b jj jk jl jm jn jo jp jq jr js jt ju jv jw jx jy jz ka kb kc kd hr gi" data-selectable-paragraph="">After IDO, Derify will list DRF and lock liquidity on <strong class="ji hz">Apeswap</strong>, <strong class="ji hz">DODOex and </strong>and <strong class="ji hz">Pancakeswap</strong>, allow the community to trade DRF freely.</p>
-        <p id="7a29" class="pw-post-body-paragraph jg jh hy ji b jj jk jl jm jn jo jp jq jr js jt ju jv jw jx jy jz ka kb kc kd hr gi" data-selectable-paragraph="">The listing time will be <strong class="ji hz">April 1, 2022, 00:00 UTC</strong>.</p>
-        <p id="e6ce" class="pw-post-body-paragraph jg jh hy ji b jj jk jl jm jn jo jp jq jr js jt ju jv jw jx jy jz ka kb kc kd hr gi" data-selectable-paragraph="">After listing:</p>
-        <p id="8a61" class="pw-post-body-paragraph jg jh hy ji b jj jk jl jm jn jo jp jq jr js jt ju jv jw jx jy jz ka kb kc kd hr gi" data-selectable-paragraph="">Estimated Initial Circulation of DRF token will be <strong class="ji hz">900,000 DRF</strong>,</p>
-        <p id="2d20" class="pw-post-body-paragraph jg jh hy ji b jj jk jl jm jn jo jp jq jr js jt ju jv jw jx jy jz ka kb kc kd hr gi" data-selectable-paragraph="">Estimated Initial Market Cap will be <strong class="ji hz">720,000 BUSD</strong>.</p>
-        <p id="1625" class="pw-post-body-paragraph jg jh hy ji b jj jk jl jm jn jo jp jq jr js jt ju jv jw jx jy jz ka kb kc kd hr gi" data-selectable-paragraph="">Other launchpads also host side pools where you can purchase participate in Derify IDO on other platforms under different rules, including <strong class="ji hz">DODO, ACY Finance, Daostarter and EraxPad.</strong></p>
-        <p id="fe3d" class="pw-post-body-paragraph jg jh hy ji b jj jk jl jm jn jo jp jq jr js jt ju jv jw jx jy jz ka kb kc kd hr gi" data-selectable-paragraph="">Derify has no control over other platform and token distribution will also be conducted by the launchpad, please check the details and rules on other launchpads and <strong class="ji hz">DO YOUR OWN RESEARCH</strong>.</p>
-        <p id="789d" class="pw-post-body-paragraph jg jh hy ji b jj jk jl jm jn jo jp jq jr js jt ju jv jw jx jy jz ka kb kc kd hr gi" data-selectable-paragraph="">Residents of US, Canada, China, South Korea and other countries that have restrictions for token purchase shall comply with local regulations and not participate in our IDO.</p>
+        <p id="8b20" class="" >The official IDO pool will be hosted on <strong class="ji hz">Bounce </strong>(BSC).</p>
+        <div style="text-indent: 5rem;">
+          <p id="97ca" class="" >Derify Official Pool A: <a class="au kq" href="https://app.bounce.finance/auction/fixed/377" rel="noopener ugc nofollow" target="_blank">https://app.bounce.finance/auction/fixed/377</a></p>
+          <p id="e45a" class="" >Derify Official Pool B: <a class="au kq" href="https://app.bounce.finance/auction/fixed/378" rel="noopener ugc nofollow" target="_blank">https://app.bounce.finance/auction/fixed/378</a></p>
+          <p id="899e" style="font-weight: bold;" >Official IDO start time: <strong class="ji hz">Mar 28 12:00 UTC</strong></p>
+          <p id="4e8c" style="font-weight: bold;"  >Official IDO end time: <strong class="ji hz">Mar 30 12:00 UTC</strong></p>
+        </div>
+        <p id="e6d2" class="" >The official IDO will be conducted in Fixed Sale Auction mode, the purchase asset will be <strong class="ji hz">BUSD</strong> on <strong class="ji hz">BSC</strong> network.</p>
+        <p id="7210" class="" >The Auction Sale will have two pools, total DRF on sale will be 600,000 DRF (0.6% of total supply), total raise amount is 420,000 BUSD.</p>
+        <p id="a342" class="" >Derify Official Pool A has a price of <strong class="ji hz">0.6 BUSD</strong> per DRF, the vesting will be 1 month cliff after TGE;</p>
+        <p id="380b" class="" >Derify Official Pool B has a price of <strong class="ji hz">0.8 BUSD</strong> per DRF, the vesting will be 100% unlock on TGE.</p>
+        <p id="4ad4" class="" >The token will be distributed and claimable on Bounce.</p>
+        <p id="0256" class="" >The account purchase cap for DRF will be 1000 DRF maximum, and 100 DRF minimum, apply to both pools.</p>
+        <p id="453d" class="" >After IDO, Derify will list DRF and lock liquidity on <strong class="ji hz">Apeswap</strong>, <strong class="ji hz">DODOex and </strong>and <strong class="ji hz">Pancakeswap</strong>, allow the community to trade DRF freely.</p>
+        <p id="7a29" class="" >The listing time will be <strong class="ji hz">April 1, 2022, 00:00 UTC</strong>.</p>
+        <p id="e6ce" class="" >After listing:</p>
+        <p id="8a61" class="" >Estimated Initial Circulation of DRF token will be <strong class="ji hz">900,000 DRF</strong>,</p>
+        <p id="2d20" class="" >Estimated Initial Market Cap will be <strong class="ji hz">720,000 BUSD</strong>.</p>
+        <p id="1625" class="" >Other launchpads also host side pools where you can purchase participate in Derify IDO on other platforms under different rules, including <strong class="ji hz">DODO, ACY Finance, Daostarter and EraxPad.</strong></p>
+        <p id="fe3d" class="" >Derify has no control over other platform and token distribution will also be conducted by the launchpad, please check the details and rules on other launchpads and <strong class="ji hz">DO YOUR OWN RESEARCH</strong>.</p>
+        <p id="789d" class="" >Residents of US, Canada, China, South Korea and other countries that have restrictions for token purchase shall comply with local regulations and not participate in our IDO.</p>
         <h2>Derify Tokenomics</h2>
         <div class="table-bg">
           <svg width="960" height="776" viewBox="0 0 960 776" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -122,6 +143,7 @@ import IdoLogos from "./idoLogos";
 export default {
   components: {IdoLogos},
   data() {
+    console.log('hotel detail init');
     return {};
   },
   methods: {
@@ -209,7 +231,7 @@ export default {
   }
   .flex-row{
     font-size: 2.4rem;
-    line-height: 4.8rem;
+    line-height: 3.2rem;
     .left{
       width: 26rem;
       font-weight: 400;

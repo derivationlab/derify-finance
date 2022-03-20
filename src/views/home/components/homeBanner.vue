@@ -20,7 +20,10 @@
               <div class="pool-wrap" style="padding: 1rem;">
               <div class="pool-row">
                 <div class="pool-left">
-                  <h2>Official Pool A <span class="lernmore-btn" @click="(e) => {this.detailShow=true;e.preventDefault();}"><span class="btn-box"><span class="text-color-linear">Details</span></span></span></h2>
+                  <h2>Official Pool A <span class="lernmore-btn" @click="(e) => {
+                    e.preventDefault();
+                    this.detailShow=true;
+                  }"><span class="btn-box"><span class="text-color-linear">Details</span></span></span></h2>
                   <p>powered by <span class="fb">Bounce.finance</span></p>
                   <p><span class="fb fz-20 fc-yellow">$0.6</span> BUSD per DRF, <span class="fb">release at May 1</span>.</p>
                 </div>
