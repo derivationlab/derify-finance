@@ -79,7 +79,9 @@
               </div>
             </div>
 
-            <div class="pool-wrap" style="padding: 1rem;">
+            <!-- dodo -->
+            <a href="https://legacy.dodoex.io/cp/join?network=bsc-mainnet" target="_blank">
+              <div class="pool-wrap" style="padding: 1rem;">
               <div class="pool-row">
                 <div class="pool-left">
                   <div class="ido-aodo-logo">&nbsp;</div>
@@ -109,6 +111,7 @@
                 </div>
               </div>
             </div>
+            </a>
           </div>
 
           <div class="entrance-block">
@@ -118,7 +121,11 @@
             </p>
             <p>No Lockup after TGE</p>
 
-            <div class="pool-wrap" style="padding: 1rem;">
+
+            <!-- acy -->
+            <a href="https://app.acy.finance/#/launchpad/project/17
+" target="_blank">
+              <div class="pool-wrap" style="padding: 1rem;">
               <div class="pool-row">
                 <div class="pool-left">
                   <div class="ido-acy-logo">&nbsp;</div>
@@ -149,8 +156,11 @@
                 </div>
               </div>
             </div>
+            </a>
 
-            <div class="pool-wrap" style="padding: 1rem;">
+            <!-- erax -->
+            <a href="https://www.erax.io/#/ido-detail/0x676fbeEEA559FD4D1F168e39EB4303C5eC6352c6" target="_blank">
+              <div class="pool-wrap" style="padding: 1rem;">
               <div class="pool-row">
                 <div class="pool-left">
                   <div class="ido-erax-logo">&nbsp;</div>
@@ -181,8 +191,10 @@
                 </div>
               </div>
             </div>
-
-            <div class="pool-wrap" style="padding: 1rem;">
+            </a>
+            <!--ido-dao-logo -->
+            <a href="https://www.daostarter.pro/" target="_blank">
+              <div class="pool-wrap" style="padding: 1rem;">
               <div class="pool-row">
                 <div class="pool-left">
                   <div class="ido-dao-logo">&nbsp;</div>
@@ -213,6 +225,7 @@
                 </div>
               </div>
             </div>
+            </a>
           </div>
         </div>
 

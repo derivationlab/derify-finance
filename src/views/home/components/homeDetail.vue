@@ -25,7 +25,7 @@
         </div>
       </div>
       <div class="detail-text">
-        <p>The official IDO will be conducted on Bounce (BSC).</p>
+        <p>The official IDO will be conducted on <a href="https://app.bounce.finance/" target="_blank">Bounce</a> (BSC).</p>
         <div style="text-indent: 10rem">
           <div>Official IDO start time: Mar 28 12:00 UTC</div>
           <div>Official IDO end time: Mar 30 12:00 UTC</div>
@@ -164,6 +164,11 @@ export default {
 
   h2{
     margin: 5rem auto;
+  }
+
+  a{
+    text-decoration: underline;
+    color: inherit;
   }
 
   .detail-dialog-close-btn{
