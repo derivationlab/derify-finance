@@ -219,8 +219,9 @@ export default {
   width: 112rem;
   height: 58rem;
   box-sizing: content-box;
-  background: transparent url('../../../assets/svg/ido-card-bg.svg') center center no-repeat;
+  background: transparent url('../../../assets/card-bg.png') center center no-repeat;
   background-size: 100% 100%;
+  border-radius: 4.2rem;
   .title{
     font-size: 4.4rem;
     font-weight: 700;
