@@ -417,25 +417,25 @@ export default {
     return {
       detailShow: false,
       now: new Date(),
-      official:{
-        start: '2022-03-28 12:00:00',
-        end: '2022-03-30 12:00:00'
+      official: {
+        start: Date.UTC(2022, 2, 28, 12),
+        end: Date.UTC(2022, 2, 30, 12)
       },
       dodo: {
-        start: '2022-03-31 00:00:00',
-        end: '2022-04-01 00:00:00'
+        start: Date.UTC(2022, 2, 31, 0),
+        end: Date.UTC(2022, 3, 1, 0)
       },
       acy: {
-        start: '2022-03-20 00:00:00',
-        end: '2022-03-21 00:00:00'
+        start: Date.UTC(2022, 2, 20, 0),
+        end: Date.UTC(2022, 2, 21, 0)
       },
       erax: {
-        start: '2022-03-26 08:00:00',
-        end: '2022-03-27 08:00:00'
+        start: Date.UTC(2022, 2, 26, 8),
+        end: Date.UTC(2022, 2, 27, 8)
       },
       dao: {
-        start: '2022-03-30 08:00:00',
-        end: '2022-03-31 08:00:00'
+        start: Date.UTC(2022, 2, 30, 8),
+        end: Date.UTC(2022, 2, 31, 8)
       }
     };
   },
