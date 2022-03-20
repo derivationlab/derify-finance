@@ -8,13 +8,13 @@
         <div class="card-ctn">
           <div class="flex-row">
             <div class="flex-col left">IDO Total Amount</div>
-            <div class="flex-col right">500,000 DRF</div>
+            <div class="flex-col right">600,000 DRF</div>
           </div>
 
           <div class="flex-row">
             <div class="flex-col left">IDO Price</div>
             <div class="flex-col right">
-              <p>1 DRF = 0.6 BUSD</p>
+              <p>1 DRF = 0.6 BUSD (Pool A)</p>
               <p>1 DRF = 0.8 BUSD (Pool B)</p>
             </div>
           </div>
@@ -23,7 +23,6 @@
             <div class="flex-col left">Personal Cap</div>
             <div class="flex-col right">
               <p>100 DRF min - 1000 DRF max</p>
-              <p>50 DRF min - 500 DRF max</p>
             </div>
           </div>
 
