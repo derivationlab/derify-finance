@@ -220,7 +220,7 @@ export default {
   }
 }
 .detail-logo{
-  background: transparent url('../../../assets/svg/ido-detail-logo.svg') center center no-repeat;
+  background: transparent;
   background-size: 100% 100%;
   width: 26rem;
   height: 5rem;
