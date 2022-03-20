@@ -1,10 +1,3 @@
-<!--
- * @Author: kim
- * @Date: 2021-04-02 15:49:12
- * @LastEditors: kim
- * @LastEditTime: 2021-05-06 20:31:24
- * @FilePath: /derify-finance/src/App.vue
--->
 <template>
   <div class="app">
     <app-header></app-header>
