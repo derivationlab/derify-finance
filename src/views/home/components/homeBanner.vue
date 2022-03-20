@@ -1,10 +1,3 @@
-<!--
- * @Author: kim
- * @Date: 2021-04-30 20:17:35
- * @LastEditors: kim
- * @LastEditTime: 2021-05-07 19:16:09
- * @FilePath: /derify-finance/src/views/home/components/homeBanner.vue
--->
 <template>
   <div class="banner">
     <div class="main">
@@ -30,7 +23,9 @@
               <div class="pool-row">
                 <div class="pool-left">
                   <p><span class="fc-24"  style="height: 4.8rem; line-height: 4.8rem;font-weight: bold">Official Pool</span></p>
-                  <div class="lernmore-btn">&nbsp;</div>
+                  <div class="lernmore-btn" @click="() => {
+                    this.detailShow = true;
+                  }">&nbsp;</div>
                 </div>
 
                 <div class="pool-right">
@@ -242,10 +237,14 @@
         </div>
       </div>
     </div>
+    <home-detail v-if="detailShow" @close="() => {
+      this.detailShow=false
+    }"></home-detail>
   </div>
 </template>
 <script>
 
+import HomeDetail from "./homeDetail";
 const claimEndDate = new Date('2022-04-01 00:00:00UTC')
 Date.prototype.format = function (fmt) {
   var o = {
@@ -263,10 +262,21 @@ Date.prototype.format = function (fmt) {
   return fmt
 }
 
+function toFixedNum(num, digit = 2){
+  const numLen = (num+"").length;
+  if(numLen >= digit){
+    return num+"";
+  }
+
+  return "0".repeat(digit - numLen)+num;
+}
+
 
 export default {
+  components: {HomeDetail},
   data() {
     return {
+      detailShow: false,
       now: new Date(),
       official:{
         start: '2022-03-28 12:00:00:UTC',
@@ -309,24 +319,25 @@ export default {
       var hourMilSec = 60 * 60 * 1000;
       var dayMilSec = 24 * 60 * 60 * 1000;
 
-
-
       if(now.getTime() < start.getTime()){
         var timeGap = start.getTime() - now.getTime();
-        return {status: 'wait', statusText: '', showStatus: false, showWait: true, time: {days: Math.floor(timeGap/dayMilSec)
-            , hours: Math.floor((timeGap%dayMilSec)/hourMilSec)
-            , minutes: Math.floor((timeGap%hourMilSec)/minMilSec)
-            , seconds: Math.floor((timeGap%minMilSec)/sencMilSec)
-        }};
+        return {status: 'wait', statusText: '', showStatus: false, showWait: true, time: {
+            days: Math.floor(timeGap/dayMilSec)
+            , hours: toFixedNum(Math.floor((timeGap%dayMilSec)/hourMilSec))
+            , minutes: toFixedNum(Math.floor((timeGap%hourMilSec)/minMilSec))
+            , seconds: toFixedNum(Math.floor((timeGap%minMilSec)/sencMilSec))
+          }};
       }
 
       if(now.getTime() < end.getTime()){
         var timeGap = end.getTime() - now.getTime();
-        return {status: 'saling', statusText: '', showStatus: false, showWait: false, showSale: true, time: {days: Math.floor(timeGap/dayMilSec)
-            , hours: Math.floor((timeGap%dayMilSec)/hourMilSec)
-            , minutes: Math.floor((timeGap%hourMilSec)/minMilSec)
-            , seconds: Math.floor((timeGap%minMilSec)/sencMilSec)
-        }};
+        return {status: 'saling', statusText: '', showStatus: false, showWait: false, showSale: true, time:
+              {
+                days: Math.floor(timeGap/dayMilSec)
+                , hours: toFixedNum(Math.floor((timeGap%dayMilSec)/hourMilSec))
+                , minutes: toFixedNum(Math.floor((timeGap%hourMilSec)/minMilSec))
+                , seconds: toFixedNum(Math.floor((timeGap%minMilSec)/sencMilSec))
+              }};
       }
 
       if(now.getTime() < claimEndDate.getTime()){
@@ -412,6 +423,7 @@ export default {
   height: 3.1rem;
   width: 15.4rem;
   border-radius: 1.5rem;
+  cursor: pointer;
 }
 
 .ido-aodo-logo{
@@ -466,6 +478,7 @@ export default {
   color: #ffffff;
   line-height: 3rem;
   display: inline-block;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 576px) {
