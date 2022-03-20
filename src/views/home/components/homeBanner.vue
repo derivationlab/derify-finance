@@ -578,7 +578,10 @@ export default {
       text-align: CENTER;
       font-size: 1.4rem;
       margin: 0 18rem;
-
+      a{
+        text-decoration: none;
+        color: inherit;
+      }
       p{
         margin: 0;
         padding: 0;
