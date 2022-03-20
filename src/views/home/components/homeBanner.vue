@@ -19,63 +19,69 @@
             </p>
             <p>25% on TGE, followed by a 3-mouth linear</p>
 
-            <div class="pool-wrap">
+            <div class="pool-wrap" style="padding: 1rem;">
               <div class="pool-row">
                 <div class="pool-left">
-                  <p><span class="fc-24"  style="height: 4.8rem; line-height: 4.8rem;font-weight: bold">Official Pool</span></p>
-                  <div class="lernmore-btn" @click="() => {
-                    this.detailShow = true;
-                  }">&nbsp;</div>
+                  <h2>Official Pool A <span class="buy-btn" @click="this.detailShow=true">Details</span></h2>
+                  <p>powered by <span class="fb">Bounce.finance</span></p>
+                  <p><span class="fb fz-20">$0.6</span> BUSD per DRF, <span class="fb">release at May 1</span>.</p>
                 </div>
-
                 <div class="pool-right">
-                  <div class="tar">
-                    <p>Start at <span class="fz-16 fb">{{ toUTCDate(official.start) }}</span> UTC</p>
-                    <p>End at <span  class="fz-16 fb">{{ toUTCDate(official.end) }}</span> UTC</p>
-                  </div>
-                  <template v-if="officalStatus.showStatus">
-                    <div class="status-btn">{{ officalStatus.statusText }}</div>
-                  </template>
+                  <p>Start at <span class="fb">{{toUTCDate(official.start)}}</span> UTC</p>
+                  <p>End at <span class="fb">{{toUTCDate(official.end)}}</span> UTC</p>
 
-                </div>
-              </div>
-
-              <div class="pool-row">
-                <div class="pool-left">
-                  <p>Amount:</p>
-                  <p><span class="fc-24"  style="font-weight: bold">500,000</span> DRF</p>
-                  <p>(0.5% of total supply)</p>
-                </div>
-
-                <div class="pool-right">
-                  <div class="tar">
-                    <template v-if="officalStatus.showStatus">
-                      <div class="status-btn">{{ officalStatus.statusText }}</div>
+                  <div style="margin-top: 2rem;">
+                    <template v-if="officialStatus.showStatus">
+                      <div class="status-btn">{{ officialStatus.statusText }}</div>
                     </template>
-                    <template v-if="officalStatus.showWait">
-                      <p style="line-height: 2.4rem; height: 2.4rem;"><span class="text-color-linear">start in {{officalStatus.time.hours}} h {{officalStatus.time.minutes}} m {{officalStatus.time.seconds}} s</span></p>
+                    <template v-if="officialStatus.showWait">
+                      <p>
+                        <span class="time-wrap">{{officialStatus.time.days}}</span>Days<span class="time-wrap">{{officialStatus.time.hours}}:{{officialStatus.time.minutes}}:{{officialStatus.time.seconds}}</span>later
+                      </p>
+                    </template>
+                    <template v-if="officialStatus.showSale">
+                      <span class="text-color-linear">end in {{officialStatus.time.hours}} h {{officialStatus.time.minutes}} m {{officialStatus.time.seconds}} s</span>
+                      <div class="buy-btn" style="margin-left: 1rem;">BUY</div>
                     </template>
 
-                    <template v-if="officalStatus.showSale">
-                      <div class="buy-btn" style="margin-bottom: 1rem;">Encore Pool</div>
-                      <p style="line-height: 2.4rem; height: 2.4rem;"><span class="text-color-linear">end in {{officalStatus.time.hours}} h {{officalStatus.time.minutes}} m {{officalStatus.time.seconds}} s</span></p>
-                    </template>
-
-                    <template v-if="officalStatus.showClaim">
+                    <template v-if="officialStatus.showClaim">
                       <div class="buy-btn" style="margin-left: 1rem;">Claim</div>
                     </template>
-
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div class="pool-row" style="align-items: flex-end">
+            <div class="pool-wrap" style="padding: 1rem;">
+              <div class="pool-row">
                 <div class="pool-left">
-                  <p>Personal Cap:</p>
-                  <div><span class="fc-24">500</span> DRF max</div>
+                  <h2>Official Pool B <span class="buy-btn" @click="this.detailShow=true">Details</span></h2>
+                  <p>powered by <span class="fb">Bounce.finance</span></p>
+                  <p><span class="fb fz-20">$0.8</span> BUSD per DRF, <span class="fb">no lockup</span>.</p>
                 </div>
+                <div class="pool-right">
+                  <p>Start at <span class="fb">{{toUTCDate(official.start)}}</span> UTC</p>
+                  <p>End at <span class="fb">{{toUTCDate(official.end)}}</span> UTC</p>
 
-                <div class="pool-right">powered by <span style="font-weight: bold;">Bounce.finance</span></div>
+                  <div style="margin-top: 2rem;">
+                    <template v-if="officialStatus.showStatus">
+                      <div class="status-btn">{{ officialStatus.statusText }}</div>
+                    </template>
+                    <template v-if="officialStatus.showWait">
+                      <p>
+                        <span class="time-wrap">{{officialStatus.time.days}}</span>Days<span class="time-wrap">{{officialStatus.time.hours}}:{{officialStatus.time.minutes}}:{{officialStatus.time.seconds}}</span>later
+                      </p>
+                    </template>
+                    <template v-if="officialStatus.showSale">
+                      <span class="text-color-linear">end in {{officialStatus.time.hours}} h {{officialStatus.time.minutes}} m {{official.time.seconds}} s</span>
+                      <div class="buy-btn" style="margin-left: 1rem;">BUY</div>
+                    </template>
+
+                    <template v-if="officialStatus.showClaim">
+                      <div class="buy-btn" style="margin-left: 1rem;">Claim</div>
+                    </template>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -85,6 +91,7 @@
               <div class="pool-row">
                 <div class="pool-left">
                   <div class="ido-aodo-logo">&nbsp;</div>
+                  <p><span class="fb fz-20">$0.6</span> BUSD per DRF, <span class="fb">release at May 1</span>.</p>
                 </div>
                 <div class="pool-right">
                   <p>Start at <span class="fb">{{ toUTCDate(dodo.start) }}</span> UTC</p>
@@ -129,7 +136,7 @@
               <div class="pool-row">
                 <div class="pool-left">
                   <div class="ido-acy-logo">&nbsp;</div>
-                  <p>Platform native token required</p>
+                  <p><span class="fb fz-20">$0.8</span> BUSD per DRF, <span class="fb">no lockup</span>.</p>
                 </div>
                 <div class="pool-right">
                   <p>Start at <span class="fb">{{toUTCDate(acy.start)}}</span> UTC</p>
@@ -164,7 +171,7 @@
               <div class="pool-row">
                 <div class="pool-left">
                   <div class="ido-erax-logo">&nbsp;</div>
-                  <p>Platform native token required</p>
+                  <p><span class="fb fz-20">$0.8</span> BUSD per DRF, <span class="fb">no lockup</span>.</p>
                 </div>
                 <div class="pool-right">
                   <p>Start at <span class="fb">{{toUTCDate(erax.start)}}</span> UTC</p>
@@ -198,7 +205,7 @@
               <div class="pool-row">
                 <div class="pool-left">
                   <div class="ido-dao-logo">&nbsp;</div>
-                  <p>Platform native token required</p>
+                  <p><span class="fb fz-20">$0.8</span> BUSD per DRF, <span class="fb">no lockup</span>.</p>
                 </div>
                 <div class="pool-right">
                   <p>Start at <span class="fb">{{ toUTCDate(dao.start) }}</span> UTC</p>
@@ -361,7 +368,7 @@ export default {
     }
   },
   computed:{
-    officalStatus(){
+    officialStatus(){
       return this.getSaleStatus(this.official, 'official',this.now);
     },
     dodoStatus(){
@@ -443,6 +450,7 @@ export default {
   width: 15.4rem;
   border-radius: 1.5rem;
   cursor: pointer;
+  display: inline-block;
 }
 
 .ido-aodo-logo{
