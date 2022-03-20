@@ -222,6 +222,7 @@ export default {
   background: transparent url('../../../assets/card-bg.png') center center no-repeat;
   background-size: 100% 100%;
   border-radius: 4.2rem;
+  backdrop-filter: blur(40px);
   .title{
     font-size: 4.4rem;
     font-weight: 700;
