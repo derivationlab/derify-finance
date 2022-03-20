@@ -160,6 +160,7 @@ export default {
 .detail-dialog-wrap{
   position: fixed;
   backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
   z-index: 999;
   top: 0;
   left: 0;
@@ -173,7 +174,7 @@ export default {
 }
 
 .detail-dialog{
-  background: rgba(31,55,111,0.40);
+  background: rgba(31,55,111,1);
   color: #fff;
   position: absolute;
   top:0;
