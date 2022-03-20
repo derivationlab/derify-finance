@@ -7,7 +7,17 @@
         </div>
         <div class="sub-title">
           <p>
-            Official Listing ( <a style="text-decoration: underline;color: inherit" href="https://apeswap.finance/" target="_blank">ApeSwap</a> , <a style="text-decoration: underline;color: inherit" href="https://pancakeswap.finance/" target="_blank">PancakeSwap</a> ) on April 1, 2022 00:00UTC
+            Official Listing (
+            <a
+              style="text-decoration: underline;color: inherit"
+              href="https://apeswap.finance/"
+              target="_blank"
+            >ApeSwap</a> ,
+            <a
+              style="text-decoration: underline;color: inherit"
+              href="https://pancakeswap.finance/"
+              target="_blank"
+            >PancakeSwap</a> ) on April 1, 2022 00:00UTC
           </p>
         </div>
 
@@ -18,111 +28,179 @@
             <!-- pool A-->
             <a href="https://app.bounce.finance/auction/fixed/377" target="_blank">
               <div class="pool-wrap" style="padding: 1rem;">
-              <div class="pool-row">
-                <div class="pool-left">
-                  <h2>Official Pool A <span class="lernmore-btn" @click="(e) => {
-                    e.preventDefault();
-                    this.detailShow=true;
-                  }"><span class="btn-box"><span class="text-color-linear">Details</span></span></span></h2>
-                  <p>powered by <span class="fb">Bounce.finance</span></p>
-                  <p><span class="fb fz-20 fc-yellow">$0.6</span> BUSD per DRF, <span class="fb">release at May 1</span>.</p>
-                </div>
-                <div class="pool-right">
-                  <p>Start at <span class="fb">{{toUTCDate(official.start)}}</span> UTC</p>
-                  <p>End at <span class="fb">{{toUTCDate(official.end)}}</span> UTC</p>
+                <div class="pool-row">
+                  <div class="pool-left">
+                    <h2>
+                      Official Pool A
+                      <span
+                        class="lernmore-btn"
+                        @click="(e) => {
+                          e.preventDefault();
+                          this.detailShow = true;
+                        }"
+                      >
+                        <span class="btn-box">
+                          <span class="text-color-linear">Details</span>
+                        </span>
+                      </span>
+                    </h2>
+                    <p>
+                      powered by
+                      <span class="fb">Bounce.finance</span>
+                    </p>
+                    <p>
+                      <span class="fb fc-yellow fz-20">$0.6</span> BUSD per DRF,
+                      <span class="fb">release at May 1</span>.
+                    </p>
+                  </div>
+                  <div class="pool-right">
+                    <p>
+                      Start at
+                      <span class="fb">{{ toUTCDate(official.start) }}</span> UTC
+                    </p>
+                    <p>
+                      End at
+                      <span class="fb">{{ toUTCDate(official.end) }}</span> UTC
+                    </p>
 
-                  <div style="margin-top: 2rem;">
-                    <template v-if="officialStatus.showStatus">
-                      <div class="status-btn">{{ officialStatus.statusText }}</div>
-                    </template>
-                    <template v-if="officialStatus.showWait">
-                      <p>
-                        <span class="time-wrap">{{officialStatus.time.days}}</span>Days<span class="time-wrap">{{officialStatus.time.hours}}:{{officialStatus.time.minutes}}:{{officialStatus.time.seconds}}</span>later
-                      </p>
-                    </template>
-                    <template v-if="officialStatus.showSale">
-                      <span class="text-color-linear">end in {{officialStatus.time.hours}} h {{officialStatus.time.minutes}} m {{officialStatus.time.seconds}} s</span>
-                      <div class="buy-btn" style="margin-left: 1rem;">BUY</div>
-                    </template>
+                    <div style="margin-top: 2rem;">
+                      <template v-if="officialStatus.showStatus">
+                        <div class="status-btn">{{ officialStatus.statusText }}</div>
+                      </template>
+                      <template v-if="officialStatus.showWait">
+                        <p>
+                          <span class="time-wrap">{{ officialStatus.time.days }}</span>Days
+                          <span
+                            class="time-wrap"
+                          >{{ officialStatus.time.hours }}:{{ officialStatus.time.minutes }}:{{ officialStatus.time.seconds }}</span>later
+                        </p>
+                      </template>
+                      <template v-if="officialStatus.showSale">
+                        <span
+                          class="text-color-linear"
+                        >end in {{ officialStatus.time.hours }} h {{ officialStatus.time.minutes }} m {{ officialStatus.time.seconds }} s</span>
+                        <div class="buy-btn" style="margin-left: 1rem;">BUY</div>
+                      </template>
 
-                    <template v-if="officialStatus.showClaim">
-                      <div class="buy-btn" style="margin-left: 1rem;">Claim</div>
-                    </template>
+                      <template v-if="officialStatus.showClaim">
+                        <div class="buy-btn" style="margin-left: 1rem;">Claim</div>
+                      </template>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
             </a>
 
             <!-- pool B-->
             <a href="https://app.bounce.finance/auction/fixed/378" target="_blank">
               <div class="pool-wrap" style="padding: 1rem;">
-              <div class="pool-row">
-                <div class="pool-left">
-                  <h2>Official Pool B <span class="lernmore-btn" @click="(e) => {this.detailShow=true;e.preventDefault();}"><span class="btn-box"><span class="text-color-linear">Details</span></span></span></h2>
-                  <p>powered by <span class="fb">Bounce.finance</span></p>
-                  <p><span class="fb fz-20 fc-yellow">$0.8</span> BUSD per DRF, <span class="fb">no lockup</span>.</p>
-                </div>
-                <div class="pool-right">
-                  <p>Start at <span class="fb">{{toUTCDate(official.start)}}</span> UTC</p>
-                  <p>End at <span class="fb">{{toUTCDate(official.end)}}</span> UTC</p>
+                <div class="pool-row">
+                  <div class="pool-left">
+                    <h2>
+                      Official Pool B
+                      <span
+                        class="lernmore-btn"
+                        @click="(e) => { this.detailShow = true; e.preventDefault(); }"
+                      >
+                        <span class="btn-box">
+                          <span class="text-color-linear">Details</span>
+                        </span>
+                      </span>
+                    </h2>
+                    <p>
+                      powered by
+                      <span class="fb">Bounce.finance</span>
+                    </p>
+                    <p>
+                      <span class="fb fc-yellow fz-20">$0.8</span> BUSD per DRF,
+                      <span class="fb">no lockup</span>.
+                    </p>
+                  </div>
+                  <div class="pool-right">
+                    <p>
+                      Start at
+                      <span class="fb">{{ toUTCDate(official.start) }}</span> UTC
+                    </p>
+                    <p>
+                      End at
+                      <span class="fb">{{ toUTCDate(official.end) }}</span> UTC
+                    </p>
 
-                  <div style="margin-top: 2rem;">
-                    <template v-if="officialStatus.showStatus">
-                      <div class="status-btn">{{ officialStatus.statusText }}</div>
-                    </template>
-                    <template v-if="officialStatus.showWait">
-                      <p>
-                        <span class="time-wrap">{{officialStatus.time.days}}</span>Days<span class="time-wrap">{{officialStatus.time.hours}}:{{officialStatus.time.minutes}}:{{officialStatus.time.seconds}}</span>later
-                      </p>
-                    </template>
-                    <template v-if="officialStatus.showSale">
-                      <span class="text-color-linear">end in {{officialStatus.time.hours}} h {{officialStatus.time.minutes}} m {{official.time.seconds}} s</span>
-                      <div class="buy-btn" style="margin-left: 1rem;">BUY</div>
-                    </template>
+                    <div style="margin-top: 2rem;">
+                      <template v-if="officialStatus.showStatus">
+                        <div class="status-btn">{{ officialStatus.statusText }}</div>
+                      </template>
+                      <template v-if="officialStatus.showWait">
+                        <p>
+                          <span class="time-wrap">{{ officialStatus.time.days }}</span>Days
+                          <span
+                            class="time-wrap"
+                          >{{ officialStatus.time.hours }}:{{ officialStatus.time.minutes }}:{{ officialStatus.time.seconds }}</span>later
+                        </p>
+                      </template>
+                      <template v-if="officialStatus.showSale">
+                        <span
+                          class="text-color-linear"
+                        >end in {{ officialStatus.time.hours }} h {{ officialStatus.time.minutes }} m {{ official.time.seconds }} s</span>
+                        <div class="buy-btn" style="margin-left: 1rem;">BUY</div>
+                      </template>
 
-                    <template v-if="officialStatus.showClaim">
-                      <div class="buy-btn" style="margin-left: 1rem;">Claim</div>
-                    </template>
+                      <template v-if="officialStatus.showClaim">
+                        <div class="buy-btn" style="margin-left: 1rem;">Claim</div>
+                      </template>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
             </a>
 
             <!-- dodo -->
             <a href="https://legacy.dodoex.io/cp/join?network=bsc-mainnet" target="_blank">
               <div class="pool-wrap" style="padding: 1rem;">
-              <div class="pool-row">
-                <div class="pool-left">
-                  <div class="ido-aodo-logo">&nbsp;</div>
-                  <p><span class="fb fz-20 fc-yellow">$0.6</span> BUSD per DRF, <span class="fb">release at May 1</span>.</p>
-                </div>
-                <div class="pool-right">
-                  <p>Start at <span class="fb">{{ toUTCDate(dodo.start) }}</span> UTC</p>
-                  <p>End at <span class="fb">{{ toUTCDate(dodo.end) }}</span> UTC</p>
+                <div class="pool-row">
+                  <div class="pool-left">
+                    <div class="ido-aodo-logo">&nbsp;</div>
+                    <p>
+                      <span class="fb fc-yellow fz-20">$0.6</span> BUSD per DRF,
+                      <span class="fb">release at May 1</span>.
+                    </p>
+                  </div>
+                  <div class="pool-right">
+                    <p>
+                      Start at
+                      <span class="fb">{{ toUTCDate(dodo.start) }}</span> UTC
+                    </p>
+                    <p>
+                      End at
+                      <span class="fb">{{ toUTCDate(dodo.end) }}</span> UTC
+                    </p>
 
-                  <div style="margin-top: 2rem;">
-                    <template v-if="dodoStatus.showStatus">
-                      <div class="status-btn">{{ dodoStatus.statusText }}</div>
-                    </template>
-                    <template v-if="dodoStatus.showWait">
-                      <p>
-                        <span class="time-wrap">{{dodoStatus.time.days}}</span>Days<span class="time-wrap">{{dodoStatus.time.hours}}:{{dodoStatus.time.minutes}}:{{dodoStatus.time.seconds}}</span>later
-                      </p>
-                    </template>
-                    <template v-if="dodoStatus.showSale">
-                      <span class="text-color-linear">end in {{dodoStatus.time.hours}} h {{dodoStatus.time.minutes}} m {{dodoStatus.time.seconds}} s</span>
-                      <div class="buy-btn" style="margin-left: 1rem;">BUY</div>
-                    </template>
+                    <div style="margin-top: 2rem;">
+                      <template v-if="dodoStatus.showStatus">
+                        <div class="status-btn">{{ dodoStatus.statusText }}</div>
+                      </template>
+                      <template v-if="dodoStatus.showWait">
+                        <p>
+                          <span class="time-wrap">{{ dodoStatus.time.days }}</span>Days
+                          <span
+                            class="time-wrap"
+                          >{{ dodoStatus.time.hours }}:{{ dodoStatus.time.minutes }}:{{ dodoStatus.time.seconds }}</span>later
+                        </p>
+                      </template>
+                      <template v-if="dodoStatus.showSale">
+                        <span
+                          class="text-color-linear"
+                        >end in {{ dodoStatus.time.hours }} h {{ dodoStatus.time.minutes }} m {{ dodoStatus.time.seconds }} s</span>
+                        <div class="buy-btn" style="margin-left: 1rem;">BUY</div>
+                      </template>
 
-                    <template v-if="dodoStatus.showClaim">
-                      <div class="buy-btn" style="margin-left: 1rem;">Claim</div>
-                    </template>
+                      <template v-if="dodoStatus.showClaim">
+                        <div class="buy-btn" style="margin-left: 1rem;">Claim</div>
+                      </template>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
             </a>
           </div>
 
@@ -134,109 +212,153 @@
             <a href="https://app.acy.finance/#/launchpad/project/17
 " target="_blank">
               <div class="pool-wrap" style="padding: 1rem;">
-              <div class="pool-row">
-                <div class="pool-left">
-                  <div class="ido-acy-logo">&nbsp;</div>
-                  <p><span class="fb fz-20 fc-yellow">$0.8</span> BUSD per DRF, <span class="fb">no lockup</span>.</p>
-                </div>
-                <div class="pool-right">
-                  <p>Start at <span class="fb">{{toUTCDate(acy.start)}}</span> UTC</p>
-                  <p>End at <span class="fb">{{toUTCDate(acy.end)}}</span> UTC</p>
+                <div class="pool-row">
+                  <div class="pool-left">
+                    <div class="ido-acy-logo">&nbsp;</div>
+                    <p>
+                      <span class="fb fc-yellow fz-20">$0.8</span> BUSD per DRF,
+                      <span class="fb">no lockup</span>.
+                    </p>
+                  </div>
+                  <div class="pool-right">
+                    <p>
+                      Start at
+                      <span class="fb">{{ toUTCDate(acy.start) }}</span> UTC
+                    </p>
+                    <p>
+                      End at
+                      <span class="fb">{{ toUTCDate(acy.end) }}</span> UTC
+                    </p>
 
-                  <div style="margin-top: 2rem;">
-                    <template v-if="acyStatus.showStatus">
-                      <div class="status-btn">{{ acyStatus.statusText }}</div>
-                    </template>
-                    <template v-if="acyStatus.showWait">
-                      <p>
-                        <span class="time-wrap">{{acyStatus.time.days}}</span>Days<span class="time-wrap">{{acyStatus.time.hours}}:{{acyStatus.time.minutes}}:{{acyStatus.time.seconds}}</span>later
-                      </p>
-                    </template>
-                    <template v-if="acyStatus.showSale">
-                      <span class="text-color-linear">end in {{acyStatus.time.hours}} h {{acyStatus.time.minutes}} m {{acyStatus.time.seconds}} s</span>
-                      <div class="buy-btn" style="margin-left: 1rem;">BUY</div>
-                    </template>
+                    <div style="margin-top: 2rem;">
+                      <template v-if="acyStatus.showStatus">
+                        <div class="status-btn">{{ acyStatus.statusText }}</div>
+                      </template>
+                      <template v-if="acyStatus.showWait">
+                        <p>
+                          <span class="time-wrap">{{ acyStatus.time.days }}</span>Days
+                          <span
+                            class="time-wrap"
+                          >{{ acyStatus.time.hours }}:{{ acyStatus.time.minutes }}:{{ acyStatus.time.seconds }}</span>later
+                        </p>
+                      </template>
+                      <template v-if="acyStatus.showSale">
+                        <span
+                          class="text-color-linear"
+                        >end in {{ acyStatus.time.hours }} h {{ acyStatus.time.minutes }} m {{ acyStatus.time.seconds }} s</span>
+                        <div class="buy-btn" style="margin-left: 1rem;">BUY</div>
+                      </template>
 
-                    <template v-if="acyStatus.showClaim">
-                      <div class="buy-btn" style="margin-left: 1rem;">Claim</div>
-                    </template>
+                      <template v-if="acyStatus.showClaim">
+                        <div class="buy-btn" style="margin-left: 1rem;">Claim</div>
+                      </template>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
             </a>
 
             <!-- erax -->
-            <a href="https://www.erax.io/#/ido-detail/0x676fbeEEA559FD4D1F168e39EB4303C5eC6352c6" target="_blank">
+            <a
+              href="https://www.erax.io/#/ido-detail/0x676fbeEEA559FD4D1F168e39EB4303C5eC6352c6"
+              target="_blank"
+            >
               <div class="pool-wrap" style="padding: 1rem;">
-              <div class="pool-row">
-                <div class="pool-left">
-                  <div class="ido-erax-logo">&nbsp;</div>
-                  <p><span class="fb fz-20 fc-yellow">$0.8</span> BUSD per DRF, <span class="fb">no lockup</span>.</p>
-                </div>
-                <div class="pool-right">
-                  <p>Start at <span class="fb">{{toUTCDate(erax.start)}}</span> UTC</p>
-                  <p>End at <span class="fb">{{toUTCDate(erax.end)}}</span> UTC</p>
+                <div class="pool-row">
+                  <div class="pool-left">
+                    <div class="ido-erax-logo">&nbsp;</div>
+                    <p>
+                      <span class="fb fc-yellow fz-20">$0.8</span> BUSD per DRF,
+                      <span class="fb">no lockup</span>.
+                    </p>
+                  </div>
+                  <div class="pool-right">
+                    <p>
+                      Start at
+                      <span class="fb">{{ toUTCDate(erax.start) }}</span> UTC
+                    </p>
+                    <p>
+                      End at
+                      <span class="fb">{{ toUTCDate(erax.end) }}</span> UTC
+                    </p>
 
-                  <div style="margin-top: 2rem;">
-                    <template v-if="eraxStatus.showStatus">
-                      <div class="status-btn">{{ eraxStatus.statusText }}</div>
-                    </template>
-                    <template v-if="eraxStatus.showWait">
-                      <p>
-                        <span class="time-wrap">{{eraxStatus.time.days}}</span>Days<span class="time-wrap">{{eraxStatus.time.hours}}:{{eraxStatus.time.minutes}}:{{eraxStatus.time.seconds}}</span>later
-                      </p>
-                    </template>
-                    <template v-if="eraxStatus.showSale">
-                      <span class="text-color-linear">end in {{eraxStatus.time.hours}} h {{eraxStatus.time.minutes}} m {{eraxStatus.time.seconds}} s</span>
-                      <div class="buy-btn" style="margin-left: 1rem;">BUY</div>
-                    </template>
+                    <div style="margin-top: 2rem;">
+                      <template v-if="eraxStatus.showStatus">
+                        <div class="status-btn">{{ eraxStatus.statusText }}</div>
+                      </template>
+                      <template v-if="eraxStatus.showWait">
+                        <p>
+                          <span class="time-wrap">{{ eraxStatus.time.days }}</span>Days
+                          <span
+                            class="time-wrap"
+                          >{{ eraxStatus.time.hours }}:{{ eraxStatus.time.minutes }}:{{ eraxStatus.time.seconds }}</span>later
+                        </p>
+                      </template>
+                      <template v-if="eraxStatus.showSale">
+                        <span
+                          class="text-color-linear"
+                        >end in {{ eraxStatus.time.hours }} h {{ eraxStatus.time.minutes }} m {{ eraxStatus.time.seconds }} s</span>
+                        <div class="buy-btn" style="margin-left: 1rem;">BUY</div>
+                      </template>
 
-                    <template v-if="eraxStatus.showClaim">
-                      <div class="buy-btn" style="margin-left: 1rem;">Claim</div>
-                    </template>
+                      <template v-if="eraxStatus.showClaim">
+                        <div class="buy-btn" style="margin-left: 1rem;">Claim</div>
+                      </template>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
             </a>
             <!--ido-dao-logo -->
             <a href="https://www.daostarter.pro/" target="_blank">
               <div class="pool-wrap" style="padding: 1rem;">
-              <div class="pool-row">
-                <div class="pool-left">
-                  <div class="ido-dao-logo">&nbsp;</div>
-                  <p><span class="fb fz-20 fc-yellow">$0.8</span> BUSD per DRF, <span class="fb">no lockup</span>.</p>
-                </div>
-                <div class="pool-right">
-                  <p>Start at <span class="fb">{{ toUTCDate(dao.start) }}</span> UTC</p>
-                  <p>End at <span class="fb">{{toUTCDate(dao.end)}}</span> UTC</p>
+                <div class="pool-row">
+                  <div class="pool-left">
+                    <div class="ido-dao-logo">&nbsp;</div>
+                    <p>
+                      <span class="fb fc-yellow fz-20">$0.8</span> BUSD per DRF,
+                      <span class="fb">no lockup</span>.
+                    </p>
+                  </div>
+                  <div class="pool-right">
+                    <p>
+                      Start at
+                      <span class="fb">{{ toUTCDate(dao.start) }}</span> UTC
+                    </p>
+                    <p>
+                      End at
+                      <span class="fb">{{ toUTCDate(dao.end) }}</span> UTC
+                    </p>
 
-                  <div style="margin-top: 2rem;">
-                    <template v-if="daoStatus.showStatus">
-                      <div class="status-btn">{{ daoStatus.statusText }}</div>
-                    </template>
-                    <template v-if="daoStatus.showWait">
-                      <p>
-                        <span class="time-wrap">{{daoStatus.time.days}}</span>Days<span class="time-wrap">{{daoStatus.time.hours}}:{{daoStatus.time.minutes}}:{{daoStatus.time.seconds}}</span>later
-                      </p>
-                    </template>
-                    <template v-if="daoStatus.showSale">
-                      <span class="text-color-linear">end in {{daoStatus.time.hours}} h {{daoStatus.time.minutes}} m {{daoStatus.time.seconds}} s</span>
-                      <div class="buy-btn" style="margin-left: 1rem;">BUY</div>
-                    </template>
+                    <div style="margin-top: 2rem;">
+                      <template v-if="daoStatus.showStatus">
+                        <div class="status-btn">{{ daoStatus.statusText }}</div>
+                      </template>
+                      <template v-if="daoStatus.showWait">
+                        <p>
+                          <span class="time-wrap">{{ daoStatus.time.days }}</span>Days
+                          <span
+                            class="time-wrap"
+                          >{{ daoStatus.time.hours }}:{{ daoStatus.time.minutes }}:{{ daoStatus.time.seconds }}</span>later
+                        </p>
+                      </template>
+                      <template v-if="daoStatus.showSale">
+                        <span
+                          class="text-color-linear"
+                        >end in {{ daoStatus.time.hours }} h {{ daoStatus.time.minutes }} m {{ daoStatus.time.seconds }} s</span>
+                        <div class="buy-btn" style="margin-left: 1rem;">BUY</div>
+                      </template>
 
-                    <template v-if="daoStatus.showClaim">
-                      <div class="buy-btn" style="margin-left: 1rem;">Claim</div>
-                    </template>
+                      <template v-if="daoStatus.showClaim">
+                        <div class="buy-btn" style="margin-left: 1rem;">Claim</div>
+                      </template>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
             </a>
           </div>
         </div>
-
       </div>
       <div class="breakpoint">
         <div class="title">
@@ -250,16 +372,12 @@
           </p>
         </div>
         <div class="btn">
-          <a
-              href="https://docs.derify.finance/whitepaper/introduction"
-              target="_blank"
-          >WHITEPAPER</a
-          >
+          <a href="https://docs.derify.finance/whitepaper/introduction" target="_blank">WHITEPAPER</a>
         </div>
       </div>
     </div>
     <home-detail v-if="detailShow" @close="() => {
-      this.detailShow=false
+      this.detailShow = false
     }"></home-detail>
   </div>
 </template>
@@ -283,18 +401,18 @@ Date.prototype.format = function (fmt) {
   return fmt
 }
 
-function toFixedNum(num, digit = 2){
-  const numLen = (num+"").length;
-  if(numLen >= digit){
-    return num+"";
+function toFixedNum(num, digit = 2) {
+  const numLen = (num + "").length;
+  if (numLen >= digit) {
+    return num + "";
   }
 
-  return "0".repeat(digit - numLen)+num;
+  return "0".repeat(digit - numLen) + num;
 }
 
 
 export default {
-  components: {HomeDetail},
+  components: { HomeDetail },
   data() {
     return {
       detailShow: false,
@@ -328,10 +446,10 @@ export default {
       const calen = (new Date(date));
       const mon = dateEnName[calen.getMonth()];
       const monDay = calen.getDate();
-
+      // console.log(`====> dateEnName, calen, mon, monDay :`, date, new Date(date), calen, mon, monDay)
       return `${mon} ${monDay} ${calen.format('hh:mm')}`;
     },
-    getSaleStatus(cfg,type,now){
+    getSaleStatus(cfg, type, now) {
       var start = new Date(cfg.start);
       var end = new Date(cfg.end);
 
@@ -340,49 +458,53 @@ export default {
       var hourMilSec = 60 * 60 * 1000;
       var dayMilSec = 24 * 60 * 60 * 1000;
 
-      if(now.getTime() < start.getTime()){
+      if (now.getTime() < start.getTime()) {
         var timeGap = start.getTime() - now.getTime();
-        return {status: 'wait', statusText: '', showStatus: false, showWait: true, time: {
-            days: Math.floor(timeGap/dayMilSec)
-            , hours: toFixedNum(Math.floor((timeGap%dayMilSec)/hourMilSec))
-            , minutes: toFixedNum(Math.floor((timeGap%hourMilSec)/minMilSec))
-            , seconds: toFixedNum(Math.floor((timeGap%minMilSec)/sencMilSec))
-          }};
+        return {
+          status: 'wait', statusText: '', showStatus: false, showWait: true, time: {
+            days: Math.floor(timeGap / dayMilSec)
+            , hours: toFixedNum(Math.floor((timeGap % dayMilSec) / hourMilSec))
+            , minutes: toFixedNum(Math.floor((timeGap % hourMilSec) / minMilSec))
+            , seconds: toFixedNum(Math.floor((timeGap % minMilSec) / sencMilSec))
+          }
+        };
       }
 
-      if(now.getTime() < end.getTime()){
+      if (now.getTime() < end.getTime()) {
         var timeGap = end.getTime() - now.getTime();
-        return {status: 'saling', statusText: '', showStatus: false, showWait: false, showSale: true, time:
-              {
-                days: Math.floor(timeGap/dayMilSec)
-                , hours: toFixedNum(Math.floor((timeGap%dayMilSec)/hourMilSec))
-                , minutes: toFixedNum(Math.floor((timeGap%hourMilSec)/minMilSec))
-                , seconds: toFixedNum(Math.floor((timeGap%minMilSec)/sencMilSec))
-              }};
+        return {
+          status: 'saling', statusText: '', showStatus: false, showWait: false, showSale: true, time:
+          {
+            days: Math.floor(timeGap / dayMilSec)
+            , hours: toFixedNum(Math.floor((timeGap % dayMilSec) / hourMilSec))
+            , minutes: toFixedNum(Math.floor((timeGap % hourMilSec) / minMilSec))
+            , seconds: toFixedNum(Math.floor((timeGap % minMilSec) / sencMilSec))
+          }
+        };
       }
 
-      if(now.getTime() < claimEndDate.getTime()){
-        return {status: 'finish', statusText: type === 'official' ? 'InitialPool Sold Out' : 'Finished', showStatus: true, showWait: false, showSale: false, showFinish: true};
+      if (now.getTime() < claimEndDate.getTime()) {
+        return { status: 'finish', statusText: type === 'official' ? 'InitialPool Sold Out' : 'Finished', showStatus: true, showWait: false, showSale: false, showFinish: true };
       }
 
-      return {status: 'claim', statusText: '', showStatus: false, showWait: false, showSale: false, showFinish: false,showClaim: true}
+      return { status: 'claim', statusText: '', showStatus: false, showWait: false, showSale: false, showFinish: false, showClaim: true }
     }
   },
-  computed:{
-    officialStatus(){
-      return this.getSaleStatus(this.official, 'official',this.now);
+  computed: {
+    officialStatus() {
+      return this.getSaleStatus(this.official, 'official', this.now);
     },
-    dodoStatus(){
-      return this.getSaleStatus(this.dodo, 'dodo',this.now);
+    dodoStatus() {
+      return this.getSaleStatus(this.dodo, 'dodo', this.now);
     },
-    acyStatus(){
-      return this.getSaleStatus(this.acy, 'acy',this.now);
+    acyStatus() {
+      return this.getSaleStatus(this.acy, 'acy', this.now);
     },
-    eraxStatus(){
-      return this.getSaleStatus(this.erax, 'erax',this.now);
+    eraxStatus() {
+      return this.getSaleStatus(this.erax, 'erax', this.now);
     },
-    daoStatus(){
-      return this.getSaleStatus(this.dao, 'dao',this.now);
+    daoStatus() {
+      return this.getSaleStatus(this.dao, 'dao', this.now);
     },
   },
   mounted(callback, context) {
@@ -398,35 +520,34 @@ export default {
 };
 </script>
 <style lang='scss' scoped>
-
-.fc-20{
+.fc-20 {
   font-size: 2rem;
 }
-.fc-32{
+.fc-32 {
   font-size: 3.2rem;
 }
-.fc-24{
+.fc-24 {
   font-size: 2.4rem;
 }
-.fc-16{
+.fc-16 {
   font-size: 1.6rem;
 }
-.fc-yellow{
-  color: #FAE247;
+.fc-yellow {
+  color: #fae247;
 }
 
-.tar{
+.tar {
   text-align: right;
 }
 
-.text-color-linear{
-  background: linear-gradient(90deg,#e7446b, #fae247 100%);
+.text-color-linear {
+  background: linear-gradient(90deg, #e7446b, #fae247 100%);
   color: transparent;
   -webkit-background-clip: text;
 }
 
-.time-wrap{
-  background: #FFFFFF;
+.time-wrap {
+  background: #ffffff;
   border-radius: 1.5rem;
   padding: 0 1.5rem;
   color: rgba(35, 23, 68, 1);
@@ -436,18 +557,18 @@ export default {
   font-weight: bold;
 }
 
-.fb{
+.fb {
   font-weight: bolder;
 }
-.fz-16{
+.fz-16 {
   font-size: 1.6rem;
 }
 
-.fz-20{
+.fz-20 {
   font-size: 2rem;
 }
 
-.lernmore-btn{
+.lernmore-btn {
   background: linear-gradient(90deg, #e7446b, #fae247 100%);
   border-radius: 1.5rem;
   cursor: pointer;
@@ -456,7 +577,7 @@ export default {
   height: 3rem;
   line-height: 3rem;
   font-size: 1.6rem;
-  .btn-box{
+  .btn-box {
     display: inline-block;
     background: rgba(39, 27, 81, 1);
     width: 100%;
@@ -466,41 +587,44 @@ export default {
   }
 }
 
-.ido-aodo-logo{
-  background: transparent url('../../../assets/svg/ido-aodo.svg') center center no-repeat;
+.ido-aodo-logo {
+  background: transparent url("../../../assets/svg/ido-aodo.svg") center center
+    no-repeat;
   background-size: 100% 100%;
   width: 20rem;
   height: 4.8rem;
 }
 
-.ido-acy-logo{
-  background: transparent url('../../../assets/svg/ido-acy.svg') -3rem center no-repeat;
+.ido-acy-logo {
+  background: transparent url("../../../assets/svg/ido-acy.svg") -3rem center no-repeat;
   background-size: 100% 100%;
   width: 20rem;
   height: 4.8rem;
 }
 
-.ido-erax-logo{
-  background: transparent url('../../../assets/svg/ido-erax.svg') center center no-repeat;
+.ido-erax-logo {
+  background: transparent url("../../../assets/svg/ido-erax.svg") center center
+    no-repeat;
   background-size: 100% 100%;
   width: 20rem;
   height: 4.8rem;
 }
 
-.ido-dao-logo{
-  background: transparent url('../../../assets/svg/ido-dao.svg') center center no-repeat;
+.ido-dao-logo {
+  background: transparent url("../../../assets/svg/ido-dao.svg") center center
+    no-repeat;
   background-size: 100% 100%;
   width: 20rem;
   height: 4.8rem;
 }
 
-.status-btn{
-  height: 3.0rem;
-  line-height: 3.0rem;
+.status-btn {
+  height: 3rem;
+  line-height: 3rem;
   background: #12082b;
   border-radius: 1.5rem;
   font-size: 1.6rem;
-  font-family: Noto Sans, Noto Sans-Bold,serif;
+  font-family: Noto Sans, Noto Sans-Bold, serif;
   font-weight: 700;
   text-align: center;
   color: #271b51;
@@ -508,10 +632,10 @@ export default {
   display: inline-block;
 }
 
-.buy-btn{
-  padding:0 3rem;
+.buy-btn {
+  padding: 0 3rem;
   height: 3rem;
-  background: linear-gradient(90deg,#e7446b, #fae247 100%);
+  background: linear-gradient(90deg, #e7446b, #fae247 100%);
   border-radius: 1.5rem;
   font-weight: 700;
   text-align: center;
@@ -521,7 +645,7 @@ export default {
   cursor: pointer;
 }
 @media screen and (max-width: 1200px) {
-  .home .banner .main .entrance-wrap{
+  .home .banner .main .entrance-wrap {
     margin: 0 7rem 16rem;
   }
 
@@ -529,14 +653,15 @@ export default {
     width: auto;
   }
 
-  .home .banner .main .pool-row{
+  .home .banner .main .pool-row {
     display: flex;
     margin: 2rem 0;
     text-align: left;
     flex-wrap: wrap;
     align-items: center;
 
-    .pool-left, .pool-right{
+    .pool-left,
+    .pool-right {
       width: 100%;
     }
   }
@@ -546,24 +671,25 @@ export default {
     font-size: 4rem;
   }
 
-  .home .banner .main .entrance-wrap{
+  .home .banner .main .entrance-wrap {
     margin: auto;
     width: auto;
-    flex-wrap:wrap;
-    justify-content:unset;
+    flex-wrap: wrap;
+    justify-content: unset;
   }
 
   .home .banner .main .entrance-block {
     width: auto;
   }
 
-  .home .banner .main .pool-row{
+  .home .banner .main .pool-row {
     display: flex;
     margin: 2rem 0;
     text-align: left;
     flex-wrap: wrap;
     align-items: center;
-    .pool-left, .pool-right{
+    .pool-left,
+    .pool-right {
       width: 100%;
     }
   }
@@ -575,36 +701,36 @@ export default {
   .home .banner .main .sub-title {
     font-size: 1.6rem;
   }
-  .home .banner .main .btn a{
+  .home .banner .main .btn a {
     height: 4.8rem;
     line-height: 4.8rem;
     font-size: 1.8rem;
   }
 
-  .home .banner .main .entrance-wrap{
+  .home .banner .main .entrance-wrap {
     margin: auto;
     width: auto;
-    flex-wrap:wrap;
-    justify-content:unset;
+    flex-wrap: wrap;
+    justify-content: unset;
   }
 
   .home .banner .main .entrance-block {
     width: auto;
   }
 
-  .home .banner .main .pool-row{
+  .home .banner .main .pool-row {
     display: flex;
     margin: 2rem 0;
     text-align: left;
     flex-wrap: wrap;
     align-items: center;
 
-    .pool-left, .pool-right{
+    .pool-left,
+    .pool-right {
       width: 100%;
     }
   }
 }
-
 
 .banner {
   .main {
@@ -643,42 +769,42 @@ export default {
       }
     }
 
-    .entrance-wrap{
+    .entrance-wrap {
       display: flex;
       flex-wrap: nowrap;
       justify-content: space-around;
       flex-direction: row;
-      font-family: Noto Sans, Noto Sans-ExtraBold,sans-serif;
+      font-family: Noto Sans, Noto Sans-ExtraBold, sans-serif;
       color: #ffffff;
       text-align: CENTER;
       font-size: 1.4rem;
       margin: 0 5% 16rem;
-      a{
+      a {
         text-decoration: none;
         color: inherit;
       }
-      p{
+      p {
         margin: 0;
         padding: 0;
       }
-      h2{
+      h2 {
         height: 4rem;
         line-height: 4rem;
       }
     }
 
-    .pool-wrap{
-      background: rgba(39,27,81,0.50);
+    .pool-wrap {
+      background: rgba(39, 27, 81, 0.5);
       border-radius: 2.4rem;
       backdrop-filter: blur(4rem);
       margin: 2rem;
       padding: 2rem;
       font-size: 1.4rem;
-      font-family: 'Noto Sans';
+      font-family: "Noto Sans";
       font-style: normal;
     }
 
-    .pool-row{
+    .pool-row {
       display: flex;
       justify-content: space-between;
       margin: 2rem 0;
@@ -688,14 +814,14 @@ export default {
       flex-wrap: wrap;
     }
 
-    .pool-right{
+    .pool-right {
       text-align: right;
     }
 
-    .entrance-block{
+    .entrance-block {
       padding-top: 5rem;
       width: 48%;
-      background: rgba(39,27,81,0.40);
+      background: rgba(39, 27, 81, 0.4);
       border-radius: 5rem;
       backdrop-filter: blur(40rem);
     }

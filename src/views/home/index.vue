@@ -31,10 +31,10 @@ export default {
 };
 </script>
 <style>
-body{
+body {
   background-color: #0e0314;
 }
-.app-header{
+.app-header {
   position: relative;
 }
 </style>
@@ -43,8 +43,8 @@ body{
   .banner {
     width: 100%;
     padding: 20vh 0.8rem 20vh;
-    background: #0e0314 url('../../assets/svg/ido-home.svg') no-repeat;
-    background-size: 100% 100%;
+    background: #0e0314 url("../../assets/svg/ido-home.svg") no-repeat;
+    background-size: cover;
     position: relative;
     overflow: hidden;
   }
