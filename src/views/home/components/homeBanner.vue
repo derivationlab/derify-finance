@@ -53,12 +53,12 @@
                       <div class="status-btn">{{ officalStatus.statusText }}</div>
                     </template>
                     <template v-if="officalStatus.showWait">
-                      <p style="line-height: 2.4rem; height: 2.4rem;"><span>start in {{officalStatus.time.hours}} h {{officalStatus.time.minutes}} m {{officalStatus.time.seconds}} s</span></p>
+                      <p style="line-height: 2.4rem; height: 2.4rem;"><span class="text-color-linear">start in {{officalStatus.time.hours}} h {{officalStatus.time.minutes}} m {{officalStatus.time.seconds}} s</span></p>
                     </template>
 
                     <template v-if="officalStatus.showSale">
                       <div class="buy-btn" style="margin-bottom: 1rem;">Encore Pool</div>
-                      <p style="line-height: 2.4rem; height: 2.4rem;"><span>end in {{officalStatus.time.hours}} h {{officalStatus.time.minutes}} m {{officalStatus.time.seconds}} s</span></p>
+                      <p style="line-height: 2.4rem; height: 2.4rem;"><span class="text-color-linear">end in {{officalStatus.time.hours}} h {{officalStatus.time.minutes}} m {{officalStatus.time.seconds}} s</span></p>
                     </template>
 
                     <template v-if="officalStatus.showClaim">
@@ -100,7 +100,7 @@
                       </p>
                     </template>
                     <template v-if="dodoStatus.showSale">
-                      <span>end in {{dodoStatus.time.hours}} h {{dodoStatus.time.minutes}} m {{dodoStatus.time.seconds}} s</span>
+                      <span class="text-color-linear">end in {{dodoStatus.time.hours}} h {{dodoStatus.time.minutes}} m {{dodoStatus.time.seconds}} s</span>
                       <div class="buy-btn" style="margin-left: 1rem;">BUY</div>
                     </template>
 
@@ -145,7 +145,7 @@
                       </p>
                     </template>
                     <template v-if="acyStatus.showSale">
-                      <span>end in {{acyStatus.time.hours}} h {{acyStatus.time.minutes}} m {{acyStatus.time.seconds}} s</span>
+                      <span class="text-color-linear">end in {{acyStatus.time.hours}} h {{acyStatus.time.minutes}} m {{acyStatus.time.seconds}} s</span>
                       <div class="buy-btn" style="margin-left: 1rem;">BUY</div>
                     </template>
 
@@ -180,7 +180,7 @@
                       </p>
                     </template>
                     <template v-if="eraxStatus.showSale">
-                      <span>end in {{eraxStatus.time.hours}} h {{eraxStatus.time.minutes}} m {{eraxStatus.time.seconds}} s</span>
+                      <span class="text-color-linear">end in {{eraxStatus.time.hours}} h {{eraxStatus.time.minutes}} m {{eraxStatus.time.seconds}} s</span>
                       <div class="buy-btn" style="margin-left: 1rem;">BUY</div>
                     </template>
 
@@ -214,7 +214,7 @@
                       </p>
                     </template>
                     <template v-if="daoStatus.showSale">
-                      <span>end in {{daoStatus.time.hours}} h {{daoStatus.time.minutes}} m {{daoStatus.time.seconds}} s</span>
+                      <span class="text-color-linear">end in {{daoStatus.time.hours}} h {{daoStatus.time.minutes}} m {{daoStatus.time.seconds}} s</span>
                       <div class="buy-btn" style="margin-left: 1rem;">BUY</div>
                     </template>
 
@@ -406,6 +406,12 @@ export default {
 
 .tar{
   text-align: right;
+}
+
+.text-color-linear{
+  background: linear-gradient(90deg,#e7446b, #fae247 100%);
+  color: transparent;
+  -webkit-background-clip: text;
 }
 
 .time-wrap{
