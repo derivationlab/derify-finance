@@ -14,15 +14,15 @@
         <div class="entrance-wrap">
           <div class="entrance-block">
             <h2 class="fc-32">Community Entrance</h2>
-
+            <p>&nbsp;</p>
             <!-- pool A-->
             <a href="https://app.bounce.finance/auction/fixed/377" target="_blank">
               <div class="pool-wrap" style="padding: 1rem;">
               <div class="pool-row">
                 <div class="pool-left">
-                  <h2>Official Pool A <span class="lernmore-btn" @click="() => {this.detailShow=true}"><span class="btn-box"><span class="text-color-linear">Details</span></span></span></h2>
+                  <h2>Official Pool A <span class="lernmore-btn" @click="(e) => {this.detailShow=true;e.preventDefault();}"><span class="btn-box"><span class="text-color-linear">Details</span></span></span></h2>
                   <p>powered by <span class="fb">Bounce.finance</span></p>
-                  <p><span class="fb fz-20">$0.6</span> BUSD per DRF, <span class="fb">release at May 1</span>.</p>
+                  <p><span class="fb fz-20 fc-yellow">$0.6</span> BUSD per DRF, <span class="fb">release at May 1</span>.</p>
                 </div>
                 <div class="pool-right">
                   <p>Start at <span class="fb">{{toUTCDate(official.start)}}</span> UTC</p>
@@ -56,9 +56,9 @@
               <div class="pool-wrap" style="padding: 1rem;">
               <div class="pool-row">
                 <div class="pool-left">
-                  <h2>Official Pool B <span class="lernmore-btn" @click="() => {this.detailShow=true}"><span class="btn-box"><span class="text-color-linear">Details</span></span></span></h2>
+                  <h2>Official Pool B <span class="lernmore-btn" @click="(e) => {this.detailShow=true;e.preventDefault();}"><span class="btn-box"><span class="text-color-linear">Details</span></span></span></h2>
                   <p>powered by <span class="fb">Bounce.finance</span></p>
-                  <p><span class="fb fz-20">$0.8</span> BUSD per DRF, <span class="fb">no lockup</span>.</p>
+                  <p><span class="fb fz-20 fc-yellow">$0.8</span> BUSD per DRF, <span class="fb">no lockup</span>.</p>
                 </div>
                 <div class="pool-right">
                   <p>Start at <span class="fb">{{toUTCDate(official.start)}}</span> UTC</p>
@@ -93,7 +93,7 @@
               <div class="pool-row">
                 <div class="pool-left">
                   <div class="ido-aodo-logo">&nbsp;</div>
-                  <p><span class="fb fz-20">$0.6</span> BUSD per DRF, <span class="fb">release at May 1</span>.</p>
+                  <p><span class="fb fz-20 fc-yellow">$0.6</span> BUSD per DRF, <span class="fb">release at May 1</span>.</p>
                 </div>
                 <div class="pool-right">
                   <p>Start at <span class="fb">{{ toUTCDate(dodo.start) }}</span> UTC</p>
@@ -134,7 +134,7 @@
               <div class="pool-row">
                 <div class="pool-left">
                   <div class="ido-acy-logo">&nbsp;</div>
-                  <p><span class="fb fz-20">$0.8</span> BUSD per DRF, <span class="fb">no lockup</span>.</p>
+                  <p><span class="fb fz-20 fc-yellow">$0.8</span> BUSD per DRF, <span class="fb">no lockup</span>.</p>
                 </div>
                 <div class="pool-right">
                   <p>Start at <span class="fb">{{toUTCDate(acy.start)}}</span> UTC</p>
@@ -169,7 +169,7 @@
               <div class="pool-row">
                 <div class="pool-left">
                   <div class="ido-erax-logo">&nbsp;</div>
-                  <p><span class="fb fz-20">$0.8</span> BUSD per DRF, <span class="fb">no lockup</span>.</p>
+                  <p><span class="fb fz-20 fc-yellow">$0.8</span> BUSD per DRF, <span class="fb">no lockup</span>.</p>
                 </div>
                 <div class="pool-right">
                   <p>Start at <span class="fb">{{toUTCDate(erax.start)}}</span> UTC</p>
@@ -203,7 +203,7 @@
               <div class="pool-row">
                 <div class="pool-left">
                   <div class="ido-dao-logo">&nbsp;</div>
-                  <p><span class="fb fz-20">$0.8</span> BUSD per DRF, <span class="fb">no lockup</span>.</p>
+                  <p><span class="fb fz-20 fc-yellow">$0.8</span> BUSD per DRF, <span class="fb">no lockup</span>.</p>
                 </div>
                 <div class="pool-right">
                   <p>Start at <span class="fb">{{ toUTCDate(dao.start) }}</span> UTC</p>
@@ -408,6 +408,9 @@ export default {
 .fc-16{
   font-size: 1.6rem;
 }
+.fc-yellow{
+  color: #FAE247;
+}
 
 .tar{
   text-align: right;
@@ -598,7 +601,7 @@ export default {
       color: #ffffff;
       text-align: CENTER;
       font-size: 1.4rem;
-      margin: 0 18rem;
+      margin: 0 18rem 16rem;
       a{
         text-decoration: none;
         color: inherit;
