@@ -14,7 +14,7 @@
         <div class="entrance-wrap">
           <div class="entrance-block">
             <h2 class="fc-32">Community Entrance</h2>
-            <p>&nbsp;</p>
+            <p>&nbsp;&nbsp;</p>
             <!-- pool A-->
             <a href="https://app.bounce.finance/auction/fixed/377" target="_blank">
               <div class="pool-wrap" style="padding: 1rem;">
