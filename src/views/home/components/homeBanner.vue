@@ -27,10 +27,10 @@
             <p style="opacity: 0">.</p>
             <!-- pool A-->
             <a href="https://app.bounce.finance/auction/fixed/377" target="_blank">
-              <div class="pool-wrap" style="padding: 1rem;">
+              <div class="pool-wrap">
                 <div class="pool-row">
                   <div class="pool-left">
-                    <h2>
+                    <h3>
                       Official Pool A
                       <span
                         class="lernmore-btn"
@@ -43,7 +43,7 @@
                           <span class="text-color-linear">Details</span>
                         </span>
                       </span>
-                    </h2>
+                    </h3>
                     <p>
                       powered by
                       <span class="fb">Bounce.finance</span>
@@ -93,10 +93,10 @@
 
             <!-- pool B-->
             <a href="https://app.bounce.finance/auction/fixed/378" target="_blank">
-              <div class="pool-wrap" style="padding: 1rem;">
+              <div class="pool-wrap">
                 <div class="pool-row">
                   <div class="pool-left">
-                    <h2>
+                    <h3>
                       Official Pool B
                       <span
                         class="lernmore-btn"
@@ -106,7 +106,7 @@
                           <span class="text-color-linear">Details</span>
                         </span>
                       </span>
-                    </h2>
+                    </h3>
                     <p>
                       powered by
                       <span class="fb">Bounce.finance</span>
@@ -156,7 +156,7 @@
 
             <!-- dodo -->
             <a href="https://legacy.dodoex.io/cp/join?network=bsc-mainnet" target="_blank">
-              <div class="pool-wrap" style="padding: 1rem;">
+              <div class="pool-wrap">
                 <div class="pool-row">
                   <div class="pool-left">
                     <div class="ido-aodo-logo">&nbsp;</div>
@@ -211,7 +211,7 @@
             <!-- acy -->
             <a href="https://app.acy.finance/#/launchpad/project/17
 " target="_blank">
-              <div class="pool-wrap" style="padding: 1rem;">
+              <div class="pool-wrap">
                 <div class="pool-row">
                   <div class="pool-left">
                     <div class="ido-acy-logo">&nbsp;</div>
@@ -263,7 +263,7 @@
               href="https://www.erax.io/#/ido-detail/0x676fbeEEA559FD4D1F168e39EB4303C5eC6352c6"
               target="_blank"
             >
-              <div class="pool-wrap" style="padding: 1rem;">
+              <div class="pool-wrap">
                 <div class="pool-row">
                   <div class="pool-left">
                     <div class="ido-erax-logo">&nbsp;</div>
@@ -311,7 +311,7 @@
             </a>
             <!--ido-dao-logo -->
             <a href="https://www.daostarter.pro/" target="_blank">
-              <div class="pool-wrap" style="padding: 1rem;">
+              <div class="pool-wrap">
                 <div class="pool-row">
                   <div class="pool-left">
                     <div class="ido-dao-logo">&nbsp;</div>
@@ -540,25 +540,20 @@ export default {
   text-align: right;
 }
 
-.text-color-linear {
-  background: linear-gradient(90deg, #e7446b, #fae247 100%);
-  color: transparent;
-  background-clip: text;
-}
-
 .time-wrap {
   background: #ffffff;
-  border-radius: 1.5rem;
-  padding: 0 1.5rem;
+  border-radius: 15px;
   color: rgba(35, 23, 68, 1);
-  font-size: 1.6rem;
+  font-size: 16px;
+  padding: 5px 15px;
   text-align: center;
-  margin: 0 1rem;
+  margin: 0 5px;
   font-weight: bold;
+  line-height: 20px;
 }
 
 .fb {
-  font-weight: bolder;
+  font-weight: bold;
 }
 .fz-16 {
   font-size: 1.6rem;
@@ -570,20 +565,27 @@ export default {
 
 .lernmore-btn {
   background: linear-gradient(90deg, #e7446b, #fae247 100%);
-  border-radius: 1.5rem;
+  border-radius: 15px;
   cursor: pointer;
   display: inline-block;
-  padding: 0.2rem;
-  height: 3rem;
-  line-height: 3rem;
-  font-size: 1.6rem;
+  padding: 2px;
+  height: 30px;
+  margin-left: 12px;
   .btn-box {
     display: inline-block;
     background: rgba(39, 27, 81, 1);
-    width: 100%;
-    height: 100%;
-    border-radius: 1.5rem;
-    padding: 0 1rem;
+    border-radius: 13px;
+    height: 26px;
+    padding: 2px 14px;
+    display: flex;
+    .text-color-linear {
+      font-size: 16px;
+      line-height: 20px;
+      background: linear-gradient(90deg, #e7446b, #fae247 100%);
+      color: transparent;
+      background-clip: text;
+      font-weight: bold;
+    }
   }
 }
 
@@ -751,7 +753,7 @@ export default {
       }
     }
     .sub-title {
-      margin: 4rem 0;
+      margin: 4rem 0 124px;
       font-weight: 300;
       font-size: 2.4rem;
       color: rgba(255, 255, 255, 0.8);
@@ -782,14 +784,17 @@ export default {
       a {
         text-decoration: none;
         color: inherit;
+        display: block;
       }
       p {
         margin: 0;
         padding: 0;
       }
-      h2 {
-        height: 4rem;
-        line-height: 4rem;
+      h3 {
+        font-size: 30px;
+        line-height: 48px;
+        display: flex;
+        align-items: center;
       }
     }
 
@@ -797,25 +802,29 @@ export default {
       background: rgba(39, 27, 81, 0.5);
       border-radius: 2.4rem;
       backdrop-filter: blur(4rem);
-      margin: 2rem;
-      padding: 2rem;
+      margin: 20px;
+      padding: 40px;
       font-size: 1.4rem;
       font-family: "Noto Sans";
       font-style: normal;
+      display: block;
     }
 
     .pool-row {
+      width: 100%;
       display: flex;
       justify-content: space-between;
-      margin: 2rem 0;
       text-align: left;
       align-items: center;
       flex-direction: row;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
     }
 
     .pool-right {
+      font-size: 16px;
       text-align: right;
+      display: flex;
+      flex-direction: column;
     }
 
     .entrance-block {
