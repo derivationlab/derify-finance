@@ -517,7 +517,27 @@ export default {
   display: inline-block;
   cursor: pointer;
 }
+@media screen and (max-width: 1200px) {
+  .home .banner .main .entrance-wrap{
+    margin: 0 7rem 16rem;
+  }
 
+  .home .banner .main .entrance-block {
+    width: auto;
+  }
+
+  .home .banner .main .pool-row{
+    display: flex;
+    margin: 2rem 0;
+    text-align: left;
+    flex-wrap: wrap;
+    align-items: center;
+
+    .pool-left, .pool-right{
+      width: 100%;
+    }
+  }
+}
 @media screen and (max-width: 576px) {
   .home .banner .main .title h1 {
     font-size: 4rem;
@@ -540,6 +560,9 @@ export default {
     text-align: left;
     flex-wrap: wrap;
     align-items: center;
+    .pool-left, .pool-right{
+      width: 100%;
+    }
   }
 }
 @media screen and (max-width: 376px) {
@@ -572,8 +595,14 @@ export default {
     text-align: left;
     flex-wrap: wrap;
     align-items: center;
+
+    .pool-left, .pool-right{
+      width: 100%;
+    }
   }
 }
+
+
 .banner {
   .main {
     width: 100%;
@@ -620,7 +649,7 @@ export default {
       color: #ffffff;
       text-align: CENTER;
       font-size: 1.4rem;
-      margin: 0 18rem 16rem;
+      margin: 0 5% 16rem;
       a{
         text-decoration: none;
         color: inherit;
@@ -652,10 +681,8 @@ export default {
       margin: 2rem 0;
       text-align: left;
       align-items: center;
-
-      .pool-left, .pool-right{
-        min-width: 50rem;
-      }
+      flex-direction: row;
+      flex-wrap: wrap;
     }
 
     .pool-right{
