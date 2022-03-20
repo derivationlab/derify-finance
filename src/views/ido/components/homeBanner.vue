@@ -258,16 +258,16 @@
 <script>
 
 import HomeDetail from "./homeDetail";
-const claimEndDate = new Date('2022-04-01 00:00:00UTC')
+const claimEndDate = new Date('2022-04-01 00:00:00')
 Date.prototype.format = function (fmt) {
   var o = {
-    'M+': this.getUTCMonth() + 1, // month
-    'd+': this.getUTCDate(), // day
-    'h+': this.getUTCHours(), // hour
-    'm+': this.getUTCMinutes(), // min
-    's+': this.getUTCSeconds(), // sec
-    'q+': Math.floor((this.getUTCMonth() + 3) / 3), // quarter
-    S: this.getUTCMilliseconds(), // ms
+    'M+': this.getMonth() + 1, // month
+    'd+': this.getDate(), // day
+    'h+': this.getHours(), // hour
+    'm+': this.getMinutes(), // min
+    's+': this.getSeconds(), // sec
+    'q+': Math.floor((this.getMonth() + 3) / 3), // quarter
+    S: this.getMilliseconds(), // ms
     W: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'][this.getDay()]
   }
   if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length))
@@ -292,24 +292,24 @@ export default {
       detailShow: false,
       now: new Date(),
       official:{
-        start: '2022-03-28 12:00:00:UTC',
-        end: '2022-03-30 12:00:00:UTC'
+        start: '2022-03-28 12:00:00',
+        end: '2022-03-30 12:00:00'
       },
       dodo: {
-        start: '2022-03-31 00:00:00:UTC',
-        end: '2022-04-01 00:00:00:UTC'
+        start: '2022-03-31 00:00:00',
+        end: '2022-04-01 00:00:00'
       },
       acy: {
-        start: '2022-03-20 00:00:00:UTC',
-        end: '2022-03-21 00:00:00:UTC'
+        start: '2022-03-20 00:00:00',
+        end: '2022-03-21 00:00:00'
       },
       erax: {
-        start: '2022-03-26 00:00:00:UTC',
-        end: '2022-03-27 00:00:00:UTC'
+        start: '2022-03-26 00:00:00',
+        end: '2022-03-27 00:00:00'
       },
       dao: {
-        start: '2022-03-30 00:00:00:UTC',
-        end: '2022-03-31 00:00:00:UTC'
+        start: '2022-03-30 00:00:00',
+        end: '2022-03-31 00:00:00'
       }
     };
   },
@@ -331,6 +331,8 @@ export default {
       var minMilSec = 60 * 1000;
       var hourMilSec = 60 * 60 * 1000;
       var dayMilSec = 24 * 60 * 60 * 1000;
+
+      console.log(now, start, end);
 
       if(now.getTime() < start.getTime()){
         var timeGap = start.getTime() - now.getTime();

@@ -160,6 +160,7 @@ export default {
 .detail-dialog-wrap{
   position: fixed;
   backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
   z-index: 999;
   top: 0;
   left: 0;
@@ -173,7 +174,7 @@ export default {
 }
 
 .detail-dialog{
-  background: rgba(31,55,111,0.40);
+  background: rgba(31,55,111,1);
   color: #fff;
   position: absolute;
   top:0;
@@ -218,8 +219,10 @@ export default {
   width: 112rem;
   height: 58rem;
   box-sizing: content-box;
-  background: transparent url('../../../assets/svg/ido-card-bg.svg') center center no-repeat;
+  background: transparent url('../../../assets/card-bg.png') center center no-repeat;
   background-size: 100% 100%;
+  border-radius: 4.2rem;
+  backdrop-filter: blur(40px);
   .title{
     font-size: 4.4rem;
     font-weight: 700;
