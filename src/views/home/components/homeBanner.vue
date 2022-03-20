@@ -633,6 +633,7 @@ export default {
       margin: 2rem 0;
       text-align: left;
       align-items: center;
+      min-width: 50rem;
     }
 
     .pool-right{
