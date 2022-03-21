@@ -3,7 +3,10 @@
     <div class="main">
       <div class="breakpoint">
         <div class="title">
-          <h1>Derify protocol official IDO is here!</h1>
+          <h1>
+            Derify protocol
+            <span>official IDO is here!</span>
+          </h1>
         </div>
         <div class="sub-title">
           <p>
@@ -362,7 +365,10 @@
       </div>
       <div class="breakpoint">
         <div class="title">
-          <h1>The Decentralized Derivatives Trading</h1>
+          <h1>
+            The Decentralized
+            <span>Derivatives Trading</span>
+          </h1>
           <h1>Protocol For Everything</h1>
         </div>
         <div class="sub-title">
@@ -647,14 +653,17 @@ export default {
   cursor: pointer;
 }
 
+.breakpoint {
+  margin: 0 auto;
+  width: 1440px;
+  margin-bottom: 100px;
+}
+
 .banner {
   .main {
     width: 100%;
     text-align: center;
-    .breakpoint {
-      margin: 0 auto;
-      width: 1440px;
-    }
+
     .title {
       h1 {
         color: #fff;
@@ -683,7 +692,6 @@ export default {
 
     .entrance-wrap {
       display: flex;
-      flex-wrap: nowrap;
       justify-content: space-around;
       flex-direction: row;
       font-family: Noto Sans, Noto Sans-ExtraBold, sans-serif;
@@ -746,28 +754,39 @@ export default {
   }
 }
 
-// @media screen and (max-width: 1440px) {
-//   .home .banner .main .entrance-wrap {
-//     margin: 0 7rem 16rem;
-//   }
+@media screen and (max-width: 1440px) {
+  .title {
+    span {
+      display: block;
+    }
+  }
+  .breakpoint {
+    margin: 0 auto 100px;
+    width: 744px;
+    overflow: hidden;
+  }
+  .home .banner .main .entrance-wrap {
+    flex-direction: column;
+  }
 
-//   .home .banner .main .entrance-block {
-//     // width: auto;
-//   }
+  .home .banner .main .entrance-block {
+    width: 710px;
+    margin-bottom: 17px;
+  }
 
-//   .home .banner .main .pool-row {
-//     display: flex;
-//     margin: 2rem 0;
-//     text-align: left;
-//     flex-wrap: wrap;
-//     align-items: center;
+  .home .banner .main .pool-row {
+    display: flex;
+    margin: 2rem 0;
+    text-align: left;
+    flex-wrap: wrap;
+    align-items: center;
 
-//     .pool-left,
-//     .pool-right {
-//       width: 100%;
-//     }
-//   }
-// }
+    .pool-left,
+    .pool-right {
+      width: 100%;
+    }
+  }
+}
 // @media screen and (max-width: 576px) {
 //   .home .banner .main .title h1 {
 //     font-size: 4rem;
