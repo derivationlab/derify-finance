@@ -72,7 +72,7 @@
                       </template>
                       <template v-if="officialStatus.showWait">
                         <p>
-                          <span class="time-wrap">{{ officialStatus.time.days }}</span>Days
+                          <span class="time-wrap first">{{ officialStatus.time.days }}</span>Days
                           <span
                             class="time-wrap"
                           >{{ officialStatus.time.hours }}:{{ officialStatus.time.minutes }}:{{ officialStatus.time.seconds }}</span>later
@@ -135,7 +135,7 @@
                       </template>
                       <template v-if="officialStatus.showWait">
                         <p>
-                          <span class="time-wrap">{{ officialStatus.time.days }}</span>Days
+                          <span class="time-wrap first">{{ officialStatus.time.days }}</span>Days
                           <span
                             class="time-wrap"
                           >{{ officialStatus.time.hours }}:{{ officialStatus.time.minutes }}:{{ officialStatus.time.seconds }}</span>later
@@ -184,7 +184,7 @@
                       </template>
                       <template v-if="dodoStatus.showWait">
                         <p>
-                          <span class="time-wrap">{{ dodoStatus.time.days }}</span>Days
+                          <span class="time-wrap first">{{ dodoStatus.time.days }}</span>Days
                           <span
                             class="time-wrap"
                           >{{ dodoStatus.time.hours }}:{{ dodoStatus.time.minutes }}:{{ dodoStatus.time.seconds }}</span>later
@@ -239,7 +239,7 @@
                       </template>
                       <template v-if="acyStatus.showWait">
                         <p>
-                          <span class="time-wrap">{{ acyStatus.time.days }}</span>Days
+                          <span class="time-wrap first">{{ acyStatus.time.days }}</span>Days
                           <span
                             class="time-wrap"
                           >{{ acyStatus.time.hours }}:{{ acyStatus.time.minutes }}:{{ acyStatus.time.seconds }}</span>later
@@ -291,7 +291,7 @@
                       </template>
                       <template v-if="eraxStatus.showWait">
                         <p>
-                          <span class="time-wrap">{{ eraxStatus.time.days }}</span>Days
+                          <span class="time-wrap first">{{ eraxStatus.time.days }}</span>Days
                           <span
                             class="time-wrap"
                           >{{ eraxStatus.time.hours }}:{{ eraxStatus.time.minutes }}:{{ eraxStatus.time.seconds }}</span>later
@@ -339,7 +339,7 @@
                       </template>
                       <template v-if="daoStatus.showWait">
                         <p>
-                          <span class="time-wrap">{{ daoStatus.time.days }}</span>Days
+                          <span class="time-wrap first">{{ daoStatus.time.days }}</span>Days
                           <span
                             class="time-wrap"
                           >{{ daoStatus.time.hours }}:{{ daoStatus.time.minutes }}:{{ daoStatus.time.seconds }}</span>later
@@ -804,9 +804,20 @@ export default {
     .entrance-block {
       width: 351px;
       .pool-wrap {
-        width: 327px;
+        width: 307px;
         height: auto;
         padding: 40px 20px;
+        margin: 0 auto 12px;
+        .pool-row {
+          flex-direction: column;
+          .pool-right {
+            margin-top: 38px;
+            text-align: left;
+            .first {
+              margin-left: 0;
+            }
+          }
+        }
       }
     }
   }
