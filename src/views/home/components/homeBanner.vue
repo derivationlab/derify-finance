@@ -702,6 +702,7 @@ export default {
         text-decoration: none;
         color: inherit;
         display: block;
+        height: 180px;
       }
       p {
         margin: 0;
@@ -714,7 +715,7 @@ export default {
         align-items: center;
       }
       .entrance-block {
-        padding-top: 5rem;
+        padding: 5rem 0 20px;
         width: 709px;
         background: rgba(39, 27, 81, 0.4);
         border-radius: 5rem;
@@ -731,6 +732,7 @@ export default {
           font-style: normal;
           display: block;
           width: 670px;
+          height: 180px;
         }
 
         .pool-row {
@@ -771,6 +773,7 @@ export default {
 
   .home .banner .main .entrance-block {
     width: 710px;
+    padding-bottom: 20px;
     margin-bottom: 17px;
   }
 
@@ -789,35 +792,22 @@ export default {
 }
 
 @media screen and (max-width: 744px) {
-  .title {
-    span {
-      display: block;
-    }
-  }
   .breakpoint {
-    margin: 0 auto 100px;
-    width: 744px;
+    margin: 0 auto 80px;
+    width: 351px;
     overflow: hidden;
   }
   .home .banner .main .entrance-wrap {
-    flex-direction: column;
-  }
-
-  .home .banner .main .entrance-block {
-    width: 710px;
-    margin-bottom: 17px;
-  }
-
-  .home .banner .main .pool-row {
-    display: flex;
-    margin: 2rem 0;
-    text-align: left;
-    flex-wrap: wrap;
-    align-items: center;
-
-    .pool-left,
-    .pool-right {
-      width: 100%;
+    a {
+      height: auto;
+    }
+    .entrance-block {
+      width: 351px;
+      .pool-wrap {
+        width: 327px;
+        height: auto;
+        padding: 40px 20px;
+      }
     }
   }
 }
