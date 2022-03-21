@@ -1,5 +1,5 @@
 <template>
-  <div class="detail-dialog-wrap">
+  <div class="detail-dialog-wrap" @click.self="close">
     <div class="detail-dialog">
       <div class="detail-dialog-close-btn" @click="close"></div>
       <div class="card">
@@ -372,7 +372,7 @@ export default {
   top: 0;
   border-radius: 8.2rem;
   padding: 40px;
-  margin-top: 12rem;
+  margin-top: 170px;
   margin-left: 36rem;
   margin-right: 36rem;
 
