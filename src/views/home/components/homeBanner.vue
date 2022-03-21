@@ -72,7 +72,7 @@
                       </template>
                       <template v-if="officialStatus.showWait">
                         <p>
-                          <span class="time-wrap">{{ officialStatus.time.days }}</span>Days
+                          <span class="time-wrap first">{{ officialStatus.time.days }}</span>Days
                           <span
                             class="time-wrap"
                           >{{ officialStatus.time.hours }}:{{ officialStatus.time.minutes }}:{{ officialStatus.time.seconds }}</span>later
@@ -135,7 +135,7 @@
                       </template>
                       <template v-if="officialStatus.showWait">
                         <p>
-                          <span class="time-wrap">{{ officialStatus.time.days }}</span>Days
+                          <span class="time-wrap first">{{ officialStatus.time.days }}</span>Days
                           <span
                             class="time-wrap"
                           >{{ officialStatus.time.hours }}:{{ officialStatus.time.minutes }}:{{ officialStatus.time.seconds }}</span>later
@@ -184,7 +184,7 @@
                       </template>
                       <template v-if="dodoStatus.showWait">
                         <p>
-                          <span class="time-wrap">{{ dodoStatus.time.days }}</span>Days
+                          <span class="time-wrap first">{{ dodoStatus.time.days }}</span>Days
                           <span
                             class="time-wrap"
                           >{{ dodoStatus.time.hours }}:{{ dodoStatus.time.minutes }}:{{ dodoStatus.time.seconds }}</span>later
@@ -239,7 +239,7 @@
                       </template>
                       <template v-if="acyStatus.showWait">
                         <p>
-                          <span class="time-wrap">{{ acyStatus.time.days }}</span>Days
+                          <span class="time-wrap first">{{ acyStatus.time.days }}</span>Days
                           <span
                             class="time-wrap"
                           >{{ acyStatus.time.hours }}:{{ acyStatus.time.minutes }}:{{ acyStatus.time.seconds }}</span>later
@@ -291,7 +291,7 @@
                       </template>
                       <template v-if="eraxStatus.showWait">
                         <p>
-                          <span class="time-wrap">{{ eraxStatus.time.days }}</span>Days
+                          <span class="time-wrap first">{{ eraxStatus.time.days }}</span>Days
                           <span
                             class="time-wrap"
                           >{{ eraxStatus.time.hours }}:{{ eraxStatus.time.minutes }}:{{ eraxStatus.time.seconds }}</span>later
@@ -339,7 +339,7 @@
                       </template>
                       <template v-if="daoStatus.showWait">
                         <p>
-                          <span class="time-wrap">{{ daoStatus.time.days }}</span>Days
+                          <span class="time-wrap first">{{ daoStatus.time.days }}</span>Days
                           <span
                             class="time-wrap"
                           >{{ daoStatus.time.hours }}:{{ daoStatus.time.minutes }}:{{ daoStatus.time.seconds }}</span>later
@@ -702,19 +702,20 @@ export default {
         text-decoration: none;
         color: inherit;
         display: block;
+        height: 180px;
       }
       p {
         margin: 0;
         padding: 0;
       }
       h3 {
-        font-size: 30px;
+        font-size: 28px;
         line-height: 48px;
         display: flex;
         align-items: center;
       }
       .entrance-block {
-        padding-top: 5rem;
+        padding: 5rem 0 20px;
         width: 709px;
         background: rgba(39, 27, 81, 0.4);
         border-radius: 5rem;
@@ -731,6 +732,7 @@ export default {
           font-style: normal;
           display: block;
           width: 670px;
+          height: 180px;
         }
 
         .pool-row {
@@ -771,6 +773,7 @@ export default {
 
   .home .banner .main .entrance-block {
     width: 710px;
+    padding-bottom: 20px;
     margin-bottom: 17px;
   }
 
@@ -787,69 +790,36 @@ export default {
     }
   }
 }
-// @media screen and (max-width: 576px) {
-//   .home .banner .main .title h1 {
-//     font-size: 4rem;
-//   }
 
-//   .home .banner .main .entrance-wrap {
-//     margin: auto;
-//     width: auto;
-//     flex-wrap: wrap;
-//     justify-content: unset;
-//   }
-
-//   .home .banner .main .entrance-block {
-//     // width: auto;
-//   }
-
-//   .home .banner .main .pool-row {
-//     display: flex;
-//     margin: 2rem 0;
-//     text-align: left;
-//     flex-wrap: wrap;
-//     align-items: center;
-//     .pool-left,
-//     .pool-right {
-//       width: 100%;
-//     }
-//   }
-// }
-// @media screen and (max-width: 376px) {
-//   .home .banner .main .title h1 {
-//     font-size: 2rem;
-//   }
-//   .home .banner .main .sub-title {
-//     font-size: 1.6rem;
-//   }
-//   .home .banner .main .btn a {
-//     height: 4.8rem;
-//     line-height: 4.8rem;
-//     font-size: 1.8rem;
-//   }
-
-//   .home .banner .main .entrance-wrap {
-//     margin: auto;
-//     width: auto;
-//     flex-wrap: wrap;
-//     justify-content: unset;
-//   }
-
-//   .home .banner .main .entrance-block {
-//     // width: auto;
-//   }
-
-//   .home .banner .main .pool-row {
-//     display: flex;
-//     margin: 2rem 0;
-//     text-align: left;
-//     flex-wrap: wrap;
-//     align-items: center;
-
-//     .pool-left,
-//     .pool-right {
-//       width: 100%;
-//     }
-//   }
-// }
+@media screen and (max-width: 744px) {
+  .breakpoint {
+    margin: 0 auto 80px;
+    width: 351px;
+    overflow: hidden;
+  }
+  .home .banner .main .entrance-wrap {
+    a {
+      height: auto;
+    }
+    .entrance-block {
+      width: 351px;
+      .pool-wrap {
+        width: 307px;
+        height: auto;
+        padding: 40px 20px;
+        margin: 0 auto 12px;
+        .pool-row {
+          flex-direction: column;
+          .pool-right {
+            margin-top: 38px;
+            text-align: left;
+            .first {
+              margin-left: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
 </style>
