@@ -390,7 +390,7 @@
 <script>
 
 import HomeDetail from "./homeDetail";
-const claimEndDate = new Date('2022-04-01 00:00:00UTC')
+const claimEndDate = new Date(Date.UTC(2022, 3, 1, 0))
 Date.prototype.format = function (fmt) {
   var o = {
     'M+': this.getUTCMonth() + 1, // month
