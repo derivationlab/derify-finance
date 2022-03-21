@@ -702,7 +702,8 @@ export default {
         text-decoration: none;
         color: inherit;
         display: block;
-        height: 180px;
+        box-sizing: border-box;
+        min-height: 180px;
       }
       p {
         margin: 0;
@@ -727,12 +728,13 @@ export default {
           backdrop-filter: blur(4rem);
           margin: 20px;
           padding: 40px;
+          box-sizing: border-box;
           font-size: 1.4rem;
           font-family: "Noto Sans";
           font-style: normal;
           display: block;
           width: 670px;
-          height: 180px;
+          height: 100%;
         }
 
         .pool-row {
