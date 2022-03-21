@@ -708,7 +708,7 @@ export default {
         padding: 0;
       }
       h3 {
-        font-size: 30px;
+        font-size: 28px;
         line-height: 48px;
         display: flex;
         align-items: center;
@@ -787,69 +787,38 @@ export default {
     }
   }
 }
-// @media screen and (max-width: 576px) {
-//   .home .banner .main .title h1 {
-//     font-size: 4rem;
-//   }
 
-//   .home .banner .main .entrance-wrap {
-//     margin: auto;
-//     width: auto;
-//     flex-wrap: wrap;
-//     justify-content: unset;
-//   }
+@media screen and (max-width: 744px) {
+  .title {
+    span {
+      display: block;
+    }
+  }
+  .breakpoint {
+    margin: 0 auto 100px;
+    width: 744px;
+    overflow: hidden;
+  }
+  .home .banner .main .entrance-wrap {
+    flex-direction: column;
+  }
 
-//   .home .banner .main .entrance-block {
-//     // width: auto;
-//   }
+  .home .banner .main .entrance-block {
+    width: 710px;
+    margin-bottom: 17px;
+  }
 
-//   .home .banner .main .pool-row {
-//     display: flex;
-//     margin: 2rem 0;
-//     text-align: left;
-//     flex-wrap: wrap;
-//     align-items: center;
-//     .pool-left,
-//     .pool-right {
-//       width: 100%;
-//     }
-//   }
-// }
-// @media screen and (max-width: 376px) {
-//   .home .banner .main .title h1 {
-//     font-size: 2rem;
-//   }
-//   .home .banner .main .sub-title {
-//     font-size: 1.6rem;
-//   }
-//   .home .banner .main .btn a {
-//     height: 4.8rem;
-//     line-height: 4.8rem;
-//     font-size: 1.8rem;
-//   }
+  .home .banner .main .pool-row {
+    display: flex;
+    margin: 2rem 0;
+    text-align: left;
+    flex-wrap: wrap;
+    align-items: center;
 
-//   .home .banner .main .entrance-wrap {
-//     margin: auto;
-//     width: auto;
-//     flex-wrap: wrap;
-//     justify-content: unset;
-//   }
-
-//   .home .banner .main .entrance-block {
-//     // width: auto;
-//   }
-
-//   .home .banner .main .pool-row {
-//     display: flex;
-//     margin: 2rem 0;
-//     text-align: left;
-//     flex-wrap: wrap;
-//     align-items: center;
-
-//     .pool-left,
-//     .pool-right {
-//       width: 100%;
-//     }
-//   }
-// }
+    .pool-left,
+    .pool-right {
+      width: 100%;
+    }
+  }
+}
 </style>
