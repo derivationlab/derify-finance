@@ -632,7 +632,7 @@ export default {
   background: #12082b;
   border-radius: 1.5rem;
   font-size: 1.6rem;
-  font-family: Noto Sans, Noto Sans-Bold, serif;
+  font-family: "Noto Sans", "Noto Sans-Bold", serif;
   font-weight: 700;
   text-align: center;
   color: #271b51;
