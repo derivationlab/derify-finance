@@ -81,7 +81,7 @@
                       <template v-if="officialStatus.showSale">
                         <span
                           class="text-color-linear"
-                        >end in {{ officialStatus.time.hours }} h {{ officialStatus.time.minutes }} m {{ getSeconds(officialStatus) }} s</span>
+                        >end in {{ officialStatus.time.days }} d {{ officialStatus.time.hours }} h {{ officialStatus.time.minutes }} m {{ getSeconds(officialStatus) }} s</span>
                         <div class="buy-btn" style="margin-left: 1rem;">BUY</div>
                       </template>
 
@@ -144,7 +144,7 @@
                       <template v-if="officialStatus.showSale">
                         <span
                           class="text-color-linear"
-                        >end in {{ officialStatus.time.hours }} h {{ officialStatus.time.minutes }} m {{ getSeconds(officialStatus) }} s</span>
+                        >end in {{ officialStatus.time.days }} d {{ officialStatus.time.hours }} h {{ officialStatus.time.minutes }} m {{ getSeconds(officialStatus) }} s</span>
                         <div class="buy-btn" style="margin-left: 1rem;">BUY</div>
                       </template>
 
@@ -450,7 +450,6 @@ export default {
       if (officialStatus.time) {
         return officialStatus.time.seconds
       }
-      console.log(`====>  error:`, officialStatus)
       return ''
     },
     toUTCDate(date) {
@@ -459,7 +458,6 @@ export default {
       const calen = (new Date(date));
       const mon = dateEnName[calen.getMonth()];
       const monDay = calen.getDate();
-      // console.log(`====> dateEnName, calen, mon, monDay :`, date, new Date(date), calen, mon, monDay)
       return `${mon} ${monDay} ${calen.format('hh:mm')}`;
     },
     getSaleStatus(cfg, type, now) {
@@ -491,6 +489,7 @@ export default {
           , minutes: toFixedNum(Math.floor((timeGap % hourMilSec) / minMilSec))
           , seconds: toFixedNum(Math.floor((timeGap % minMilSec) / sencMilSec))
         }
+
         return {
           status: 'saling', statusText: '', showStatus: false, showWait: false, showSale: true, time:
           {
