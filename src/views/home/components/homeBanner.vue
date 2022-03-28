@@ -531,7 +531,6 @@ export default {
         self.now = new Date();
         self.$forceUpdate();
       })
-
     }, 1000)
   }
 };
