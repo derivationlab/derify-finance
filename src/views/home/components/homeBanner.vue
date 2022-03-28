@@ -75,13 +75,13 @@
                           <span class="time-wrap first">{{ officialStatus.time.days }}</span>Days
                           <span
                             class="time-wrap"
-                          >{{ officialStatus.time.hours }}:{{ officialStatus.time.minutes }}:{{ officialStatus.time.seconds }}</span>later
+                          >{{ officialStatus.time.hours }}:{{ officialStatus.time.minutes }}:{{ getSeconds(officialStatus) }}</span>later
                         </p>
                       </template>
                       <template v-if="officialStatus.showSale">
                         <span
                           class="text-color-linear"
-                        >end in {{ officialStatus.time.hours }} h {{ officialStatus.time.minutes }} m {{ officialStatus.time.seconds }} s</span>
+                        >end in {{ officialStatus.time.hours }} h {{ officialStatus.time.minutes }} m {{ getSeconds(officialStatus) }} s</span>
                         <div class="buy-btn" style="margin-left: 1rem;">BUY</div>
                       </template>
 
@@ -138,13 +138,13 @@
                           <span class="time-wrap first">{{ officialStatus.time.days }}</span>Days
                           <span
                             class="time-wrap"
-                          >{{ officialStatus.time.hours }}:{{ officialStatus.time.minutes }}:{{ officialStatus.time.seconds }}</span>later
+                          >{{ officialStatus.time.hours }}:{{ officialStatus.time.minutes }}:{{ getSeconds(officialStatus) }}</span>later
                         </p>
                       </template>
                       <template v-if="officialStatus.showSale">
                         <span
                           class="text-color-linear"
-                        >end in {{ officialStatus.time.hours }} h {{ officialStatus.time.minutes }} m {{ official.time.seconds }} s</span>
+                        >end in {{ officialStatus.time.hours }} h {{ officialStatus.time.minutes }} m {{ getSeconds(officialStatus) }} s</span>
                         <div class="buy-btn" style="margin-left: 1rem;">BUY</div>
                       </template>
 
@@ -446,6 +446,13 @@ export default {
     };
   },
   methods: {
+    getSeconds(officialStatus) {
+      if (officialStatus.time) {
+        return officialStatus.time.seconds
+      }
+      console.log(`====>  error:`, officialStatus)
+      return ''
+    },
     toUTCDate(date) {
       const dateEnName = ['January', 'February', 'March', 'April', 'May', 'June'
         , 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -478,6 +485,12 @@ export default {
 
       if (now.getTime() < end.getTime()) {
         var timeGap = end.getTime() - now.getTime();
+        const t = {
+          days: Math.floor(timeGap / dayMilSec)
+          , hours: toFixedNum(Math.floor((timeGap % dayMilSec) / hourMilSec))
+          , minutes: toFixedNum(Math.floor((timeGap % hourMilSec) / minMilSec))
+          , seconds: toFixedNum(Math.floor((timeGap % minMilSec) / sencMilSec))
+        }
         return {
           status: 'saling', statusText: '', showStatus: false, showWait: false, showSale: true, time:
           {
@@ -492,7 +505,6 @@ export default {
       if (now.getTime() < claimEndDate.getTime()) {
         return { status: 'finish', statusText: type === 'official' ? 'InitialPool Sold Out' : 'Finished', showStatus: true, showWait: false, showSale: false, showFinish: true };
       }
-
       return { status: 'claim', statusText: '', showStatus: false, showWait: false, showSale: false, showFinish: false, showClaim: true }
     }
   },
