@@ -11,7 +11,7 @@
       <div class="container">
         <div class="nav">
           <a href="/" aria-colspan="logo">
-            <img src="../../assets/svg/logo.svg" alt="" srcset="" />
+            <img src="../../assets/svg/logo.svg" alt srcset />
           </a>
           <div class="nav-main">
             <div class="nav-main-menu">
@@ -20,123 +20,93 @@
                   <a href="/">Home</a>
                 </div>
                 <div class="nav-main-item">
-                  <a href="https://docs.derify.finance/" target="_blank"
-                    >Learn</a
-                  >
+                  <a href="https://docs.derify.finance/" target="_blank">Learn</a>
                   <div class="sub-nav-arrow">
                     <svg viewBox="0 0 1024 1024" fill="currentColor">
                       <path
                         d="M512 739.390625c-11.81250001 0-23.625-5.06249999-32.0625-13.5L133.15625 358.859375c-16.875-17.71875-16.03125-45.5625 1.68750001-62.4375s45.5625-16.03125 62.43749999 1.6875L512 630.546875 826.71875 298.109375c16.875-17.71875 44.71875-18.5625 62.43749999-1.6875 17.71875 16.875 18.5625 44.71875 1.68750001 62.4375l-346.78125 366.18749999c-8.4375 9.28125-20.25 14.34375-32.0625 14.34375001z m0 0"
-                      ></path>
+                      />
                     </svg>
                   </div>
                   <div class="sub-nav">
-                    <a href="https://docs.derify.finance/" target="_blank"
-                      >Docs</a
-                    >
+                    <a href="https://docs.derify.finance/" target="_blank">Docs</a>
                     <a
                       href="https://docs.derify.finance/whitepaper/introduction"
                       target="_blank"
-                      >Whitepaper</a
-                    >
+                    >Whitepaper</a>
                   </div>
                 </div>
                 <div class="nav-main-item">
                   <a href="https://derify.medium.com/" target="_blank">Blog</a>
                 </div>
                 <div class="nav-main-item">
-                  <a href="https://derify.medium.com/" target="_blank"
-                    >Community</a
-                  >
+                  <a href="https://derify.medium.com/" target="_blank">Community</a>
                   <div class="sub-nav-arrow">
                     <svg viewBox="0 0 1024 1024" fill="currentColor">
                       <path
                         d="M512 739.390625c-11.81250001 0-23.625-5.06249999-32.0625-13.5L133.15625 358.859375c-16.875-17.71875-16.03125-45.5625 1.68750001-62.4375s45.5625-16.03125 62.43749999 1.6875L512 630.546875 826.71875 298.109375c16.875-17.71875 44.71875-18.5625 62.43749999-1.6875 17.71875 16.875 18.5625 44.71875 1.68750001 62.4375l-346.78125 366.18749999c-8.4375 9.28125-20.25 14.34375-32.0625 14.34375001z m0 0"
-                      ></path>
+                      />
                     </svg>
                   </div>
                   <div class="sub-nav">
                     <a href="https://github.com/derivationlab" target="_blank">
-                      <img
-                        src="../../assets/svg/nav-icons-github.svg"
-                        alt=""
-                        srcset=""
+                      <img src="../../assets/svg/nav-icons-github.svg" alt srcset />
+                      Github
+                    </a>
+                    <a href="https://twitter.com/DerifyProtocol" target="_black">
+                      <img src="../../assets/svg/nav-icons-twitter.svg" alt srcset />Twitter
+                    </a>
+                    <a href="https://discord.gg/kSR6tz2pdm" target="_black">
+                      <img src="../../assets/svg/nav-discord-icon.svg" alt srcset />Discord
+                    </a>
+                    <a href="https://derify.medium.com/" target="_black">
+                      <img src="../../assets/svg/nav-medium-icon.svg" alt srcset />Medium
+                    </a>
+                    <a href="https://t.me/DerifyProtocol_Official" target="_black">
+                      <img src="../../assets/svg/nav-tele-icon.svg" alt srcset />Tele
+                    </a>
+                    <a href="mailto:contact@derify.org" target="_black">
+                      <img src="../../assets/svg/nav-email-icon.svg" alt srcset />Email
+                    </a>
+                  </div>
+                </div>
+                <div class="nav-main-item">
+                  <a href="#">Buy DRF</a>
+                  <div class="sub-nav-arrow">
+                    <svg viewBox="0 0 1024 1024" fill="currentColor">
+                      <path
+                        d="M512 739.390625c-11.81250001 0-23.625-5.06249999-32.0625-13.5L133.15625 358.859375c-16.875-17.71875-16.03125-45.5625 1.68750001-62.4375s45.5625-16.03125 62.43749999 1.6875L512 630.546875 826.71875 298.109375c16.875-17.71875 44.71875-18.5625 62.43749999-1.6875 17.71875 16.875 18.5625 44.71875 1.68750001 62.4375l-346.78125 366.18749999c-8.4375 9.28125-20.25 14.34375-32.0625 14.34375001z m0 0"
                       />
-                      Github</a
-                    >
-                    <a href="https://twitter.com/DerifyProtocol" target="_black"
-                      ><img
-                        src="../../assets/svg/nav-icons-twitter.svg"
-                        alt=""
-                        srcset=""
-                      />Twitter</a
-                    >
-                    <a href="https://discord.gg/kSR6tz2pdm" target="_black"
-                      ><img
-                        src="../../assets/svg/nav-discord-icon.svg"
-                        alt=""
-                        srcset=""
-                      />Discord</a
-                    >
-                    <a href="https://derify.medium.com/" target="_black"
-                      ><img
-                        src="../../assets/svg/nav-medium-icon.svg"
-                        alt=""
-                        srcset=""
-                      />Medium</a
-                    >
-                    <a
-                      href="https://t.me/DerifyProtocol_Official"
-                      target="_black"
-                      ><img
-                        src="../../assets/svg/nav-tele-icon.svg"
-                        alt=""
-                        srcset=""
-                      />Tele</a
-                    >
-                    <a href="mailto:contact@derify.org" target="_black"
-                      ><img
-                        src="../../assets/svg/nav-email-icon.svg"
-                        alt=""
-                        srcset=""
-                      />Email</a
-                    >
+                    </svg>
+                  </div>
+                  <div class="sub-nav">
+                    <a href="https://apeswap.finance/" target="_blank">
+                      <img src="../../assets/svg/nav-icons-ape.svg" alt srcset />
+                      ApeSwap
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
             <div class="nav-main-btn">
               <a href="https://derify.exchange">
-                <img src="../../assets/svg/exchange-btn.svg" alt="" srcset="" />
+                <img src="../../assets/svg/exchange-btn.svg" alt srcset />
               </a>
             </div>
             <div class="nav-main-toggle">
               <div class="inner" :class="showMiniNav ? 'show' : ''">
                 <div class="inner-icon" @click="showMiniNav = !showMiniNav">
-                  <img src="../../assets/svg/nav-icon.svg" alt="" srcset="" />
+                  <img src="../../assets/svg/nav-icon.svg" alt srcset />
                 </div>
                 <div class="inner-menu">
-                  <div
-                    class="inner-menu-mask"
-                    @click="showMiniNav = false"
-                  ></div>
+                  <div class="inner-menu-mask" @click="showMiniNav = false"></div>
                   <div class="inner-menu-main">
                     <router-link to="/">Home</router-link>
-                    <a href="https://docs.derify.finance/" target="_blank"
-                      >Learn</a
-                    >
-                    <a href="https://derify.medium.com/" target="_blank"
-                      >Blog</a
-                    >
-                    <a href="https://derify.medium.com/" target="_blank"
-                      >Community</a
-                    >
+                    <a href="https://docs.derify.finance/" target="_blank">Learn</a>
+                    <a href="https://derify.medium.com/" target="_blank">Blog</a>
+                    <a href="https://derify.medium.com/" target="_blank">Community</a>
                     <a href="https://derify.exchange">
-                      <img
-                        src="../../assets/svg/exchange-btn.svg"
-                        alt=""
-                        srcset=""
-                      />
+                      <img src="../../assets/svg/exchange-btn.svg" alt srcset />
                     </a>
                   </div>
                 </div>
@@ -242,7 +212,9 @@ export default {
                   line-height: 4.6rem;
                   text-align: left;
                   img {
-                    margin-right: 1rem;
+                    margin-right: 5px;
+                    width: 20px;
+                    height: 20px;
                   }
                   &:hover {
                     background-color: rgba(255, 255, 255, 0.05);
