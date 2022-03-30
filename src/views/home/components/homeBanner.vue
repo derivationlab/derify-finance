@@ -30,7 +30,7 @@
             <p style="opacity: 0">.</p>
             <!-- pool A-->
             <a href="https://app.bounce.finance/auction/fixed/377" target="_blank">
-              <div class="pool-wrap">
+              <div class="pool-wrap alt alt-top">
                 <div class="pool-row">
                   <div class="pool-left">
                     <h3>
@@ -51,7 +51,7 @@
                       powered by
                       <span class="fb">Bounce.finance</span>
                     </p>
-                    <p>
+                    <p class="alt-p">
                       <span class="fb fc-yellow fz-20">$0.6</span> BUSD per DRF,
                       <span class="fb">release at May 1</span>.
                     </p>
@@ -96,7 +96,7 @@
 
             <!-- pool B-->
             <a href="https://app.bounce.finance/auction/fixed/378" target="_blank">
-              <div class="pool-wrap">
+              <div class="pool-wrap alt">
                 <div class="pool-row">
                   <div class="pool-left">
                     <h3>
@@ -114,7 +114,7 @@
                       powered by
                       <span class="fb">Bounce.finance</span>
                     </p>
-                    <p>
+                    <p class="alt-p">
                       <span class="fb fc-yellow fz-20">$0.8</span> BUSD per DRF,
                       <span class="fb">no lockup</span>.
                     </p>
@@ -149,55 +149,6 @@
                       </template>
 
                       <template v-if="officialStatus.showClaim">
-                        <div class="buy-btn" style="margin-left: 1rem;">Claim</div>
-                      </template>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </a>
-
-            <!-- dodo -->
-            <a href="https://legacy.dodoex.io/cp/join?network=bsc-mainnet" target="_blank">
-              <div class="pool-wrap">
-                <div class="pool-row">
-                  <div class="pool-left">
-                    <div class="ido-aodo-logo">&nbsp;</div>
-                    <p>
-                      <span class="fb fc-yellow fz-20">$0.6</span> BUSD per DRF,
-                      <span class="fb">release at May 1</span>.
-                    </p>
-                  </div>
-                  <div class="pool-right">
-                    <p>
-                      Start at
-                      <span class="fb">{{ toUTCDate(dodo.start) }}</span> UTC
-                    </p>
-                    <p>
-                      End at
-                      <span class="fb">{{ toUTCDate(dodo.end) }}</span> UTC
-                    </p>
-
-                    <div style="margin-top: 2rem;">
-                      <template v-if="dodoStatus.showStatus">
-                        <div class="status-btn">{{ dodoStatus.statusText }}</div>
-                      </template>
-                      <template v-if="dodoStatus.showWait">
-                        <p>
-                          <span class="time-wrap first">{{ dodoStatus.time.days }}</span>Days
-                          <span
-                            class="time-wrap"
-                          >{{ dodoStatus.time.hours }}:{{ dodoStatus.time.minutes }}:{{ dodoStatus.time.seconds }}</span>later
-                        </p>
-                      </template>
-                      <template v-if="dodoStatus.showSale">
-                        <span
-                          class="text-color-linear"
-                        >end in {{ dodoStatus.time.hours }} h {{ dodoStatus.time.minutes }} m {{ dodoStatus.time.seconds }} s</span>
-                        <div class="buy-btn" style="margin-left: 1rem;">BUY</div>
-                      </template>
-
-                      <template v-if="dodoStatus.showClaim">
                         <div class="buy-btn" style="margin-left: 1rem;">Claim</div>
                       </template>
                     </div>
@@ -745,6 +696,12 @@ export default {
           display: block;
           width: 670px;
           height: 100%;
+          &.alt {
+            padding: 87px 40px;
+          }
+          &.alt-top {
+            margin-bottom: 32px;
+          }
         }
 
         .pool-row {
