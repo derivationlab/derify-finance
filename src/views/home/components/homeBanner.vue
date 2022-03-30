@@ -313,7 +313,7 @@
               </div>
             </a>
             <!--ido-dao-logo -->
-            <a href="https://www.daostarter.pro/" target="_blank">
+            <a href="https://www.daostarter.pro/#/parameterLimit/49878" target="_blank">
               <div class="pool-wrap">
                 <div class="pool-row">
                   <div class="pool-left">
