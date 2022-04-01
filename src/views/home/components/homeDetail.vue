@@ -100,9 +100,12 @@
         >The account purchase cap for DRF will be 1000 DRF maximum, and 100 DRF minimum, apply to both pools.</p>
         <p id="453d" class>
           After IDO, Derify will list DRF and lock liquidity on
-          <strong class="ji hz">Apeswap</strong>,
-          <strong class="ji hz">DODOex and</strong>and
-          <strong class="ji hz">Pancakeswap</strong>, allow the community to trade DRF freely.
+          <strong class="ji hz">
+            <a href="https://apeswap.finance/" target="_blank">Apeswap</a>
+          </strong>and
+          <strong class="ji hz">
+            <a href="https://pancakeswap.finance/" target="_blank">Pancakeswap</a>
+          </strong>, allow the community to trade DRF freely.
         </p>
         <p id="7a29" class>
           The listing time will be
@@ -121,7 +124,7 @@
           Other launchpads also host side pools where you can purchase participate in Derify IDO on other platforms under different rules, including
           <strong
             class="ji hz"
-          >DODO, ACY Finance, Daostarter and EraxPad.</strong>
+          >ACY Finance, Daostarter and EraxPad.</strong>
         </p>
         <p id="fe3d" class>
           Derify has no control over other platform and token distribution will also be conducted by the launchpad, please check the details and rules on other launchpads and
