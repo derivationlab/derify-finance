@@ -12,12 +12,12 @@
           <p>
             Official Listing (
             <a
-              style="text-decoration: underline;color: inherit"
+              style="text-decoration: underline;color: inherit;cursor: pointer;"
               href="https://apeswap.finance/"
               target="_blank"
             >ApeSwap</a> ,
             <a
-              style="text-decoration: underline;color: inherit"
+              style="text-decoration: underline;color: inherit;cursor: pointer;"
               href="https://pancakeswap.finance/"
               target="_blank"
             >PancakeSwap</a> ) on April 1, 2022 00:00UTC
