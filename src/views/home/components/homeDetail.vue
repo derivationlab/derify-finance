@@ -102,7 +102,8 @@
           After IDO, Derify will list DRF and lock liquidity on
           <strong class="ji hz">
             <a href="https://apeswap.finance/" target="_blank">Apeswap</a>
-          </strong>and
+          </strong>
+          and
           <strong class="ji hz">
             <a href="https://pancakeswap.finance/" target="_blank">Pancakeswap</a>
           </strong>, allow the community to trade DRF freely.
