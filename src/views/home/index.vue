@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <home-stake></home-stake>
     <home-banner></home-banner>
     <home-protocol></home-protocol>
     <home-mechanism></home-mechanism>
@@ -9,6 +10,7 @@
   </div>
 </template>
 <script>
+import HomeStake from "./components/homeStake";
 import HomeBanner from "./components/homeBanner";
 import HomeProtocol from './components/homeProtocol';
 import HomeMechanism from './components/homeMechanism';
@@ -17,6 +19,7 @@ import HomeGovernance from './components/homeGovernance'
 import HomePartner from './components/homePartner'
 export default {
   components: {
+    HomeStake,
     HomeBanner,
     HomeProtocol,
     HomeMechanism,
