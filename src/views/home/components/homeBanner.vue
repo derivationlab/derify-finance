@@ -476,13 +476,13 @@ export default {
     },
   },
   mounted(callback, context) {
-    const self = this;
-    setInterval(() => {
-      self.$nextTick(() => {
-        self.now = new Date();
-        self.$forceUpdate();
-      })
-    }, 1000)
+    // const self = this;
+    // setInterval(() => {
+    //   self.$nextTick(() => {
+    //     self.now = new Date();
+    //     self.$forceUpdate();
+    //   })
+    // }, 1000)
   }
 };
 </script>
