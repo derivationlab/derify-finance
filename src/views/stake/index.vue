@@ -7,7 +7,7 @@
         <div class="modal-input">
           <div class="modal-input-title">Amount</div>
           <div class="input-wrapper">
-            <input type="text" v-model="count" />
+            <input type="text" v-model="count" @input="change" />
             <span>DRF</span>
           </div>
           <div class="num">
@@ -29,12 +29,12 @@
     <div class="wrapper">
       <div class="content">
         <div class="h1">Stake DRF to mint eDRF !</div>
-        <div class="h4">
+        <div class="h4 h4-text">
           Stake 1 DRF and get 1 eDRF per day (estimated). Burn eDRF to get
           broker privilege or vote in community.
         </div>
-        <div class="btn h4" v-show="!connected">Connect Wallet</div>
-        <div class="data">
+        <div class="btn h4 connect-btn" v-show="!connected">Connect Wallet</div>
+        <div class="data" v-show="connected">
           <div class="item">
             <div class="title">Staked</div>
             <div class="num">
@@ -73,25 +73,49 @@ export default {
   data() {
     return {
       count: "0",
-      drf: "0.00",
+      drf: "10.007777",
+      value0: "10.007777",
+      value1: "12.007777",
       connected: true,
       showModal: false,
       title: "Stake DRF",
     };
   },
+  filters: {
+    dataFormat: (msg) => {
+      return msg;
+    },
+  },
   methods: {
+    // the input only number, can not be negative
+    change(event) {
+      if (parseFloat(this.count) > this.drf) {
+        this.count = this.drf;
+      }
+      if (event.data === ".") {
+        if (this.count.indexOf(".") !== this.count.lastIndexOf(".")) {
+          this.count = this.count.slice(0, this.count.length - 1);
+        }
+      } else {
+        this.count = this.count.replace(/[^(\d|.)]/g, "");
+      }
+    },
     stake() {
+      this.drf = this.value0;
       this.title = "Stake DRF";
       this.showModal = true;
     },
     unstake() {
+      this.drf = this.value1;
       this.title = "Unstake DRF";
       this.showModal = true;
     },
     claim() {
-      console.log(1);
+      this.showModal = true;
     },
-    confirm() {},
+    confirm() {
+      this.showModal = false;
+    },
     cancel() {
       this.showModal = false;
     },
@@ -302,6 +326,84 @@ export default {
       bottom: 32px;
       left: 0;
       width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 744px) {
+  .stake {
+    background: #0e0314;
+    background-image: url(../../assets/stake_bg2.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center top;
+    .content {
+      .data {
+        display: block;
+        height: auto;
+      }
+      .item {
+        width: auto;
+        margin: 0 30px;
+        margin-bottom: 17px;
+        .title {
+          padding-top: 80px;
+          margin-top: 0;
+        }
+      }
+      .connect-btn {
+        margin-top: 48px;
+      }
+      .h1 {
+        height: auto;
+      }
+      .h4-text {
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+      .footer {
+        position: static;
+        padding-top: 36px;
+        padding-bottom: 36px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .stake {
+    background: #0e0314;
+    background-image: url(../../assets/stake_bg1.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center top;
+
+    .modal .modal-content {
+      width: calc(100% - 24px);
+    }
+
+    .content {
+      .connect-btn {
+        margin-top: 36px;
+      }
+      .h1,
+      .h4-text {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+      .item {
+        margin: 0 12px;
+        margin-bottom: 12px;
+      }
+      .btn-group .btn-fill {
+        display: block;
+        margin: 0 auto;
+      }
+      .btn-group .btn-bordered {
+        display: flex;
+        margin: 0 auto;
+        margin-top: 12px;
+      }
     }
   }
 }

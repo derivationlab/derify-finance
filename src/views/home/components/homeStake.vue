@@ -56,4 +56,40 @@ export default {
     top: 80px;
   }
 }
+
+$magin-m: 48px;
+@media screen and (max-width: 744px) {
+  .home-stake {
+    height: auto;
+    padding-bottom: $magin-m;
+    padding-left: 37px;
+    padding-right: 37px;
+    .wrapper {
+      .h1 {
+        padding-top: $magin-m;
+      }
+      .btn {
+        position: static;
+        margin-top: $magin-m;
+      }
+    }
+  }
+}
+
+$magin-s: 36px;
+@media screen and (max-width: 420px) {
+  .home-stake {
+    padding-bottom: $magin-s;
+    padding-left: 24px;
+    padding-right: 24px;
+    .wrapper {
+      .h1 {
+        padding-top: $magin-s;
+      }
+      .btn {
+        margin-top: $magin-s;
+      }
+    }
+  }
+}
 </style>
