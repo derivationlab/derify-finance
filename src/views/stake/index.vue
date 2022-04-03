@@ -211,7 +211,7 @@ export default {
       return val.toString().split('.')[0] + '.'
     },
     theDecimal: function (val) {
-      return val.toString().split('.')[1]
+      return val.toString().split('.')[1] || '00'
     },
     formatDRF,
     parseDRF,
@@ -386,8 +386,8 @@ export default {
       this.drfBalance = drfBalance
       this.edrfBalance = edrfBalance
 
-      this.drfBalance = 111.1111
-      this.edrfBalance = 222.2222
+      // this.drfBalance = 111.1111
+      // this.edrfBalance = 222.2222
     },
     async submitStake() {
       const stakeAmount = parseDRF(this.stakeAmount)
