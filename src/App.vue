@@ -29,7 +29,7 @@ export default {
       this.$store.dispatch("app/setLang", lang);
     },
   },
-  mounted() {},
+  mounted() { },
 };
 </script>
 <style lang="scss">

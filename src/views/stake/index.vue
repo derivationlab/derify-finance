@@ -25,12 +25,7 @@
     </div>
     <div class="modal login-modal" v-show="showModalSwitchNetwork">
       <div class="modal-content">
-        <div class="title">
-          Switch your network
-          <button class="close">
-            <img src="../../assets/close.png" alt="close" />
-          </button>
-        </div>
+        <div class="title">Switch your network</div>
         <div class="modal-input">
           <button
             class="flex text-center connect-btn"
@@ -43,24 +38,29 @@
       </div>
     </div>
     <!-- modal -->
-    <div class="modal" v-show="showModal">
+    <div class="modal" v-show="showModalStake">
       <div class="modal-content">
-        <div class="title" v-text="title">title</div>
+        <div class="title">
+          Stake DRF
+          <button class="close" @click="showModalStake = false">
+            <img src="../../assets/close.png" alt="close" />
+          </button>
+        </div>
         <div class="modal-input">
           <div class="modal-input-title">Amount</div>
           <div class="input-wrapper">
-            <input type="text" v-model="count" @input="change" />
+            <input type="text" v-model="stakeAmount" @input="changeStakeAmount" />
             <span>DRF</span>
           </div>
-          <div class="num">
+          <div class="num" @click="stakeAmount = drfBalance">
             Max:
-            <span v-text="drf">0</span> DRF
+            <span>{{ drfBalance }}</span> DRF
             <span class="all">All</span>
           </div>
         </div>
         <div class="btns">
-          <div class="btn-fill btn1 h4 btn2" @click="confirm">Stake</div>
-          <div class="btn-bordered btn1 h4 btn2" @click="cancel">
+          <div class="btn-fill btn1 h4 btn2" @click="submitStake">Stake</div>
+          <div class="btn-bordered btn1 h4 btn2" @click="showModalStake = false">
             <div class="btn-bordered-inner">
               <span class="btn-bordered-inner-text">cancel</span>
             </div>
@@ -80,14 +80,17 @@
         <div class="data" v-show="connected">
           <div class="item">
             <div class="title">Staked</div>
-            <div class="num">
-              <span class="num1">11.</span>
-              <span class="num2">11</span>
+            <div class="num" v-if="drfBalance === 'notInit'">
+              <Loading />
+            </div>
+            <div class="num" v-else>
+              <span class="num1">{{ drfBalance | theInteger }}</span>
+              <span class="num2">{{ drfBalance | theDecimal }}</span>
             </div>
             <div class="h4">DRF</div>
             <div class="btn-group">
-              <div class="btn-fill btn1 h4" @click="stake">Stake</div>
-              <div class="btn-bordered btn1 h4" @click="unstake">
+              <div class="btn-fill btn1 h4" @click="showModalStake = true">Stake</div>
+              <div class="btn-bordered btn1 h4" @click="showModalUnStake = true">
                 <div class="btn-bordered-inner">
                   <span class="btn-bordered-inner-text">unstake</span>
                 </div>
@@ -96,9 +99,12 @@
           </div>
           <div class="item">
             <div class="title">Claimable</div>
-            <div class="num">
-              <span class="num1">11.</span>
-              <span class="num2">11</span>
+            <div class="num" v-if="edrfBalance === 'notInit'">
+              <Loading />
+            </div>
+            <div class="num" v-else>
+              <span class="num1">{{ edrfBalance | theInteger }}</span>
+              <span class="num2">{{ edrfBalance | theDecimal }}</span>
             </div>
             <div class="h4">eDRF</div>
             <div class="btn-group">
@@ -113,34 +119,18 @@
 </template>
 <script>
 import * as ls from '../../utils/ls'
+import { ethers } from "ethers"
+import Loading from "@/components/Loading";
+
 import MetaMaskOnboarding from '@metamask/onboarding'
 import detectEthereumProvider from '@metamask/detect-provider'
+import { getContract, chainInfoMap } from '@/contractConfig.js'
 const onboarding = new MetaMaskOnboarding()
-const chainInfoMap = {
-  '0x38': {
-    chainId: '0x38',
-    chainName: 'Smart Chain',
-    nativeCurrency: {
-      "name": "Binance Chain Native Token",
-      "symbol": "BNB",
-      "decimals": 18
-    },
-    blockExplorerUrls: ['https://bscscan.com'],
-    rpcUrls: ['https://bsc-dataseed.binance.org/'],
-  },
-  '0x61': {
-    chainId: '0x61',
-    chainName: 'Smart Chain - Testnet',
-    nativeCurrency: {
-      "name": "Binance Chain Native Token",
-      "symbol": "tBNB",
-      "decimals": 18
-    },
-    blockExplorerUrls: ['https://testnet.bscscan.com'],
-    rpcUrls: ['https://data-seed-prebsc-1-s1.binance.org:8545/'],
-  },
-}
+
 export default {
+  components: {
+    Loading,
+  },
   data() {
     return {
       count: "0",
@@ -148,24 +138,42 @@ export default {
       value0: "10.007777",
       value1: "12.007777",
       connected: true,
-      showModal: false,
+      showModalStake: true,
       title: "Stake DRF",
       isMetaMaskInstalled: false,
       isOnboarding: false,
       provider: '',
+      web3Provider: '',
       accounts: ls.getItem('web3.accounts', []),
       errMsg: '',
       currentChainId: '',
       // targetChainId: '0x38', // Smart Chain
       targetChainId: '0x61', // Smart Chain Testnet
+
+      drfBalance: 'notInit',
+      edrfBalance: 'notInit',
+      stakeAmount: '0.00',
+      theContract: '',
     };
   },
   filters: {
-    dataFormat: (msg) => {
+    dataFormat(msg) {
       return msg;
     },
+    theInteger(val) {
+      return val.toString().split('.')[0] + '.'
+    },
+    theDecimal(val) {
+      return val.toString().split('.')[1]
+    }
   },
   computed: {
+    myWalletAddress() {
+      if (!this.accounts) {
+        return ''
+      }
+      return this.accounts[0]
+    },
     showModalLogin() {
       if (!this.accounts) {
         return true
@@ -241,6 +249,8 @@ export default {
         this.isMetaMaskInstalled = false
         return
       }
+      this.web3Provider = new ethers.providers.Web3Provider(this.provider)
+      await this.web3Provider.send('eth_requestAccounts', [])
       this.isMetaMaskInstalled = true
 
       this.provider.on('chainChanged', chainId => {
@@ -249,12 +259,12 @@ export default {
       })
       this.currentChainId = await this.provider.request({ method: 'eth_chainId' });
 
-
-      const handleNewAccount = (newAccounts) => {
+      const handleNewAccount = async (newAccounts) => {
         ls.setItem('web3.accounts', newAccounts)
         this.accounts = newAccounts
         this.isOnboarding = false
         onboarding.stopOnboarding()
+        await this.loadBalance()
       }
       this.provider.on('accountsChanged', handleNewAccount)
 
@@ -273,17 +283,20 @@ export default {
       onboarding.startOnboarding()
     },
     // the input only number, can not be negative
-    change(event) {
-      if (parseFloat(this.count) > this.drf) {
-        this.count = this.drf;
+    changeStakeAmount(event) {
+      if (parseFloat(this.stakeAmount) > this.drf) {
+        this.stakeAmount = this.drf;
       }
       if (event.data === ".") {
-        if (this.count.indexOf(".") !== this.count.lastIndexOf(".")) {
-          this.count = this.count.slice(0, this.count.length - 1);
+        if (this.stakeAmount.indexOf(".") !== this.stakeAmount.lastIndexOf(".")) {
+          this.stakeAmount = this.stakeAmount.slice(0, this.stakeAmount.length - 1);
         }
       } else {
-        this.count = this.count.replace(/[^(\d|.)]/g, "");
+        this.stakeAmount = this.stakeAmount.replace(/[^(\d|.)]/g, "");
       }
+    },
+    async submitStake() {
+      console.log(`====> submitStake :`, this.stakeAmount)
     },
     stake() {
       this.drf = this.value0;
@@ -304,6 +317,18 @@ export default {
     cancel() {
       this.showModal = false;
     },
+
+    async loadBalance() {
+      const { drfBalance, edrfBalance } = await getContract(this.web3Provider, this.currentChainId, 'DerifyStaking').getStakingInfo(this.myWalletAddress)
+      this.drfBalance = drfBalance
+      this.edrfBalance = edrfBalance
+      console.log(`====> { drfBalance, edrfBalance } :`, { drfBalance, edrfBalance })
+      this.drfBalance = 111.1111
+      this.edrfBalance = 222.222
+
+      // this.drfBalance = ethers.BigNumber.from('11111')
+      // this.edrfBalance = ethers.BigNumber.from('22222')
+    }
   },
 };
 </script>
@@ -449,7 +474,7 @@ export default {
     }
     .num {
       color: rgba(255, 255, 255, 0.5);
-      font-size: 1.5rem;
+      font-size: 12px;
       margin-top: 8px;
       .all {
         cursor: pointer;
