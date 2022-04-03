@@ -58,8 +58,12 @@
             <span class="all">All</span>
           </div>
         </div>
+        <div class="error">{{ stakeErrMsg }}</div>
         <div class="btns">
-          <div class="btn-fill btn1 h4 btn2" @click="submitStake">Stake</div>
+          <div
+            class="btn-fill btn1 h4 btn2"
+            @click="submitStake"
+          >{{ needMoreAllowance ? 'Approve' : 'Stake' }}</div>
           <div class="btn-bordered btn1 h4 btn2" @click="showModalStake = false">
             <div class="btn-bordered-inner">
               <span class="btn-bordered-inner-text">cancel</span>
@@ -108,7 +112,7 @@
             </div>
             <div class="h4">eDRF</div>
             <div class="btn-group">
-              <div class="btn-fill btn1 h4" @click="claim">Claim All</div>
+              <div class="btn-fill btn1 h4" @click="withdrawAllEdrf">Claim All</div>
             </div>
           </div>
         </div>
@@ -124,7 +128,7 @@ import Loading from "@/components/Loading";
 
 import MetaMaskOnboarding from '@metamask/onboarding'
 import detectEthereumProvider from '@metamask/detect-provider'
-import { getContract, chainInfoMap } from '@/contractConfig.js'
+import { getContract, chainInfoMap, contractAddressMap } from '@/contractConfig.js'
 const onboarding = new MetaMaskOnboarding()
 
 export default {
@@ -154,20 +158,36 @@ export default {
       edrfBalance: 'notInit',
       stakeAmount: '0.00',
       theContract: '',
+      allowance: 0,
+      stakeErrMsg: '',
+      isApproving: false,
     };
   },
   filters: {
-    dataFormat(msg) {
+    dataFormat: function (msg) {
       return msg;
     },
-    theInteger(val) {
+    theInteger: function (val) {
       return val.toString().split('.')[0] + '.'
     },
-    theDecimal(val) {
+    theDecimal: function (val) {
       return val.toString().split('.')[1]
+    },
+    formatDRF: function (val) {
+      return ethers.utils.formatUnits(val, 8)
+    },
+    parseDRF: function (val) {
+      return ethers.utils.parseUnits(val.toString(), 8)
     }
   },
   computed: {
+    needMoreAllowance() {
+      if (!this.allowance) {
+        return false
+      }
+      const stakeAmount = this.$options.filters.parseDRF(this.stakeAmount)
+      return this.allowance.lt(stakeAmount)
+    },
     myWalletAddress() {
       if (!this.accounts) {
         return ''
@@ -264,7 +284,7 @@ export default {
         this.accounts = newAccounts
         this.isOnboarding = false
         onboarding.stopOnboarding()
-        await this.loadBalance()
+        await this.loadData()
       }
       this.provider.on('accountsChanged', handleNewAccount)
 
@@ -295,39 +315,55 @@ export default {
         this.stakeAmount = this.stakeAmount.replace(/[^(\d|.)]/g, "");
       }
     },
-    async submitStake() {
-      console.log(`====> submitStake :`, this.stakeAmount)
+    getCurrentChainContract(name, isWrite = false) {
+      return getContract(this.web3Provider, this.currentChainId, name, isWrite)
     },
-    stake() {
-      this.drf = this.value0;
-      this.title = "Stake DRF";
-      this.showModal = true;
-    },
-    unstake() {
-      this.drf = this.value1;
-      this.title = "Unstake DRF";
-      this.showModal = true;
-    },
-    claim() {
-      this.showModal = true;
-    },
-    confirm() {
-      this.showModal = false;
-    },
-    cancel() {
-      this.showModal = false;
-    },
+    async updateAllowance() {
+      this.allowance = await this.getCurrentChainContract('DRF').allowance(this.myWalletAddress, contractAddressMap[this.currentChainId]['DerifyStaking'])
 
-    async loadBalance() {
-      const { drfBalance, edrfBalance } = await getContract(this.web3Provider, this.currentChainId, 'DerifyStaking').getStakingInfo(this.myWalletAddress)
+      console.log(`====> this.allowance :`, this.$options.filters.formatDRF(this.allowance))
+    },
+    async loadData() {
+      const { drfBalance, edrfBalance } = await this.getCurrentChainContract('DerifyStaking').getStakingInfo(this.myWalletAddress)
+      await this.updateAllowance()
+
+      console.log(`====> { drfBalance, edrfBalance, allowance } :`, { drfBalance, edrfBalance })
+
       this.drfBalance = drfBalance
       this.edrfBalance = edrfBalance
-      console.log(`====> { drfBalance, edrfBalance } :`, { drfBalance, edrfBalance })
-      this.drfBalance = 111.1111
-      this.edrfBalance = 222.222
 
-      // this.drfBalance = ethers.BigNumber.from('11111')
-      // this.edrfBalance = ethers.BigNumber.from('22222')
+      this.drfBalance = 111.1111
+      this.edrfBalance = 222.2222
+    },
+    async submitStake() {
+      const stakeAmount = this.$options.filters.parseDRF(this.stakeAmount)
+      if (this.needMoreAllowance) {
+        return this.submitApprove()
+      }
+      try {
+        await this.getCurrentChainContract('DerifyStaking', true).stakingDrf(stakeAmount)
+      } catch (e) {
+        console.log(`====> e :`, e)
+        this.stakeErrMsg = e.data.message
+      }
+    },
+    async submitApprove() {
+      if (this.isApproving) return
+      let errMsg = ''
+      try {
+        const tx = await this.getCurrentChainContract('DRF', true).approve(contractAddressMap[this.currentChainId]['DerifyStaking'], this.$options.filters.parseDRF(this.stakeAmount).add(10))
+        this.isApproving = true
+        await tx.wait()
+        await this.updateAllowance()
+      } catch (e) {
+        errMsg = e.message
+      }
+      this.isApproving = false
+      this.stakeErrMsg = errMsg
+    },
+
+    async withdrawAllEdrf() {
+      console.log(`====> withdrawAllEdrf :`)
     }
   },
 };
