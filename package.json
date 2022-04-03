@@ -3,11 +3,14 @@
   "version": "0.1.1",
   "private": true,
   "scripts": {
+    "dev": "vue-cli-service serve",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@metamask/detect-provider": "^1.2.0",
+    "@metamask/onboarding": "^1.0.1",
     "node-sass": "npm:sass@^1.49.9",
     "normalize.css": "^8.0.1",
     "vue": "^2.6.11",

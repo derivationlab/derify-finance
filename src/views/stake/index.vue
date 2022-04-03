@@ -1,5 +1,47 @@
 <template>
   <div class="stake">
+    <div class="modal login-modal" v-show="!showModalSwitchNetwork && showModalLogin">
+      <div class="modal-content">
+        <div class="title">Connect your wallet</div>
+        <div class="modal-input">
+          <button class="flex connect-btn" v-if="isMetaMaskInstalled" @click="requestAccounts">
+            <div>MetaMask</div>
+            <div>
+              <img src="../../assets/metamask.png" class="wallet-img" />
+            </div>
+          </button>
+          <button class="flex connect-btn" v-else @click="startOnboarding">
+            <div>Install MetaMask</div>
+            <div>
+              <img src="../../assets/metamask.png" class="wallet-img" />
+            </div>
+          </button>
+          <div class="error" v-if="errMsg">
+            <img src="../../assets/error.png" alt="error" />
+            {{ errMsg }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal login-modal" v-show="showModalSwitchNetwork">
+      <div class="modal-content">
+        <div class="title">
+          Switch your network
+          <button class="close">
+            <img src="../../assets/close.png" alt="close" />
+          </button>
+        </div>
+        <div class="modal-input">
+          <button
+            class="flex text-center connect-btn"
+            @click="doSwitchNetwork"
+          >{{ switchNetworkBtnText }}</button>
+          <div class="error">
+            <img src="../../assets/error.png" alt="error" /> Wrong network!
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- modal -->
     <div class="modal" v-show="showModal">
       <div class="modal-content">
@@ -11,13 +53,14 @@
             <span>DRF</span>
           </div>
           <div class="num">
-            Max: <span v-text="drf">0</span> DRF
+            Max:
+            <span v-text="drf">0</span> DRF
             <span class="all">All</span>
           </div>
         </div>
         <div class="btns">
-          <div class="btn1 h4 btn-fill btn2" @click="confirm">Stake</div>
-          <div class="btn1 h4 btn-bordered btn2" @click="cancel">
+          <div class="btn-fill btn1 h4 btn2" @click="confirm">Stake</div>
+          <div class="btn-bordered btn1 h4 btn2" @click="cancel">
             <div class="btn-bordered-inner">
               <span class="btn-bordered-inner-text">cancel</span>
             </div>
@@ -33,7 +76,7 @@
           Stake 1 DRF and get 1 eDRF per day (estimated). Burn eDRF to get
           broker privilege or vote in community.
         </div>
-        <div class="btn h4 connect-btn" v-show="!connected">Connect Wallet</div>
+        <div class="btn connect-btn h4" v-show="!connected">Connect Wallet</div>
         <div class="data" v-show="connected">
           <div class="item">
             <div class="title">Staked</div>
@@ -43,8 +86,8 @@
             </div>
             <div class="h4">DRF</div>
             <div class="btn-group">
-              <div class="btn1 h4 btn-fill" @click="stake">Stake</div>
-              <div class="btn1 h4 btn-bordered" @click="unstake">
+              <div class="btn-fill btn1 h4" @click="stake">Stake</div>
+              <div class="btn-bordered btn1 h4" @click="unstake">
                 <div class="btn-bordered-inner">
                   <span class="btn-bordered-inner-text">unstake</span>
                 </div>
@@ -59,7 +102,7 @@
             </div>
             <div class="h4">eDRF</div>
             <div class="btn-group">
-              <div class="btn1 h4 btn-fill" @click="claim">Claim All</div>
+              <div class="btn-fill btn1 h4" @click="claim">Claim All</div>
             </div>
           </div>
         </div>
@@ -69,6 +112,34 @@
   </div>
 </template>
 <script>
+import * as ls from '../../utils/ls'
+import MetaMaskOnboarding from '@metamask/onboarding'
+import detectEthereumProvider from '@metamask/detect-provider'
+const onboarding = new MetaMaskOnboarding()
+const chainInfoMap = {
+  '0x38': {
+    chainId: '0x38',
+    chainName: 'Smart Chain',
+    nativeCurrency: {
+      "name": "Binance Chain Native Token",
+      "symbol": "BNB",
+      "decimals": 18
+    },
+    blockExplorerUrls: ['https://bscscan.com'],
+    rpcUrls: ['https://bsc-dataseed.binance.org/'],
+  },
+  '0x61': {
+    chainId: '0x61',
+    chainName: 'Smart Chain - Testnet',
+    nativeCurrency: {
+      "name": "Binance Chain Native Token",
+      "symbol": "tBNB",
+      "decimals": 18
+    },
+    blockExplorerUrls: ['https://testnet.bscscan.com'],
+    rpcUrls: ['https://data-seed-prebsc-1-s1.binance.org:8545/'],
+  },
+}
 export default {
   data() {
     return {
@@ -79,6 +150,14 @@ export default {
       connected: true,
       showModal: false,
       title: "Stake DRF",
+      isMetaMaskInstalled: false,
+      isOnboarding: false,
+      provider: '',
+      accounts: ls.getItem('web3.accounts', []),
+      errMsg: '',
+      currentChainId: '',
+      // targetChainId: '0x38', // Smart Chain
+      targetChainId: '0x61', // Smart Chain Testnet
     };
   },
   filters: {
@@ -86,7 +165,113 @@ export default {
       return msg;
     },
   },
+  computed: {
+    showModalLogin() {
+      if (!this.accounts) {
+        return true
+      }
+      return this.accounts.length === 0
+    },
+    showModalSwitchNetwork() {
+      if (!this.currentChainId) {
+        return false
+      }
+      return this.currentChainId !== this.targetChainId
+    },
+    currentNetworkName() {
+      return 'eth'
+    },
+    switchNetworkBtnText() {
+      return `Click to switch`
+      // return `Click to switch to ${chainInfoMap[this.targetChainId].chainName}`
+    },
+  },
+  mounted() {
+    this.initWeb3()
+  },
   methods: {
+    async doSwitchNetwork() {
+      const chainId = this.targetChainId
+      try {
+        await this.provider.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId }],
+        });
+      } catch (switchError) {
+        // This error code indicates that the chain has not been added to MetaMask.
+        if (switchError.code === 4902) {
+          try {
+            await this.provider.request({
+              method: 'wallet_addEthereumChain',
+              params: [chainInfoMap[chainId]],
+            });
+          } catch (addError) {
+            console.log(`====> addError :`, addError)
+            // handle "add" error
+          }
+        }
+        // handle other "switch" errors
+        console.log(`====> switchError :`, switchError)
+      }
+    },
+    async requestAccounts() {
+      try {
+        const newAccounts = await this.provider.request({
+          method: 'eth_requestAccounts',
+        })
+        ls.setItem('web3.accounts', newAccounts)
+        this.accounts = newAccounts
+      } catch (e) {
+        switch (e.code) {
+          case 4001: // user reject
+          case -32002: // already pending
+            this.errMsg = e.message
+            break
+          default:
+            console.error('unknown error', e)
+            this.errMsg = e.message
+            break
+        }
+      }
+    },
+    async initWeb3() {
+      this.provider = await detectEthereumProvider()
+      if (!this.provider) {
+        // no metamask install yet
+        this.isMetaMaskInstalled = false
+        return
+      }
+      this.isMetaMaskInstalled = true
+
+      this.provider.on('chainChanged', chainId => {
+        this.currentChainId = chainId
+        window.location.reload()
+      })
+      this.currentChainId = await this.provider.request({ method: 'eth_chainId' });
+
+
+      const handleNewAccount = (newAccounts) => {
+        ls.setItem('web3.accounts', newAccounts)
+        this.accounts = newAccounts
+        this.isOnboarding = false
+        onboarding.stopOnboarding()
+      }
+      this.provider.on('accountsChanged', handleNewAccount)
+
+      const newAccounts = await this.provider.request({ method: 'eth_accounts' })
+      if (newAccounts.length > 0) {
+        handleNewAccount(newAccounts)
+        return
+      }
+
+      // has metamask, but do not have any account
+      //  means: not login yet, show modal for user to click "connect to metamask"
+    },
+    startOnboarding() {
+      if (this.isOnboarding) return
+      this.isOnboarding = true
+      onboarding.startOnboarding()
+    },
     // the input only number, can not be negative
     change(event) {
       if (parseFloat(this.count) > this.drf) {
@@ -124,6 +309,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .stake {
+  font-family: "Noto Sans";
   width: 100%;
   min-height: 100vh;
   background: #0e0314;
@@ -184,18 +370,52 @@ export default {
       backdrop-filter: blur(40px);
       /* Note: backdrop-filter has minimal browser support */
       border-radius: 24px;
+      .error {
+        color: #f00;
+        font-size: 12px;
+        line-height: 20px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          width: 12px;
+          height: 12px;
+          line-height: 20px;
+          margin-right: 4px;
+        }
+      }
     }
     .title {
-      height: 64px;
-      line-height: 64px;
+      height: 24px;
+      line-height: 24px;
       color: #fff;
-      font-size: 1.9rem;
+      font-size: 16px;
+      font-weight: bold;
       text-align: center;
+      position: relative;
+      margin: 20px 36px;
+      .close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        border: none;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        background: none;
+        justify-content: center;
+        align-items: center;
+        img {
+          width: 24px;
+          height: 24px;
+        }
+      }
     }
     .modal-input {
       width: 100%;
       height: 135px;
-      padding: 20px 36px 0 36px;
+      padding: 0 36px;
     }
 
     .modal-input-title {
@@ -327,6 +547,51 @@ export default {
       left: 0;
       width: 100%;
     }
+  }
+
+  .login-modal {
+    .modal-content {
+      height: auto;
+      .modal-input {
+        height: auto;
+        padding-bottom: 46px;
+      }
+    }
+  }
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &.text-center {
+    justify-content: center;
+  }
+}
+.connect-btn {
+  width: 100%;
+  font-size: 16px;
+  line-height: 30px;
+  height: 40px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-sizing: border-box;
+  border-radius: 8px;
+  margin: 12px 0 6px;
+  padding: 5px 14px;
+  opacity: 0.8;
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+  &:active {
+    transform: scale(0.98);
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+  }
+  .wallet-img {
+    height: 20px;
   }
 }
 
