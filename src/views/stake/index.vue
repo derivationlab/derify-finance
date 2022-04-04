@@ -49,21 +49,29 @@
         <div class="modal-input">
           <div class="modal-input-title">Amount</div>
           <div class="input-wrapper">
-            <input type="text" v-model="stakeAmount" @input="changeStakeAmount" />
+            <input
+              type="text"
+              v-model="stakeAmount"
+              @input="changeStakeAmount"
+              @blur="tryClearStakeAmount"
+            />
             <span>DRF</span>
           </div>
-          <div class="num" @click="stakeAmount = walletBalance">
+          <div class="num" @click="stakeAmount = formatDRF(walletBalance)">
             Max:
-            <span>{{ walletBalance }}</span> DRF
+            <span>{{ walletBalance | formatDRF }}</span> DRF
             <span class="all">All</span>
           </div>
         </div>
         <div class="error">{{ stakeErrMsg }}</div>
         <div class="btns">
-          <div
+          <div class="btn-fill btn1 h4 btn2" @click="submitApprove" v-if="needMoreAllowance">Approve</div>
+          <button
             class="btn-fill btn1 h4 btn2"
+            :disabled="!canStake"
             @click="submitStake"
-          >{{ needMoreAllowance ? 'Approve' : 'Stake' }}</div>
+            v-else
+          >Stake</button>
           <div class="btn-bordered btn1 h4 btn2" @click="showModalStake = false">
             <div class="btn-bordered-inner">
               <span class="btn-bordered-inner-text">cancel</span>
@@ -83,7 +91,12 @@
         <div class="modal-input">
           <div class="modal-input-title">Amount</div>
           <div class="input-wrapper">
-            <input type="text" v-model="unstakeAmount" @input="changeUnstakeAmount" />
+            <input
+              type="text"
+              v-model="unstakeAmount"
+              @input="changeUnstakeAmount"
+              @blur="tryClearUnstakeAmount"
+            />
             <span>DRF</span>
           </div>
           <div class="num" @click="unstakeAmount = drfBalance">
@@ -94,7 +107,11 @@
         </div>
         <div class="error">{{ unstakeErrMsg }}</div>
         <div class="btns">
-          <div class="btn-fill btn1 h4 btn2" @click="submitUnstake">Unstake</div>
+          <button
+            class="btn-fill btn1 h4 btn2"
+            @click="submitUnstake"
+            :disabled="!canUnstake"
+          >Unstake</button>
           <div class="btn-bordered btn1 h4 btn2" @click="showModalUnstake = false">
             <div class="btn-bordered-inner">
               <span class="btn-bordered-inner-text">cancel</span>
@@ -125,7 +142,10 @@
             <div class="h4">DRF</div>
             <div class="btn-group">
               <div class="btn-fill btn1 h4" @click="showModalStake = true, stakeErrMsg = ''">Stake</div>
-              <div class="btn-bordered btn1 h4" @click="showModalUnstake = true, unstakeErrMsg = ''">
+              <div
+                class="btn-bordered btn1 h4"
+                @click="showModalUnstake = true, unstakeErrMsg = ''"
+              >
                 <div class="btn-bordered-inner">
                   <span class="btn-bordered-inner-text">unstake</span>
                 </div>
@@ -164,11 +184,19 @@ import { getContract, chainInfoMap, contractAddressMap } from '@/contractConfig.
 const onboarding = new MetaMaskOnboarding()
 
 const formatDRF = function (val) {
-  return ethers.utils.formatUnits(val, 8)
+  if (!val) { return '' }
+  val = ethers.utils.formatUnits(val, 18)
+  val = val.split('.')
+  val = val[0] + '.' + val[1].substr(0, 4)
+  return val
 }
 const parseDRF = function (val) {
-  return ethers.utils.parseUnits(val.toString(), 8)
+  if (!val) {
+    val = 0
+  }
+  return ethers.utils.parseUnits(val.toString(), 18)
 }
+
 export default {
   components: {
     Loading,
@@ -190,7 +218,7 @@ export default {
 
       drfBalance: 'notInit',
       edrfBalance: 'notInit',
-      stakeAmount: '0.00',
+      stakeAmount: '',
       allowance: 0,
       stakeErrMsg: '',
       isApproving: false,
@@ -198,7 +226,7 @@ export default {
       isSubmitClaim: false,
       showModalUnstake: false,
       isSubmitUnstake: false,
-      unstakeAmount: '0.00',
+      unstakeAmount: '',
       unstakeErrMsg: '',
       walletBalance: '',
     };
@@ -249,6 +277,12 @@ export default {
       return `Click to switch`
       // return `Click to switch to ${chainInfoMap[this.targetChainId].chainName}`
     },
+    canStake() {
+      return parseDRF(this.stakeAmount).gt('0')
+    },
+    canUnstake() {
+      return parseDRF(this.unstakeAmount).gt('0')
+    },
     canClaim() {
       return this.edrfBalance.gt('0')
     }
@@ -258,6 +292,8 @@ export default {
     document.querySelector('.app-header').style.position = 'absolute'
   },
   methods: {
+    formatDRF,
+    parseDRF,
     async doSwitchNetwork() {
       const chainId = this.targetChainId
       try {
@@ -352,9 +388,14 @@ export default {
         this.stakeAmount = this.stakeAmount.replace(/[^(\d|.)]/g, "");
       }
       // https://docs.ethers.io/v5/single-page/#/v5/api/utils/bignumber/-%23-BigNumber--BigNumber--methods--comparison-and-equivalence
-      const stakeAmount = parseDRF(this.stakeAmount) // 转换成 BN，即  1.234 => 123400000
-      if (this.walletBalance.lt(stakeAmount)) {
+      let stakeAmountBN = parseDRF(this.stakeAmount) // 转换成 BN，即  1.234 => 123400000
+      if (this.walletBalance.sub(stakeAmountBN).lt(parseDRF('0.0001'))) {
         this.stakeAmount = formatDRF(this.walletBalance) // 转换成 字符串 即 12340000 => 1.234
+      }
+    },
+    tryClearStakeAmount() {
+      if (parseDRF(this.stakeAmount).eq('0')) {
+        this.stakeAmount = ''
       }
     },
     changeUnstakeAmount(event) {
@@ -365,9 +406,14 @@ export default {
       } else {
         this.unstakeAmount = this.unstakeAmount.replace(/[^(\d|.)]/g, "");
       }
-      const unstakeAmount = parseDRF(this.unstakeAmount) 
+      const unstakeAmount = parseDRF(this.unstakeAmount)
       if (this.drfBalance.lt(unstakeAmount)) {
         this.unstakeAmount = formatDRF(this.drfBalance)
+      }
+    },
+    tryClearUnstakeAmount() {
+      if (parseDRF(this.unstakeAmount).eq('0')) {
+        this.unstakeAmount = ''
       }
     },
     getCurrentChainContract(name, isWrite = false) {
@@ -375,8 +421,6 @@ export default {
     },
     async updateAllowance() {
       this.allowance = await this.getCurrentChainContract('DRF').allowance(this.myWalletAddress, contractAddressMap[this.currentChainId]['DerifyStaking'])
-
-      console.log(`====> this.allowance :`, formatDRF(this.allowance))
     },
     async loadData() {
       const { drfBalance, edrfBalance } = await this.getCurrentChainContract('DerifyStaking').getStakingInfo(this.myWalletAddress)
@@ -470,6 +514,11 @@ export default {
     display: inline-block;
     border-radius: 33px;
     cursor: pointer;
+    border: none;
+    &:disabled {
+      cursor: not-allowed;
+      background: #888;
+    }
   }
   .btn-fill {
     background: linear-gradient(90deg, #e7446b 0%, #fae247 100%);
@@ -481,7 +530,7 @@ export default {
     display: inline-flex;
   }
   .btn-bordered-inner {
-    background: #190E2E;
+    background: #190e2e;
     backdrop-filter: blur(40px);
     flex: 1;
     border-radius: 33px;
@@ -611,7 +660,7 @@ export default {
       margin-top: 12px;
       text-align: center;
       .btn-bordered-inner {
-        background: #1F376F;
+        background: #1f376f;
       }
     }
     .btn2 {
@@ -648,8 +697,8 @@ export default {
     }
     > .h4 {
       font-size: 20px;
-      height:30px;
-      line-height:30px;
+      height: 30px;
+      line-height: 30px;
     }
     .btn {
       height: 52px;
@@ -764,7 +813,7 @@ export default {
   }
 }
 
-@media screen and (min-width:1200px) and (max-width:1440px){
+@media screen and (min-width: 1200px) and (max-width: 1440px) {
   .stake {
     .data {
       padding: 0 12px;
@@ -778,7 +827,6 @@ export default {
     }
   }
 }
-
 
 @media screen and (max-width: 1200px) {
   .stake {
