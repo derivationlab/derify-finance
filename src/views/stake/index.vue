@@ -344,30 +344,30 @@ export default {
     },
     // the input only number, can not be negative
     changeStakeAmount(event) {
-      // 判断大小用 BN 的 gt, lt  https://docs.ethers.io/v5/single-page/#/v5/api/utils/bignumber/-%23-BigNumber--BigNumber--methods--comparison-and-equivalence
+      if (event.data === ".") {
+        if (this.stakeAmount.indexOf(".") !== this.stakeAmount.lastIndexOf(".")) {
+          this.stakeAmount = this.stakeAmount.slice(0, this.stakeAmount.length - 1);
+        }
+      } else {
+        this.stakeAmount = this.stakeAmount.replace(/[^(\d|.)]/g, "");
+      }
+      // https://docs.ethers.io/v5/single-page/#/v5/api/utils/bignumber/-%23-BigNumber--BigNumber--methods--comparison-and-equivalence
       const stakeAmount = parseDRF(this.stakeAmount) // 转换成 BN，即  1.234 => 123400000
       if (this.walletBalance.lt(stakeAmount)) {
         this.stakeAmount = formatDRF(this.walletBalance) // 转换成 字符串 即 12340000 => 1.234
       }
-      // TODO @fiuche
-      if (event.data === ".") {
-        if (this.stakeAmount.indexOf(".") !== this.stakeAmount.lastIndexOf(".")) {
-          this.stakeAmount = this.stakeAmount.slice(0, this.stakeAmount.length - 1);
-        }
-      } else {
-        this.stakeAmount = this.stakeAmount.replace(/[^(\d|.)]/g, "");
-      }
     },
     changeUnstakeAmount(event) {
-      if (parseFloat(this.unstakeAmount) > this.drf) {
-        this.stakeAmount = this.drf;
-      }
       if (event.data === ".") {
-        if (this.stakeAmount.indexOf(".") !== this.stakeAmount.lastIndexOf(".")) {
-          this.stakeAmount = this.stakeAmount.slice(0, this.stakeAmount.length - 1);
+        if (this.unstakeAmount.indexOf(".") !== this.unstakeAmount.lastIndexOf(".")) {
+          this.unstakeAmount = this.unstakeAmount.slice(0, this.unstakeAmount.length - 1);
         }
       } else {
-        this.stakeAmount = this.stakeAmount.replace(/[^(\d|.)]/g, "");
+        this.unstakeAmount = this.unstakeAmount.replace(/[^(\d|.)]/g, "");
+      }
+      const unstakeAmount = parseDRF(this.unstakeAmount) 
+      if (this.drfBalance.lt(unstakeAmount)) {
+        this.unstakeAmount = formatDRF(this.drfBalance)
       }
     },
     getCurrentChainContract(name, isWrite = false) {
