@@ -124,8 +124,8 @@
             </div>
             <div class="h4">DRF</div>
             <div class="btn-group">
-              <div class="btn-fill btn1 h4" @click="showModalStake = true">Stake</div>
-              <div class="btn-bordered btn1 h4" @click="showModalUnstake = true">
+              <div class="btn-fill btn1 h4" @click="showModalStake = true, stakeErrMsg = ''">Stake</div>
+              <div class="btn-bordered btn1 h4" @click="showModalUnstake = true, unstakeErrMsg = ''">
                 <div class="btn-bordered-inner">
                   <span class="btn-bordered-inner-text">unstake</span>
                 </div>
@@ -420,6 +420,7 @@ export default {
       this.stakeErrMsg = errMsg
     },
     async withdrawAllEdrf() {
+      this.claimError = ''
       if (this.isSubmitClaim) return
       let errMsg = ''
       this.isSubmitClaim = true
@@ -591,6 +592,8 @@ export default {
     .num {
       color: rgba(255, 255, 255, 0.5);
       font-size: 12px;
+      height: 20px;
+      line-height: 20px;
       margin-top: 8px;
       position: relative;
       .all {
@@ -692,6 +695,18 @@ export default {
       .btn-group {
         margin-top: 60px;
         text-align: center;
+      }
+      > .h4 {
+        font-size: 20px;
+        height: 30px;
+        line-height: 30px;
+      }
+      > .error {
+        font-size: 16px;
+        color: red;
+        height: 20px;
+        line-height: 20px;
+        margin-bottom: -20px;
       }
     }
 
