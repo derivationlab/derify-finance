@@ -11,6 +11,8 @@
       <div class="partner-main">
         <div class="content">
           <img src="../../../assets/partner/bsc.svg" />
+          <img src="../../../assets/partner/solana.svg" />
+          <img src="../../../assets/partner/ape.svg" />
           <img src="../../../assets/partner/mw.svg" />
           <img src="../../../assets/partner/portico.svg" />
           <img src="../../../assets/partner/r8.svg" />
@@ -22,6 +24,8 @@
           <img src="../../../assets/partner/leos.svg" />
           <img src="../../../assets/partner/deficalendar.svg" />
           <img src="../../../assets/partner/ernx.svg" />
+          <img src="../../../assets/partner/chainflow.svg" />
+          <img src="../../../assets/partner/acy1.svg" />
         </div>
       </div>
     </div>
