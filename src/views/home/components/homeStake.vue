@@ -6,7 +6,7 @@
         Stake 1 DRF and get 1 eDRF per day (estimated). Burn eDRF to get broker
         privilege or vote in community.
       </div>
-      <div class="btn h4" @click="goStake">GO & STAKE</div>
+      <div class="btn" @click="goStake">GO & STAKE</div>
     </div>
   </div>
 </template>
@@ -33,18 +33,24 @@ export default {
     margin: 0 auto;
     max-width: 1440px;
     height: 100%;
+    padding-top: 80px;
     .h1 {
-      padding-top: 80px;
-      font-size: 5.9rem;
+      font-size: 52px;
       padding-left: 10px;
+      height: 78px;
+      line-height: 78px;
+      font-weight: bold;
     }
     .h4 {
-      font-size: 2.27rem;
+      font-size: 20px;
       padding-left: 10px;
+      height: 30px;
+      line-height: 30px;
     }
   }
   .btn {
     width: 182px;
+    font-size: 20px;
     height: 52px;
     background: linear-gradient(90deg, #e7446b 0%, #fae247 100%);
     border-radius: 33px;
@@ -65,8 +71,13 @@ $magin-m: 48px;
     padding-left: 37px;
     padding-right: 37px;
     .wrapper {
+      padding-top: 48px;
       .h1 {
-        padding-top: $magin-m;
+        height: auto;
+        font-size: 40px;
+      }
+      .h4 {
+        height: auto;
       }
       .btn {
         position: static;
@@ -83,8 +94,9 @@ $magin-s: 36px;
     padding-left: 24px;
     padding-right: 24px;
     .wrapper {
+      padding-top: 36px;
       .h1 {
-        padding-top: $magin-s;
+        line-height: 60px;
       }
       .btn {
         margin-top: $magin-s;

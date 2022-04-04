@@ -7,7 +7,7 @@
 -->
 <template>
   <div class="app-header">
-    <div class="app-hader-main">
+    <div class="app-header-main">
       <div class="container">
         <div class="nav">
           <a href="/" aria-colspan="logo">
@@ -152,7 +152,7 @@ export default {
 };
 </script>
 <style lang='scss' scoped>
-.app-hader {
+.app-header {
   &-main {
     text-align: center;
     width: 100%;
@@ -329,7 +329,7 @@ export default {
 }
 
 @media screen and(max-width: 1200px) {
-  .app-hader {
+  .app-header {
     &-main {
       .nav {
         &-main {

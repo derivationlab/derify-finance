@@ -113,7 +113,7 @@
         </div>
         <!-- <div class="btn connect-btn h4" v-show="!connected">Connect Wallet</div> -->
         <div class="data">
-          <div class="item">
+          <div class="item item1">
             <div class="title">Staked</div>
             <div class="num" v-if="drfBalance === 'notInit'">
               <Loading />
@@ -255,6 +255,7 @@ export default {
   },
   mounted() {
     this.initWeb3()
+    document.querySelector('.app-header').style.position = 'absolute'
   },
   methods: {
     async doSwitchNetwork() {
@@ -462,6 +463,7 @@ export default {
   .btn1 {
     width: 175px;
     height: 52px;
+    font-size: 20px;
     line-height: 52px;
     text-align: center;
     display: inline-block;
@@ -478,7 +480,7 @@ export default {
     display: inline-flex;
   }
   .btn-bordered-inner {
-    background: #271b51;
+    background: #190E2E;
     backdrop-filter: blur(40px);
     flex: 1;
     border-radius: 33px;
@@ -560,7 +562,7 @@ export default {
 
     .modal-input-title {
       color: rgba(255, 255, 255, 0.5);
-      font-size: 1.5rem;
+      font-size: 12px;
       height: 24px;
       line-height: 24px;
       margin-bottom: 8px;
@@ -571,11 +573,10 @@ export default {
       display: flex;
       flex-direction: row;
       color: rgba(255, 255, 255, 0.5);
-      font-size: 1.5rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.5);
       input {
         flex: 1;
-        font-size: 2.37rem;
+        font-size: 20px;
         background: none;
         border: none;
         outline: none;
@@ -584,13 +585,14 @@ export default {
       span {
         margin-left: 12px;
         line-height: 37px;
-        font-size: 1.8rem;
+        font-size: 12px;
       }
     }
     .num {
       color: rgba(255, 255, 255, 0.5);
       font-size: 12px;
       margin-top: 8px;
+      position: relative;
       .all {
         cursor: pointer;
         margin-left: 18px;
@@ -598,17 +600,23 @@ export default {
         background: linear-gradient(90deg, #e7446b, #fae247 100%);
         color: transparent;
         -webkit-background-clip: text;
+        position: absolute;
+        right: 0;
       }
     }
     .btns {
       margin-top: 12px;
       text-align: center;
+      .btn-bordered-inner {
+        background: #1F376F;
+      }
     }
     .btn2 {
       height: 32px;
       line-height: 32px;
       width: 130px;
       color: #fff;
+      font-size: 16px;
     }
   }
   .wrapper {
@@ -630,12 +638,15 @@ export default {
     color: #fff;
     text-align: center;
     .h1 {
-      font-size: 5.9rem;
-      height: 8.8rem;
-      line-height: 8.8rem;
+      font-size: 52px;
+      height: 78px;
+      line-height: 78px;
+      font-weight: bold;
     }
-    .h4 {
-      font-size: 2.27rem;
+    > .h4 {
+      font-size: 20px;
+      height:30px;
+      line-height:30px;
     }
     .btn {
       height: 52px;
@@ -665,15 +676,18 @@ export default {
       backdrop-filter: blur(40px);
       border-radius: 42px;
       .title {
-        font-size: 3.64rem;
+        font-size: 32px;
         margin-top: 80px;
         margin-bottom: 40px;
+        font-weight: 700;
       }
       .num1 {
-        font-size: 4.54rem;
+        font-size: 60px;
+        font-weight: 700;
       }
       .num2 {
-        font-size: 3.54rem;
+        font-size: 40px;
+        font-weight: 700;
       }
       .btn-group {
         margin-top: 60px;
@@ -735,7 +749,23 @@ export default {
   }
 }
 
-@media screen and (max-width: 744px) {
+@media screen and (min-width:1200px) and (max-width:1440px){
+  .stake {
+    .data {
+      padding: 0 12px;
+      > .item {
+        flex: 1;
+        width: auto;
+      }
+      > .item1 {
+        margin-right: 16px;
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 1200px) {
   .stake {
     background: #0e0314;
     background-image: url(../../assets/stake_bg2.png);
@@ -743,9 +773,11 @@ export default {
     background-size: 100% 100%;
     background-position: center top;
     .content {
+      padding-top: 120px;
       .data {
         display: block;
         height: auto;
+        margin-top: 48px;
       }
       .item {
         width: auto;
@@ -765,6 +797,7 @@ export default {
       .h4-text {
         padding-left: 40px;
         padding-right: 40px;
+        height: auto;
       }
       .footer {
         position: static;
@@ -788,13 +821,22 @@ export default {
     }
 
     .content {
+      padding-top: 116px;
       .connect-btn {
         margin-top: 36px;
+      }
+      .h1 {
+        font-size: 40px;
+        line-height: 60px;
       }
       .h1,
       .h4-text {
         padding-left: 16px;
         padding-right: 16px;
+        height: auto;
+      }
+      .data {
+        margin-top: 36px;
       }
       .item {
         margin: 0 12px;
