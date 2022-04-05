@@ -421,13 +421,13 @@ export default {
     },
     async updateAllowance() {
       this.allowance = await this.getCurrentChainContract('DRF').allowance(this.myWalletAddress, contractAddressMap[this.currentChainId]['DerifyStaking'])
+      console.log(`====> this.allowance :`, formatDRF(this.allowance))
     },
     async loadData() {
       const { drfBalance, edrfBalance } = await this.getCurrentChainContract('DerifyStaking').getStakingInfo(this.myWalletAddress)
       await this.updateAllowance()
 
       this.walletBalance = await this.getCurrentChainContract('DRF').balanceOf(this.myWalletAddress)
-      console.log(`====> { drfBalance, edrfBalance, allowance } :`, { drfBalance, edrfBalance, walletBalance: this.walletBalance })
       this.drfBalance = drfBalance
       this.edrfBalance = edrfBalance
 
@@ -453,7 +453,8 @@ export default {
       if (this.isApproving) return
       let errMsg = ''
       try {
-        const tx = await this.getCurrentChainContract('DRF', true).approve(contractAddressMap[this.currentChainId]['DerifyStaking'], parseDRF(this.stakeAmount).add(10))
+        console.log(`====> parseDRF(this.stakeAmount) :`, parseDRF(this.stakeAmount))
+        const tx = await this.getCurrentChainContract('DRF', true).approve(contractAddressMap[this.currentChainId]['DerifyStaking'], parseDRF(this.stakeAmount))
         this.isApproving = true
         await tx.wait()
         await this.updateAllowance()
