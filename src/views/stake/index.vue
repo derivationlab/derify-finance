@@ -1,43 +1,5 @@
 <template>
   <div class="stake">
-    <!-- <div class="modal login-modal" v-show="!showModalSwitchNetwork && showModalLogin">
-      <div class="modal-content">
-        <div class="title">Connect your wallet</div>
-        <div class="modal-input">
-          <button class="flex connect-btn" v-if="isMetaMaskInstalled" @click="requestAccounts">
-            <div>MetaMask</div>
-            <div>
-              <img src="../../assets/metamask.png" class="wallet-img" />
-            </div>
-          </button>
-          <button class="flex connect-btn" v-else @click="startOnboarding">
-            <div>Install MetaMask</div>
-            <div>
-              <img src="../../assets/metamask.png" class="wallet-img" />
-            </div>
-          </button>
-          <div class="error" v-if="errMsg">
-            <img src="../../assets/error.png" alt="error" />
-            {{ errMsg }}
-          </div>
-        </div>
-      </div>
-    </div>-->
-    <!-- <div class="modal login-modal" v-show="showModalSwitchNetwork">
-      <div class="modal-content">
-        <div class="title">Switch your network</div>
-        <div class="modal-input">
-          <button
-            class="flex text-center connect-btn"
-            @click="doSwitchNetwork"
-          >{{ switchNetworkBtnText }}</button>
-          <div class="error">
-            <img src="../../assets/error.png" alt="error" /> Wrong network!
-          </div>
-        </div>
-      </div>
-    </div>-->
-    <!-- modal -->
     <div class="modal" v-show="showModalStake">
       <div class="modal-content">
         <div class="title">
@@ -267,7 +229,7 @@ export default {
       if (!this.allowance) {
         return false
       }
-      const stakeAmount = parseUnits(this.stakeAmount)
+      const stakeAmount = parseUnits(this.stakeAmount, 8)
       return this.allowance.lt(stakeAmount)
     },
     myWalletAddress() {
