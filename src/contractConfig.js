@@ -1,14 +1,19 @@
 import { ethers } from "ethers"
 import DRF from '@/abis/DRF.json'
-// import eDRF from '@/abis/eDRF.json'
+import eDRF from '@/abis/eDRF.json'
 import DerifyStaking from '@/abis/DerifyStaking.json'
 
 export const contractAbiMap = {
   DRF,
-  // eDRF,
+  eDRF,
   DerifyStaking,
 }
 export const contractAddressMap = {
+  '0x38': {
+    DRF: '0x89C1Af791d7B4cf046Dca8Fa10a41Dd2298A6a3F',
+    eDRF: '',
+    DerifyStaking: '',
+  },
   '0x61': {
     DRF: '0x1B4d21f22EF7F7aC0f13CEe6030e37569161DCE6',
     eDRF: '0xFe3D4E8100e75c0C84a4394Ca1af142cb647c970',

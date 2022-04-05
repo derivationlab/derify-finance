@@ -1,6 +1,6 @@
 <template>
   <div class="stake">
-    <div class="modal login-modal" v-show="!showModalSwitchNetwork && showModalLogin">
+    <!-- <div class="modal login-modal" v-show="!showModalSwitchNetwork && showModalLogin">
       <div class="modal-content">
         <div class="title">Connect your wallet</div>
         <div class="modal-input">
@@ -22,8 +22,8 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="modal login-modal" v-show="showModalSwitchNetwork">
+    </div>-->
+    <!-- <div class="modal login-modal" v-show="showModalSwitchNetwork">
       <div class="modal-content">
         <div class="title">Switch your network</div>
         <div class="modal-input">
@@ -36,7 +36,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
     <!-- modal -->
     <div class="modal" v-show="showModalStake">
       <div class="modal-content">
@@ -57,15 +57,20 @@
             />
             <span>DRF</span>
           </div>
-          <div class="num" @click="stakeAmount = formatDRF(walletBalance)">
+          <div class="num" @click="stakeAmount = formatUnits(walletBalance)">
             Max:
-            <span>{{ walletBalance | formatDRF }}</span> DRF
+            <span>{{ walletBalance | formatUnits }}</span> DRF
             <span class="all">All</span>
           </div>
         </div>
         <div class="error">{{ stakeErrMsg }}</div>
         <div class="btns">
-          <div class="btn-fill btn1 h4 btn2" @click="submitApprove" v-if="needMoreAllowance">Approve</div>
+          <button
+            :disabled="!canApprove"
+            class="btn-fill btn1 h4 btn2"
+            @click="submitApprove"
+            v-if="needMoreAllowance"
+          >Approve</button>
           <button
             class="btn-fill btn1 h4 btn2"
             :disabled="!canStake"
@@ -128,8 +133,16 @@
           Stake 1 DRF and get 1 eDRF per day (estimated). Burn eDRF to get
           broker privilege or vote in community.
         </div>
-        <!-- <div class="btn connect-btn h4" v-show="!connected">Connect Wallet</div> -->
-        <div class="data">
+        <div class="login-wrap" v-show="requireLogin">
+          <button
+            class="login-btn"
+            @click="requestAccounts"
+            v-if="isMetaMaskInstalled"
+          >Connect Wallet</button>
+          <button class="login-btn" @click="startOnboarding" v-else>Install MetaMask</button>
+          <div class="error">{{ errMsg }}</div>
+        </div>
+        <div class="data" v-show="!requireLogin">
           <div class="item item1">
             <div class="title">Staked</div>
             <div class="num" v-if="drfBalance === 'notInit'">
@@ -164,7 +177,11 @@
             <div class="h4">eDRF</div>
             <div class="error" v-if="claimError">{{ claimError }}</div>
             <div class="btn-group">
-              <div class="btn-fill btn1 h4" @click="withdrawAllEdrf">Claim All</div>
+              <button
+                class="btn-fill btn1 h4"
+                :disabled="!canClaim"
+                @click="withdrawAllEdrf"
+              >Claim All</button>
             </div>
           </div>
         </div>
@@ -183,18 +200,18 @@ import detectEthereumProvider from '@metamask/detect-provider'
 import { getContract, chainInfoMap, contractAddressMap } from '@/contractConfig.js'
 const onboarding = new MetaMaskOnboarding()
 
-const formatDRF = function (val) {
+const formatUnits = function (val, precision = 18) {
   if (!val) { return '' }
-  val = ethers.utils.formatUnits(val, 18)
+  val = ethers.utils.formatUnits(val, precision)
   val = val.split('.')
   val = val[0] + '.' + val[1].substr(0, 4)
   return val
 }
-const parseDRF = function (val) {
+const parseUnits = function (val, precision = 18) {
   if (!val) {
     val = 0
   }
-  return ethers.utils.parseUnits(val.toString(), 18)
+  return ethers.utils.parseUnits(val.toString(), precision)
 }
 
 export default {
@@ -215,13 +232,13 @@ export default {
       currentChainId: '',
       // targetChainId: '0x38', // Smart Chain
       targetChainId: '0x61', // Smart Chain Testnet
-
       drfBalance: 'notInit',
       edrfBalance: 'notInit',
       stakeAmount: '',
       allowance: 0,
       stakeErrMsg: '',
       isApproving: false,
+      isStaking: false,
       claimError: '',
       isSubmitClaim: false,
       showModalUnstake: false,
@@ -229,6 +246,7 @@ export default {
       unstakeAmount: '',
       unstakeErrMsg: '',
       walletBalance: '',
+      walletEdrfBalance: '',
     };
   },
   filters: {
@@ -241,15 +259,15 @@ export default {
     theDecimal: function (val) {
       return val.toString().split('.')[1] || '00'
     },
-    formatDRF,
-    parseDRF,
+    formatUnits,
+    parseUnits,
   },
   computed: {
     needMoreAllowance() {
       if (!this.allowance) {
         return false
       }
-      const stakeAmount = parseDRF(this.stakeAmount)
+      const stakeAmount = parseUnits(this.stakeAmount)
       return this.allowance.lt(stakeAmount)
     },
     myWalletAddress() {
@@ -258,13 +276,13 @@ export default {
       }
       return this.accounts[0]
     },
-    showModalLogin() {
+    requireLogin() {
       if (!this.accounts) {
         return true
       }
       return this.accounts.length === 0
     },
-    showModalSwitchNetwork() {
+    requireSwitchNetwork() {
       if (!this.currentChainId) {
         return false
       }
@@ -277,14 +295,22 @@ export default {
       return `Click to switch`
       // return `Click to switch to ${chainInfoMap[this.targetChainId].chainName}`
     },
+    canApprove() {
+      if (this.isApproving) return false
+      return parseUnits(this.stakeAmount).gt('0')
+    },
     canStake() {
-      return parseDRF(this.stakeAmount).gt('0')
+      if (this.isStaking) return false
+      return parseUnits(this.stakeAmount).gt('0')
     },
     canUnstake() {
-      return parseDRF(this.unstakeAmount).gt('0')
+      if (this.isSubmitUnstake) return false
+      return parseUnits(this.unstakeAmount).gt('0')
     },
     canClaim() {
-      return this.edrfBalance.gt('0')
+      if (this.isSubmitClaim) return false
+      if (this.edrfBalance === 'notInit') return false
+      return parseUnits(this.edrfBalance).gt('0')
     }
   },
   mounted() {
@@ -292,8 +318,8 @@ export default {
     document.querySelector('.app-header').style.position = 'absolute'
   },
   methods: {
-    formatDRF,
-    parseDRF,
+    formatUnits,
+    parseUnits,
     async doSwitchNetwork() {
       const chainId = this.targetChainId
       try {
@@ -346,7 +372,7 @@ export default {
         return
       }
       this.web3Provider = new ethers.providers.Web3Provider(this.provider)
-      await this.web3Provider.send('eth_requestAccounts', [])
+      // await this.web3Provider.send('eth_requestAccounts', [])
       this.isMetaMaskInstalled = true
 
       this.provider.on('chainChanged', chainId => {
@@ -360,7 +386,11 @@ export default {
         this.accounts = newAccounts
         this.isOnboarding = false
         onboarding.stopOnboarding()
-        await this.loadData()
+        if (this.currentChainId !== this.targetChainId) {
+          await this.doSwitchNetwork()
+        } else {
+          await this.loadData()
+        }
       }
       this.provider.on('accountsChanged', handleNewAccount)
 
@@ -387,14 +417,18 @@ export default {
       } else {
         this.stakeAmount = this.stakeAmount.replace(/[^(\d|.)]/g, "");
       }
+      const stakeAmountArr = this.stakeAmount.split('.')
+      if (stakeAmountArr[1] && stakeAmountArr[1].length > 4) {
+        this.stakeAmount = stakeAmountArr[0] + '.' + stakeAmountArr[1].substr(0, 4)
+      }
       // https://docs.ethers.io/v5/single-page/#/v5/api/utils/bignumber/-%23-BigNumber--BigNumber--methods--comparison-and-equivalence
-      let stakeAmountBN = parseDRF(this.stakeAmount) // 转换成 BN，即  1.234 => 123400000
-      if (this.walletBalance.sub(stakeAmountBN).lt(parseDRF('0.0001'))) {
-        this.stakeAmount = formatDRF(this.walletBalance) // 转换成 字符串 即 12340000 => 1.234
+      let stakeAmountBN = parseUnits(this.stakeAmount) // 转换成 BN，即  1.234 => 123400000
+      if (this.walletBalance.lt(stakeAmountBN)) {
+        this.stakeAmount = formatUnits(this.walletBalance) // 转换成 字符串 即 12340000 => 1.234
       }
     },
     tryClearStakeAmount() {
-      if (parseDRF(this.stakeAmount).eq('0')) {
+      if (parseUnits(this.stakeAmount).eq('0')) {
         this.stakeAmount = ''
       }
     },
@@ -406,13 +440,18 @@ export default {
       } else {
         this.unstakeAmount = this.unstakeAmount.replace(/[^(\d|.)]/g, "");
       }
-      const unstakeAmount = parseDRF(this.unstakeAmount)
-      if (this.drfBalance.lt(unstakeAmount)) {
-        this.unstakeAmount = formatDRF(this.drfBalance)
+      const unstakeAmountArr = this.unstakeAmount.split('.')
+      if (unstakeAmountArr[1] && unstakeAmountArr[1].length > 4) {
+        this.unstakeAmount = unstakeAmountArr[0] + '.' + unstakeAmountArr[1].substr(0, 4)
+      }
+
+      const unstakeAmount = parseUnits(this.unstakeAmount, 8)
+      if (parseUnits(this.drfBalance, 8).lt(unstakeAmount)) {
+        this.unstakeAmount = this.drfBalance
       }
     },
     tryClearUnstakeAmount() {
-      if (parseDRF(this.unstakeAmount).eq('0')) {
+      if (parseUnits(this.unstakeAmount).eq('0')) {
         this.unstakeAmount = ''
       }
     },
@@ -421,45 +460,53 @@ export default {
     },
     async updateAllowance() {
       this.allowance = await this.getCurrentChainContract('DRF').allowance(this.myWalletAddress, contractAddressMap[this.currentChainId]['DerifyStaking'])
-      console.log(`====> this.allowance :`, formatDRF(this.allowance))
     },
     async loadData() {
+      if (!this.myWalletAddress) {
+        return
+      }
       const { drfBalance, edrfBalance } = await this.getCurrentChainContract('DerifyStaking').getStakingInfo(this.myWalletAddress)
       await this.updateAllowance()
 
       this.walletBalance = await this.getCurrentChainContract('DRF').balanceOf(this.myWalletAddress)
-      this.drfBalance = drfBalance
-      this.edrfBalance = edrfBalance
+      this.walletEdrfBalance = await this.getCurrentChainContract('eDRF').balanceOf(this.myWalletAddress)
 
-      // this.drfBalance = 111.1111
-      // this.edrfBalance = 222.2222
+      this.drfBalance = formatUnits(drfBalance, 8)
+      this.edrfBalance = formatUnits(edrfBalance, 8)
     },
     async submitStake() {
-      const stakeAmount = parseDRF(this.stakeAmount)
+      if (this.isStaking) return
       if (this.needMoreAllowance) {
         return this.submitApprove()
       }
       let errMsg = ''
+      this.isStaking = true
+      const stakeAmount = parseUnits(this.stakeAmount, 8)
       try {
         const tx = await this.getCurrentChainContract('DerifyStaking', true).stakingDrf(stakeAmount)
         await tx.wait()
       } catch (e) {
         console.log(`====> e :`, e)
-        errMsg = e.data.message
+        errMsg = e.message || e.data.message
       }
+      this.isStaking = false
       this.stakeErrMsg = errMsg
+      if (!errMsg) {
+        this.stakeAmount = ''
+        await this.loadData()
+      }
     },
     async submitApprove() {
       if (this.isApproving) return
       let errMsg = ''
       try {
-        console.log(`====> parseDRF(this.stakeAmount) :`, parseDRF(this.stakeAmount))
-        const tx = await this.getCurrentChainContract('DRF', true).approve(contractAddressMap[this.currentChainId]['DerifyStaking'], parseDRF(this.stakeAmount))
+        const tx = await this.getCurrentChainContract('DRF', true).approve(contractAddressMap[this.currentChainId]['DerifyStaking'], parseUnits(this.stakeAmount))
         this.isApproving = true
         await tx.wait()
         await this.updateAllowance()
       } catch (e) {
-        errMsg = e.message
+        console.log(`====> e :`, e)
+        errMsg = e.message || e.data.message
       }
       this.isApproving = false
       this.stakeErrMsg = errMsg
@@ -470,26 +517,70 @@ export default {
       let errMsg = ''
       this.isSubmitClaim = true
       try {
-        await this.getCurrentChainContract('DerifyStaking', true).withdrawAllEdrf()
+        await this.addEdrfToken()
+        const tx = await this.getCurrentChainContract('DerifyStaking', true).withdrawAllEdrf()
+        await tx.wait()
       } catch (e) {
         console.log(`====> e :`, e)
-        errMsg = e.message
+        errMsg = e.message || e.data.message
       }
       this.isSubmitClaim = false
       this.claimError = errMsg
+      if (!errMsg) {
+        await this.loadData()
+      }
+    },
+    async addEdrfToken() {
+      if (ls.getItem('hasRegEdrfToken', false)) return false
+      if (this.walletEdrfBalance.gt(0)) return false
+
+      const tokenAddress = contractAddressMap[this.targetChainId]['eDRF'];
+      const tokenSymbol = 'eDRF';
+      const tokenDecimals = 18;
+      // const tokenImage = 'http://placekitten.com/200/300';
+
+      try {
+        // wasAdded is a boolean. Like any RPC method, an error may be thrown.
+        const wasAdded = await ethereum.request({
+          method: 'wallet_watchAsset',
+          params: {
+            type: 'ERC20', // Initially only supports ERC20, but eventually more!
+            options: {
+              address: tokenAddress, // The address that the token is at.
+              symbol: tokenSymbol, // A ticker symbol or shorthand, up to 5 chars.
+              decimals: tokenDecimals, // The number of decimals in the token
+              // image: tokenImage, // A string url of the token logo
+            },
+          },
+        });
+
+        if (wasAdded) {
+          ls.setItem('hasRegEdrfToken', true)
+          console.log('Thanks for your interest!');
+        } else {
+          console.log('Your loss!');
+        }
+      } catch (error) {
+        console.log(error);
+      }
     },
     async submitUnstake() {
       if (this.isSubmitUnstake) return
       let errMsg = ''
       this.isSubmitUnstake = true
       try {
-        await this.getCurrentChainContract('DerifyStaking', true).redeemDrf(parseDRF(this.unstakeAmount))
+        const tx = await this.getCurrentChainContract('DerifyStaking', true).redeemDrf(parseUnits(this.unstakeAmount, 8))
+        await tx.wait()
       } catch (e) {
         console.log(`====> e :`, e)
         errMsg = e.message
       }
       this.isSubmitUnstake = false
       this.unstakeErrMsg = errMsg
+      if (!errMsg) {
+        this.unstakeAmount = ''
+        await this.loadData()
+      }
     }
   },
 };
@@ -516,6 +607,7 @@ export default {
     border-radius: 33px;
     cursor: pointer;
     border: none;
+    color: #fff;
     &:disabled {
       cursor: not-allowed;
       background: #888;
@@ -756,7 +848,8 @@ export default {
         color: red;
         height: 20px;
         line-height: 20px;
-        margin-bottom: -20px;
+        margin-bottom: -30px;
+        margin-top: 10px;
       }
     }
 
@@ -811,6 +904,27 @@ export default {
   }
   .wallet-img {
     height: 20px;
+  }
+}
+
+.login-wrap {
+  .login-btn {
+    display: inline-block;
+    font-size: 20px;
+    line-height: 20px;
+    color: #fff;
+    background: linear-gradient(90deg, #e7446b 0%, #fae247 100%);
+    border-radius: 33px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-sizing: border-box;
+    padding: 16px 48px;
+    opacity: 0.8;
+    margin-top: 60px;
+  }
+  .error {
+    color: #f00;
+    font-size: 20px;
+    margin-top: 20px;
   }
 }
 
