@@ -902,6 +902,10 @@ export default {
         margin-right: 16px;
       }
     }
+    .content .footer {
+      position: static;
+      margin: 32px 0;
+    }
   }
 }
 
