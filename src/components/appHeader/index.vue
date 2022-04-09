@@ -7,7 +7,7 @@
 -->
 <template>
   <div class="app-header">
-    <div class="app-hader-main">
+    <div class="app-header-main">
       <div class="container">
         <div class="nav">
           <a href="/" aria-colspan="logo">
@@ -99,10 +99,7 @@
                     </svg>
                   </div>
                   <div class="sub-nav">
-                    <a
-                      href="https://apeswap.finance/add/0x89C1Af791d7B4cf046Dca8Fa10a41Dd2298A6a3F/0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56"
-                      target="_blank"
-                    >
+                    <a href="https://apeswap.finance/jungle-farms" target="_blank">
                       <img src="../../assets/svg/nav-icons-ape.svg" alt srcset />
                       ApeSwap
                     </a>
@@ -155,7 +152,7 @@ export default {
 };
 </script>
 <style lang='scss' scoped>
-.app-hader {
+.app-header {
   &-main {
     text-align: center;
     width: 100%;
@@ -332,7 +329,7 @@ export default {
 }
 
 @media screen and(max-width: 1200px) {
-  .app-hader {
+  .app-header {
     &-main {
       .nav {
         &-main {
