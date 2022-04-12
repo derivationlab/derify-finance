@@ -11,12 +11,7 @@
         <div class="modal-input">
           <div class="modal-input-title">Amount</div>
           <div class="input-wrapper">
-            <input
-              type="text"
-              v-model="stakeAmount"
-              @input="changeStakeAmount"
-              @blur="tryClearStakeAmount"
-            />
+            <input type="text" v-model="stakeAmount" @input="changeStakeAmount" @blur="tryClearStakeAmount" />
             <span>DRF</span>
           </div>
           <div class="num" @click="stakeAmount = formatUnits(walletBalance)">
@@ -27,18 +22,8 @@
         </div>
         <div class="error">{{ stakeErrMsg }}</div>
         <div class="btns">
-          <button
-            :disabled="!canApprove"
-            class="btn-fill btn1 h4 btn2"
-            @click="submitApprove"
-            v-if="needMoreAllowance"
-          >Approve</button>
-          <button
-            class="btn-fill btn1 h4 btn2"
-            :disabled="!canStake"
-            @click="submitStake"
-            v-else
-          >Stake</button>
+          <button :disabled="!canApprove" class="btn-fill btn1 h4 btn2" @click="submitApprove" v-if="needMoreAllowance">Approve</button>
+          <button class="btn-fill btn1 h4 btn2" :disabled="!canStake" @click="submitStake" v-else>Stake</button>
           <div class="btn-bordered btn1 h4 btn2" @click="showModalStake = false">
             <div class="btn-bordered-inner">
               <span class="btn-bordered-inner-text">cancel</span>
@@ -58,12 +43,7 @@
         <div class="modal-input">
           <div class="modal-input-title">Amount</div>
           <div class="input-wrapper">
-            <input
-              type="text"
-              v-model="unstakeAmount"
-              @input="changeUnstakeAmount"
-              @blur="tryClearUnstakeAmount"
-            />
+            <input type="text" v-model="unstakeAmount" @input="changeUnstakeAmount" @blur="tryClearUnstakeAmount" />
             <span>DRF</span>
           </div>
           <div class="num" @click="unstakeAmount = drfBalance">
@@ -74,11 +54,7 @@
         </div>
         <div class="error">{{ unstakeErrMsg }}</div>
         <div class="btns">
-          <button
-            class="btn-fill btn1 h4 btn2"
-            @click="submitUnstake"
-            :disabled="!canUnstake"
-          >Unstake</button>
+          <button class="btn-fill btn1 h4 btn2" @click="submitUnstake" :disabled="!canUnstake">Unstake</button>
           <div class="btn-bordered btn1 h4 btn2" @click="showModalUnstake = false">
             <div class="btn-bordered-inner">
               <span class="btn-bordered-inner-text">cancel</span>
@@ -96,11 +72,7 @@
           broker privilege or vote in community.
         </div>
         <div class="login-wrap" v-show="requireLogin">
-          <button
-            class="login-btn"
-            @click="requestAccounts"
-            v-if="isMetaMaskInstalled"
-          >Connect Wallet</button>
+          <button class="login-btn" @click="requestAccounts" v-if="isMetaMaskInstalled">Connect Wallet</button>
           <button class="login-btn" @click="startOnboarding" v-else>Install MetaMask</button>
           <div class="error">{{ errMsg }}</div>
         </div>
@@ -117,10 +89,7 @@
             <div class="h4">DRF</div>
             <div class="btn-group">
               <div class="btn-fill btn1 h4" @click="showModalStake = true, stakeErrMsg = ''">Stake</div>
-              <div
-                class="btn-bordered btn1 h4"
-                @click="showModalUnstake = true, unstakeErrMsg = ''"
-              >
+              <div class="btn-bordered btn1 h4" @click="showModalUnstake = true, unstakeErrMsg = ''">
                 <div class="btn-bordered-inner">
                   <span class="btn-bordered-inner-text">unstake</span>
                 </div>
@@ -139,11 +108,7 @@
             <div class="h4">eDRF</div>
             <div class="error" v-if="claimError">{{ claimError }}</div>
             <div class="btn-group">
-              <button
-                class="btn-fill btn1 h4"
-                :disabled="!canClaim"
-                @click="withdrawAllEdrf"
-              >Claim All</button>
+              <button class="btn-fill btn1 h4" :disabled="!canClaim" @click="withdrawAllEdrf">Claim All</button>
             </div>
           </div>
         </div>
@@ -176,6 +141,9 @@ const parseUnits = function (val, precision = 18) {
   return ethers.utils.parseUnits(val.toString(), precision)
 }
 
+// '0x38', // Smart Chain
+// '0x61', // Smart Chain Testnet
+const targetChainId = process.env.VUE_APP_VERCEL_ENV === 'production' ? '0x38' : '0x61'
 export default {
   components: {
     Loading,
@@ -192,8 +160,7 @@ export default {
       accounts: ls.getItem('web3.accounts', []),
       errMsg: '',
       currentChainId: '',
-      // targetChainId: '0x38', // Smart Chain
-      targetChainId: '0x61', // Smart Chain Testnet
+      targetChainId,
       drfBalance: 'notInit',
       edrfBalance: 'notInit',
       stakeAmount: '',
@@ -570,26 +537,31 @@ export default {
     cursor: pointer;
     border: none;
     color: #fff;
+
     &:disabled {
       cursor: not-allowed;
       background: #888;
     }
   }
+
   .btn-fill {
     background: linear-gradient(90deg, #e7446b 0%, #fae247 100%);
   }
+
   .btn-bordered {
     margin-left: 40px;
     background: linear-gradient(90deg, #e7446b 0%, #fae247 100%);
     padding: 2px;
     display: inline-flex;
   }
+
   .btn-bordered-inner {
     background: #190e2e;
     backdrop-filter: blur(40px);
     flex: 1;
     border-radius: 33px;
   }
+
   .btn-bordered-inner-text {
     line-height: 20px;
     background: linear-gradient(90deg, #e7446b, #fae247 100%);
@@ -610,6 +582,7 @@ export default {
     justify-content: center;
     align-items: center;
     z-index: 9999;
+
     .modal-content {
       width: 408px;
       height: 279px;
@@ -617,6 +590,7 @@ export default {
       backdrop-filter: blur(40px);
       /* Note: backdrop-filter has minimal browser support */
       border-radius: 24px;
+
       .error {
         color: #f00;
         font-size: 12px;
@@ -625,6 +599,7 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
+
         img {
           width: 12px;
           height: 12px;
@@ -633,6 +608,7 @@ export default {
         }
       }
     }
+
     .title {
       height: 24px;
       line-height: 24px;
@@ -642,6 +618,7 @@ export default {
       text-align: center;
       position: relative;
       margin: 20px 36px;
+
       .close {
         position: absolute;
         right: 0;
@@ -653,12 +630,14 @@ export default {
         background: none;
         justify-content: center;
         align-items: center;
+
         img {
           width: 24px;
           height: 24px;
         }
       }
     }
+
     .modal-input {
       width: 100%;
       height: 135px;
@@ -679,6 +658,7 @@ export default {
       flex-direction: row;
       color: rgba(255, 255, 255, 0.5);
       border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+
       input {
         flex: 1;
         font-size: 20px;
@@ -687,12 +667,14 @@ export default {
         outline: none;
         color: rgba(255, 255, 255, 0.5);
       }
+
       span {
         margin-left: 12px;
         line-height: 37px;
         font-size: 12px;
       }
     }
+
     .num {
       color: rgba(255, 255, 255, 0.5);
       font-size: 12px;
@@ -700,6 +682,7 @@ export default {
       line-height: 20px;
       margin-top: 8px;
       position: relative;
+
       .all {
         cursor: pointer;
         margin-left: 18px;
@@ -711,13 +694,16 @@ export default {
         right: 0;
       }
     }
+
     .btns {
       margin-top: 12px;
       text-align: center;
+
       .btn-bordered-inner {
         background: #1f376f;
       }
     }
+
     .btn2 {
       height: 32px;
       line-height: 32px;
@@ -726,35 +712,36 @@ export default {
       font-size: 16px;
     }
   }
+
   .wrapper {
     flex: 1;
     position: relative;
-    background: radial-gradient(
-        29.53% 69.69% at 100% 0%,
+    background: radial-gradient(29.53% 69.69% at 100% 0%,
         #0b2c57 0%,
-        rgba(18, 6, 33, 0) 100%
-      ),
-      radial-gradient(
-        62.66% 86.81% at 0% 45.42%,
+        rgba(18, 6, 33, 0) 100%),
+      radial-gradient(62.66% 86.81% at 0% 45.42%,
         #3d0a5b 0%,
-        rgba(18, 6, 33, 0) 100%
-      );
+        rgba(18, 6, 33, 0) 100%);
   }
+
   .content {
     padding-top: 168px;
     color: #fff;
     text-align: center;
+
     .h1 {
       font-size: 52px;
       height: 78px;
       line-height: 78px;
       font-weight: bold;
     }
-    > .h4 {
+
+    >.h4 {
       font-size: 20px;
       height: 30px;
       line-height: 30px;
     }
+
     .btn {
       height: 52px;
       line-height: 52px;
@@ -766,6 +753,7 @@ export default {
       margin-top: 60px;
       display: inline-block;
     }
+
     .data {
       position: relative;
       width: 100%;
@@ -776,36 +764,43 @@ export default {
       display: flex;
       justify-content: space-between;
     }
+
     .item {
       width: 710px;
       height: 452px;
       background: rgba(39, 27, 81, 0.4);
       backdrop-filter: blur(40px);
       border-radius: 42px;
+
       .title {
         font-size: 32px;
         margin-top: 80px;
         margin-bottom: 40px;
         font-weight: 700;
       }
+
       .num1 {
         font-size: 60px;
         font-weight: 700;
       }
+
       .num2 {
         font-size: 40px;
         font-weight: 700;
       }
+
       .btn-group {
         margin-top: 60px;
         text-align: center;
       }
-      > .h4 {
+
+      >.h4 {
         font-size: 20px;
         height: 30px;
         line-height: 30px;
       }
-      > .error {
+
+      >.error {
         font-size: 16px;
         color: red;
         height: 20px;
@@ -826,6 +821,7 @@ export default {
   .login-modal {
     .modal-content {
       height: auto;
+
       .modal-input {
         height: auto;
         padding-bottom: 46px;
@@ -843,6 +839,7 @@ export default {
     justify-content: center;
   }
 }
+
 .connect-btn {
   width: 100%;
   font-size: 16px;
@@ -856,14 +853,17 @@ export default {
   margin: 12px 0 6px;
   padding: 5px 14px;
   opacity: 0.8;
+
   &:hover {
     background: rgba(255, 255, 255, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.4);
   }
+
   &:active {
     transform: scale(0.98);
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
   }
+
   .wallet-img {
     height: 20px;
   }
@@ -883,6 +883,7 @@ export default {
     opacity: 0.8;
     margin-top: 60px;
   }
+
   .error {
     color: #f00;
     font-size: 20px;
@@ -894,14 +895,17 @@ export default {
   .stake {
     .data {
       padding: 0 12px;
-      > .item {
+
+      >.item {
         flex: 1;
         width: auto;
       }
-      > .item1 {
+
+      >.item1 {
         margin-right: 16px;
       }
     }
+
     .content .footer {
       position: static;
       margin: 32px 0;
@@ -916,33 +920,41 @@ export default {
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-position: center top;
+
     .content {
       padding-top: 120px;
+
       .data {
         display: block;
         height: auto;
         margin-top: 48px;
       }
+
       .item {
         width: auto;
         margin: 0 30px;
         margin-bottom: 17px;
+
         .title {
           padding-top: 80px;
           margin-top: 0;
         }
       }
+
       .connect-btn {
         margin-top: 48px;
       }
+
       .h1 {
         height: auto;
       }
+
       .h4-text {
         padding-left: 40px;
         padding-right: 40px;
         height: auto;
       }
+
       .footer {
         position: static;
         padding-top: 36px;
@@ -966,30 +978,37 @@ export default {
 
     .content {
       padding-top: 116px;
+
       .connect-btn {
         margin-top: 36px;
       }
+
       .h1 {
         font-size: 40px;
         line-height: 60px;
       }
+
       .h1,
       .h4-text {
         padding-left: 16px;
         padding-right: 16px;
         height: auto;
       }
+
       .data {
         margin-top: 36px;
       }
+
       .item {
         margin: 0 12px;
         margin-bottom: 12px;
       }
+
       .btn-group .btn-fill {
         display: block;
         margin: 0 auto;
       }
+
       .btn-group .btn-bordered {
         display: flex;
         margin: 0 auto;

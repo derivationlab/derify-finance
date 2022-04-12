@@ -11,8 +11,8 @@ export const contractAbiMap = {
 export const contractAddressMap = {
   '0x38': {
     DRF: '0x89C1Af791d7B4cf046Dca8Fa10a41Dd2298A6a3F',
-    eDRF: '',
-    DerifyStaking: '',
+    eDRF: '0xE55945473935470Fafdc34ddE353c3D251DfadC1',
+    DerifyStaking: '0x0129AbDCBFE2C3A8f923152230a0034dBf87dA90',
   },
   '0x61': {
     DRF: '0x1B4d21f22EF7F7aC0f13CEe6030e37569161DCE6',
