@@ -733,7 +733,10 @@ export default {
   .content {
     padding-top: 168px;
     color: #fff;
+    position: relative;
     text-align: center;
+    min-height: 900px;
+    height: 100%;
 
     .h1 {
       font-size: 52px;
