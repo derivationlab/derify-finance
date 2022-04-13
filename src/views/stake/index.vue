@@ -514,7 +514,9 @@ export default {
       this.unstakeErrMsg = errMsg
       if (!errMsg) {
         this.unstakeAmount = ''
+        this.showModalUnstake = false
         await this.loadData()
+        await this.updateAllowance()
       }
     }
   },
