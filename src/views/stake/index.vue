@@ -30,6 +30,9 @@
             </div>
           </div>
         </div>
+        <div class="btns" v-if="isDebug">
+          <button :disabled="!canApprove" class="btn-fill btn1 h4 btn2" @click="submitApprove">Approve({{ allowance | formatUnits }})</button>
+        </div>
       </div>
     </div>
     <div class="modal" v-show="showModalUnstake">
@@ -141,6 +144,7 @@ const parseUnits = function (val, precision = 18) {
   return ethers.utils.parseUnits(val.toString(), precision)
 }
 
+const isDebug = location.search === '?isDebug' ? true : false
 // '0x38', // Smart Chain
 // '0x61', // Smart Chain Testnet
 const targetChainId = process.env.VUE_APP_VERCEL_ENV === 'production' ? '0x38' : '0x61'
@@ -150,6 +154,7 @@ export default {
   },
   data() {
     return {
+      isDebug,
       count: "0",
       showModalStake: false,
       title: "Stake DRF",
@@ -196,7 +201,7 @@ export default {
       if (!this.allowance) {
         return false
       }
-      const stakeAmount = parseUnits(this.stakeAmount, 8)
+      const stakeAmount = parseUnits(this.stakeAmount, 18)
       return this.allowance.lt(stakeAmount)
     },
     myWalletAddress() {
@@ -389,6 +394,7 @@ export default {
     },
     async updateAllowance() {
       this.allowance = await this.getCurrentChainContract('DRF').allowance(this.myWalletAddress, contractAddressMap[this.currentChainId]['DerifyStaking'])
+      console.log(`====> this.allowance :`, formatUnits(this.allowance, 18))
     },
     async loadData() {
       if (!this.myWalletAddress) {
@@ -404,10 +410,8 @@ export default {
       this.edrfBalance = formatUnits(edrfBalance, 8)
     },
     async submitStake() {
-      if (this.isStaking) return
-      if (this.needMoreAllowance) {
-        return this.submitApprove()
-      }
+      if (this.isStaking || this.needMoreAllowance) return
+
       let errMsg = ''
       this.isStaking = true
       const stakeAmount = parseUnits(this.stakeAmount, 8)
