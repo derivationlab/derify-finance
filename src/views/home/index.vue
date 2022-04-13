@@ -48,7 +48,7 @@ body {
     width: 100%;
     padding: 20vh 0.8rem 20vh;
     background: #0e0314 url("../../assets/home.png") no-repeat;
-    background-size: auto 95%;
+    background-size: 80% auto;
     background-position: center;
     position: relative;
     overflow: hidden;

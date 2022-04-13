@@ -529,9 +529,9 @@ export default {
   min-height: 100vh;
   background: #0e0314;
   display: flex;
-  background-image: url(../../assets/stake_bg.png);
+  background-image: url(../../assets/home.png);
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: 80% auto;
   background-position: center top;
 
   .btn1 {
