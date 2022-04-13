@@ -426,7 +426,9 @@ export default {
       this.stakeErrMsg = errMsg
       if (!errMsg) {
         this.stakeAmount = ''
+        this.showModalStake = false
         await this.loadData()
+        await this.updateAllowance()
       }
     },
     async submitApprove() {
