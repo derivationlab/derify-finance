@@ -46,10 +46,10 @@ body {
 .home {
   .banner {
     width: 100%;
-    padding: 20vh 0.8rem 20vh;
-    background: #0e0314 url("../../assets/home.png") no-repeat;
-    background-size: 80% auto;
-    background-position: center;
+    height: 100vh;
+    padding: 40vh 0.8rem 20vh;
+    background: #0e0314 url("../../assets/home-banner.svg") no-repeat;
+    background-size: 100% 100%;
     position: relative;
     overflow: hidden;
   }

@@ -392,6 +392,17 @@ export default {
     getCurrentChainContract(name, isWrite = false) {
       return getContract(this.web3Provider, this.currentChainId, name, isWrite)
     },
+    async getGasPrice() {
+      // fast, normal, slow
+      // https://docs.ethers.io/v5/single-page/#/v5/api/providers/provider/-%23-Provider-getGasPrice
+      const BASE_GAS_PRICE = 2e9
+      const GAS_PRICE_RATIO = 1.2
+      let gasPrice = await this.web3Provider.getGasPrice()
+      const medianGasPrice = parseInt(gasPrice);  //uint: wei, 1 gwei=1e9 wei, 1 eth/bnb=1e9 gwei
+      const predictGasPrice = Math.max(Math.floor(medianGasPrice * GAS_PRICE_RATIO), BASE_GAS_PRICE);
+      // console.log(`====> predictGasPrice :`, { predictGasPrice, medianGasPrice, BASE_GAS_PRICE })
+      return predictGasPrice
+    },
     async updateAllowance() {
       this.allowance = await this.getCurrentChainContract('DRF').allowance(this.myWalletAddress, contractAddressMap[this.currentChainId]['DerifyStaking'])
       console.log(`====> this.allowance :`, formatUnits(this.allowance, 18))
@@ -416,7 +427,8 @@ export default {
       this.isStaking = true
       const stakeAmount = parseUnits(this.stakeAmount, 8)
       try {
-        const tx = await this.getCurrentChainContract('DerifyStaking', true).stakingDrf(stakeAmount)
+        const gasPrice = await this.getGasPrice()
+        const tx = await this.getCurrentChainContract('DerifyStaking', true).stakingDrf(stakeAmount, { gasPrice })
         await tx.wait()
       } catch (e) {
         console.log(`====> e :`, e)
@@ -435,7 +447,8 @@ export default {
       if (this.isApproving) return
       let errMsg = ''
       try {
-        const tx = await this.getCurrentChainContract('DRF', true).approve(contractAddressMap[this.currentChainId]['DerifyStaking'], parseUnits(this.stakeAmount))
+        const gasPrice = await this.getGasPrice()
+        const tx = await this.getCurrentChainContract('DRF', true).approve(contractAddressMap[this.currentChainId]['DerifyStaking'], parseUnits(this.stakeAmount), { gasPrice })
         this.isApproving = true
         await tx.wait()
         await this.updateAllowance()
@@ -453,7 +466,8 @@ export default {
       this.isSubmitClaim = true
       try {
         await this.addEdrfToken()
-        const tx = await this.getCurrentChainContract('DerifyStaking', true).withdrawAllEdrf()
+        const gasPrice = await this.getGasPrice()
+        const tx = await this.getCurrentChainContract('DerifyStaking', true).withdrawAllEdrf({ gasPrice })
         await tx.wait()
       } catch (e) {
         console.log(`====> e :`, e)
@@ -504,7 +518,8 @@ export default {
       let errMsg = ''
       this.isSubmitUnstake = true
       try {
-        const tx = await this.getCurrentChainContract('DerifyStaking', true).redeemDrf(parseUnits(this.unstakeAmount, 8))
+        const gasPrice = await this.getGasPrice()
+        const tx = await this.getCurrentChainContract('DerifyStaking', true).redeemDrf(parseUnits(this.unstakeAmount, 8), { gasPrice })
         await tx.wait()
       } catch (e) {
         console.log(`====> e :`, e)
