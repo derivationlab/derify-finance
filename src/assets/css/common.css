@@ -13,13 +13,6 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-@media screen and (max-width: 420px) {
-  html,
-  body {
-    font-size: 7px;
-  }
-}
-
 article,
 aside,
 figcaption,

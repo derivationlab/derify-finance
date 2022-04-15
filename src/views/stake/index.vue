@@ -124,7 +124,7 @@
 import * as ls from '../../utils/ls'
 import { ethers } from "ethers"
 import Loading from "@/components/Loading";
-
+import axios from 'axios';
 import MetaMaskOnboarding from '@metamask/onboarding'
 import detectEthereumProvider from '@metamask/detect-provider'
 import { getContract, chainInfoMap, contractAddressMap } from '@/contractConfig.js'
@@ -392,6 +392,27 @@ export default {
     getCurrentChainContract(name, isWrite = false) {
       return getContract(this.web3Provider, this.currentChainId, name, isWrite)
     },
+    async getGasPrice() {
+      const bscscanAPIKey = 'CEJS7CN99EUFV4PG3QCSRHBBV4HIMGZUP7'
+      const { status, data } = await axios.get(`https://api.bscscan.com/api?module=gastracker&action=gasoracle&apikey=${bscscanAPIKey}`)
+      let priceFromBSC = 0
+      if (status === 200 && data.result.ProposeGasPrice) {
+        priceFromBSC = parseInt(parseUnits(data.result.ProposeGasPrice, 'gwei'))
+      }
+
+      // fast, normal, slow
+      // https://docs.ethers.io/v5/single-page/#/v5/api/providers/provider/-%23-Provider-getGasPrice
+      const BASE_GAS_PRICE = 2e9
+      const GAS_PRICE_RATIO = 1.2
+      let gasPrice = await this.web3Provider.getGasPrice()
+      const medianGasPrice = parseInt(gasPrice);  //uint: wei, 1 gwei=1e9 wei, 1 eth/bnb=1e9 gwei
+      const predictGasPrice = Math.max(Math.floor(medianGasPrice * GAS_PRICE_RATIO), BASE_GAS_PRICE);
+      console.log(`====> gasPrice:`, { predictGasPrice, priceFromBSC })
+      if (priceFromBSC !== 0) {
+        return priceFromBSC
+      }
+      return predictGasPrice
+    },
     async updateAllowance() {
       this.allowance = await this.getCurrentChainContract('DRF').allowance(this.myWalletAddress, contractAddressMap[this.currentChainId]['DerifyStaking'])
       console.log(`====> this.allowance :`, formatUnits(this.allowance, 18))
@@ -416,7 +437,8 @@ export default {
       this.isStaking = true
       const stakeAmount = parseUnits(this.stakeAmount, 8)
       try {
-        const tx = await this.getCurrentChainContract('DerifyStaking', true).stakingDrf(stakeAmount)
+        const gasPrice = await this.getGasPrice()
+        const tx = await this.getCurrentChainContract('DerifyStaking', true).stakingDrf(stakeAmount, { gasPrice })
         await tx.wait()
       } catch (e) {
         console.log(`====> e :`, e)
@@ -435,7 +457,8 @@ export default {
       if (this.isApproving) return
       let errMsg = ''
       try {
-        const tx = await this.getCurrentChainContract('DRF', true).approve(contractAddressMap[this.currentChainId]['DerifyStaking'], parseUnits(this.stakeAmount))
+        const gasPrice = await this.getGasPrice()
+        const tx = await this.getCurrentChainContract('DRF', true).approve(contractAddressMap[this.currentChainId]['DerifyStaking'], parseUnits(this.stakeAmount), { gasPrice })
         this.isApproving = true
         await tx.wait()
         await this.updateAllowance()
@@ -453,7 +476,8 @@ export default {
       this.isSubmitClaim = true
       try {
         await this.addEdrfToken()
-        const tx = await this.getCurrentChainContract('DerifyStaking', true).withdrawAllEdrf()
+        const gasPrice = await this.getGasPrice()
+        const tx = await this.getCurrentChainContract('DerifyStaking', true).withdrawAllEdrf({ gasPrice })
         await tx.wait()
       } catch (e) {
         console.log(`====> e :`, e)
@@ -504,7 +528,8 @@ export default {
       let errMsg = ''
       this.isSubmitUnstake = true
       try {
-        const tx = await this.getCurrentChainContract('DerifyStaking', true).redeemDrf(parseUnits(this.unstakeAmount, 8))
+        const gasPrice = await this.getGasPrice()
+        const tx = await this.getCurrentChainContract('DerifyStaking', true).redeemDrf(parseUnits(this.unstakeAmount, 8), { gasPrice })
         await tx.wait()
       } catch (e) {
         console.log(`====> e :`, e)
@@ -514,7 +539,9 @@ export default {
       this.unstakeErrMsg = errMsg
       if (!errMsg) {
         this.unstakeAmount = ''
+        this.showModalUnstake = false
         await this.loadData()
+        await this.updateAllowance()
       }
     }
   },
@@ -527,9 +554,9 @@ export default {
   min-height: 100vh;
   background: #0e0314;
   display: flex;
-  background-image: url(../../assets/stake_bg.png);
+  background-image: url(../../assets/home.png);
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: 80% auto;
   background-position: center top;
 
   .btn1 {
