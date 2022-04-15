@@ -20,5 +20,13 @@ export default [
     path: "/",
     name: "home",
     component: () => import("@/views/home"),
-  }
+  },
+  {
+    path: "/stake",
+    name: "stake",
+    component: () => import("@/views/stake"),
+    meta: {
+      hideFooter: true,
+    },
+  },
 ];

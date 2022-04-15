@@ -4,7 +4,7 @@
     <div class="layout">
       <router-view></router-view>
     </div>
-    <app-footer></app-footer>
+    <app-footer v-show="!$route.meta || !$route.meta.hideFooter"></app-footer>
   </div>
 </template>
 <script>
@@ -29,10 +29,10 @@ export default {
       this.$store.dispatch("app/setLang", lang);
     },
   },
-  mounted() {},
+  mounted() { },
 };
 </script>
-<style lang='scss'>
+<style lang="scss">
 .app {
   width: 100%;
   min-height: 100vh;

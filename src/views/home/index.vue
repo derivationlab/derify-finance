@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <home-stake></home-stake>
     <home-banner></home-banner>
     <home-protocol></home-protocol>
     <home-mechanism></home-mechanism>
@@ -9,6 +10,7 @@
   </div>
 </template>
 <script>
+import HomeStake from "./components/homeStake";
 import HomeBanner from "./components/homeBanner";
 import HomeProtocol from './components/homeProtocol';
 import HomeMechanism from './components/homeMechanism';
@@ -17,6 +19,7 @@ import HomeGovernance from './components/homeGovernance'
 import HomePartner from './components/homePartner'
 export default {
   components: {
+    HomeStake,
     HomeBanner,
     HomeProtocol,
     HomeMechanism,
@@ -34,6 +37,7 @@ export default {
 body {
   background-color: #0e0314;
 }
+
 .app-header {
   position: relative;
 }
@@ -42,20 +46,21 @@ body {
 .home {
   .banner {
     width: 100%;
-    padding: 20vh 0.8rem 20vh;
-    background: #0e0314 url("../../assets/svg/ido-home.svg") no-repeat;
-    background-size: cover;
-    background-position: center;
+    height: 100vh;
+    padding: 40vh 0.8rem 20vh;
+    background: #0e0314 url("../../assets/home-banner.svg") no-repeat;
+    background-size: 100% 100%;
     position: relative;
     overflow: hidden;
   }
+
   .protocol {
     background: #140b32 url("../../assets/svg/home-protocol.svg") no-repeat;
     background-size: 100% 100%;
   }
+
   .mechanism {
-    background: #120621 url("../../assets/svg/home-mechanism.svg") center center
-      no-repeat;
+    background: #120621 url("../../assets/svg/home-mechanism.svg") center center no-repeat;
     background-size: 100% 100%;
   }
 }

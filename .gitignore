@@ -9,3 +9,5 @@ dist/
 
 # Optional eslint cache
 .eslintcache
+.DS_Store
+**/.DS_Store
