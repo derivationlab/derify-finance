@@ -13,7 +13,10 @@ import router from "./router";
 import * as filters from "./filters";
 import "./assets/css/common.css";
 
-console.log(process.env.VUE_APP_VERCEL_GIT_COMMIT_SHA)
+const env = process.env.VUE_APP_VERCEL_ENV
+const gitHash = process.env.VUE_APP_VERCEL_GIT_COMMIT_SHA
+console.log({ env, gitHash })
+
 // 自定义filter
 Object.keys(filters).forEach((key) => {
   Vue.filter(key, filters[key]);
