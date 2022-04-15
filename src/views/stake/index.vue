@@ -124,7 +124,7 @@
 import * as ls from '../../utils/ls'
 import { ethers } from "ethers"
 import Loading from "@/components/Loading";
-
+import axios from 'axios';
 import MetaMaskOnboarding from '@metamask/onboarding'
 import detectEthereumProvider from '@metamask/detect-provider'
 import { getContract, chainInfoMap, contractAddressMap } from '@/contractConfig.js'
@@ -393,6 +393,13 @@ export default {
       return getContract(this.web3Provider, this.currentChainId, name, isWrite)
     },
     async getGasPrice() {
+      const bscscanAPIKey = 'CEJS7CN99EUFV4PG3QCSRHBBV4HIMGZUP7'
+      const { status, data } = await axios.get(`https://api.bscscan.com/api?module=gastracker&action=gasoracle&apikey=${bscscanAPIKey}`)
+      let priceFromBSC = 0
+      if (status === 200 && data.result.ProposeGasPrice) {
+        priceFromBSC = parseInt(parseUnits(data.result.ProposeGasPrice, 'gwei'))
+      }
+
       // fast, normal, slow
       // https://docs.ethers.io/v5/single-page/#/v5/api/providers/provider/-%23-Provider-getGasPrice
       const BASE_GAS_PRICE = 2e9
@@ -400,7 +407,10 @@ export default {
       let gasPrice = await this.web3Provider.getGasPrice()
       const medianGasPrice = parseInt(gasPrice);  //uint: wei, 1 gwei=1e9 wei, 1 eth/bnb=1e9 gwei
       const predictGasPrice = Math.max(Math.floor(medianGasPrice * GAS_PRICE_RATIO), BASE_GAS_PRICE);
-      // console.log(`====> predictGasPrice :`, { predictGasPrice, medianGasPrice, BASE_GAS_PRICE })
+      console.log(`====> gasPrice:`, { predictGasPrice, priceFromBSC })
+      if (priceFromBSC !== 0) {
+        return priceFromBSC
+      }
       return predictGasPrice
     },
     async updateAllowance() {
