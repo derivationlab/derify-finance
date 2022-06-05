@@ -62,17 +62,6 @@
                 </div>
                 <div class="nav-main-item">
                   <a href="https://docs.derify.finance/derify-dao/overview" target="_blank">DAO</a>
-                  <div class="sub-nav-arrow">
-                    <svg viewBox="0 0 1024 1024" fill="currentColor">
-                      <path d="M512 739.390625c-11.81250001 0-23.625-5.06249999-32.0625-13.5L133.15625 358.859375c-16.875-17.71875-16.03125-45.5625 1.68750001-62.4375s45.5625-16.03125 62.43749999 1.6875L512 630.546875 826.71875 298.109375c16.875-17.71875 44.71875-18.5625 62.43749999-1.6875 17.71875 16.875 18.5625 44.71875 1.68750001 62.4375l-346.78125 366.18749999c-8.4375 9.28125-20.25 14.34375-32.0625 14.34375001z m0 0" />
-                    </svg>
-                  </div>
-                  <div class="sub-nav">
-                    <a href="https://apeswap.finance/swap?inputCurrency=0xe9e7cea3dedca5984780bafc599bd69add087d56&outputCurrency=0x89c1af791d7b4cf046dca8fa10a41dd2298a6a3f" target="_blank" style="display: flex;align-items: center">
-                      <img src="../../assets/svg/nav-icons-ape.svg" alt srcset />
-                      ApeSwap
-                    </a>
-                  </div>
                 </div>
                 <div class="nav-main-item">
                   <a href="#">DRF</a>
@@ -83,8 +72,7 @@
                   </div>
                   <div class="sub-nav">
                     <a href="https://apeswap.finance/jungle-farms" target="_blank" style="display: flex;align-items: center">
-                      <img src="../../assets/svg/nav-icons-ape.svg" alt srcset />
-                      ApeSwap
+                      Buy
                     </a>
                     <a href="https://derify.finance/stake" target="_blank">
                       Stake
@@ -115,6 +103,22 @@
                     <router-link to="/">Home</router-link>
                     <a href="https://docs.derify.finance/" target="_blank">Learn</a>
                     <a href="https://derify.medium.com/" target="_blank">Community</a>
+                    <a href="https://docs.derify.finance/derify-dao/overview" target="_blank">DAO</a>
+                    <div class="nav-wrapper">DRF</div>
+                    <div class="sub-nav" style="padding-left: 20px">
+                      <a href="https://apeswap.finance/jungle-farms" target="_blank" style="display: flex;align-items: center">
+                        Buy
+                      </a>
+                      <a href="https://derify.finance/stake" target="_blank">
+                        Stake
+                      </a>
+                      <a href="https://docs.derify.finance/drf-token/distribution-and-release" target="_blank">
+                        Distribution
+                      </a>
+                      <a href="https://docs.derify.finance/whitepaper/tokenomics" target="_blank">
+                        Tokenomics
+                      </a>
+                    </div>
                     <a href="https://derify.exchange">
                       <img src="../../assets/svg/exchange-btn.svg" alt srcset />
                     </a>
@@ -295,20 +299,18 @@ export default {
               }
 
               &-main {
-                position: relative;
                 z-index: 100;
                 animation: Menu-fade-up 0.24s cubic-bezier(0.4, 0, 0.2, 1);
                 display: none;
                 position: absolute;
                 top: 6rem;
                 right: 1rem;
-                background-color: rgba(255, 255, 255, 0.1);
+                background-color: rgba(0, 0, 0, 0.5);
                 border-radius: 2px;
                 box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.2),
                   0 3px 4px 0 rgba(0, 0, 0, 0.14),
                   0 1px 8px 0 rgba(0, 0, 0, 0.12);
-
-                a {
+                a, .nav-wrapper {
                   display: block;
                   text-align: left;
                   cursor: pointer;
@@ -317,10 +319,20 @@ export default {
                   min-width: 140px;
                   padding: 1rem 2rem;
                   line-height: 1.5;
+                  position: relative;
 
                   &.router-link-active {
                     color: #fff;
                   }
+                }
+                .toggle-m {
+                  position: absolute;
+                  right: 10px;
+                  top: 0;
+                  font-size: 20px;
+                  width: 30px;
+                  text-align: center;
+                  cursor: pointer;
                 }
               }
             }
