@@ -6,6 +6,7 @@ dist/
 
 # Optional npm cache directory
 .npm
+.idea
 
 # Optional eslint cache
 .eslintcache

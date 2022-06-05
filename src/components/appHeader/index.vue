@@ -20,7 +20,7 @@
                   <a href="/">Home</a>
                 </div>
                 <div class="nav-main-item">
-                  <a href="https://docs.derify.finance/" target="_blank">Learn</a>
+                  <span style="color: #96a7c7">Learn</span>
                   <div class="sub-nav-arrow">
                     <svg viewBox="0 0 1024 1024" fill="currentColor">
                       <path d="M512 739.390625c-11.81250001 0-23.625-5.06249999-32.0625-13.5L133.15625 358.859375c-16.875-17.71875-16.03125-45.5625 1.68750001-62.4375s45.5625-16.03125 62.43749999 1.6875L512 630.546875 826.71875 298.109375c16.875-17.71875 44.71875-18.5625 62.43749999-1.6875 17.71875 16.875 18.5625 44.71875 1.68750001 62.4375l-346.78125 366.18749999c-8.4375 9.28125-20.25 14.34375-32.0625 14.34375001z m0 0" />
@@ -32,10 +32,7 @@
                   </div>
                 </div>
                 <div class="nav-main-item">
-                  <a href="https://derify.medium.com/" target="_blank">Blog</a>
-                </div>
-                <div class="nav-main-item">
-                  <a href="https://derify.medium.com/" target="_blank">Community</a>
+                  <span style="color: #96a7c7">Community</span>
                   <div class="sub-nav-arrow">
                     <svg viewBox="0 0 1024 1024" fill="currentColor">
                       <path d="M512 739.390625c-11.81250001 0-23.625-5.06249999-32.0625-13.5L133.15625 358.859375c-16.875-17.71875-16.03125-45.5625 1.68750001-62.4375s45.5625-16.03125 62.43749999 1.6875L512 630.546875 826.71875 298.109375c16.875-17.71875 44.71875-18.5625 62.43749999-1.6875 17.71875 16.875 18.5625 44.71875 1.68750001 62.4375l-346.78125 366.18749999c-8.4375 9.28125-20.25 14.34375-32.0625 14.34375001z m0 0" />
@@ -64,30 +61,27 @@
                   </div>
                 </div>
                 <div class="nav-main-item">
-                  <a href="#">Buy DRF</a>
-                  <div class="sub-nav-arrow">
-                    <svg viewBox="0 0 1024 1024" fill="currentColor">
-                      <path d="M512 739.390625c-11.81250001 0-23.625-5.06249999-32.0625-13.5L133.15625 358.859375c-16.875-17.71875-16.03125-45.5625 1.68750001-62.4375s45.5625-16.03125 62.43749999 1.6875L512 630.546875 826.71875 298.109375c16.875-17.71875 44.71875-18.5625 62.43749999-1.6875 17.71875 16.875 18.5625 44.71875 1.68750001 62.4375l-346.78125 366.18749999c-8.4375 9.28125-20.25 14.34375-32.0625 14.34375001z m0 0" />
-                    </svg>
-                  </div>
-                  <div class="sub-nav">
-                    <a href="https://apeswap.finance/swap?inputCurrency=0xe9e7cea3dedca5984780bafc599bd69add087d56&outputCurrency=0x89c1af791d7b4cf046dca8fa10a41dd2298a6a3f" target="_blank">
-                      <img src="../../assets/svg/nav-icons-ape.svg" alt srcset />
-                      ApeSwap
-                    </a>
-                  </div>
+                  <a href="https://docs.derify.finance/derify-dao/overview" target="_blank">DAO</a>
                 </div>
                 <div class="nav-main-item">
-                  <a href="#">Earn DRF</a>
+                  <a href="#">DRF</a>
                   <div class="sub-nav-arrow">
                     <svg viewBox="0 0 1024 1024" fill="currentColor">
                       <path d="M512 739.390625c-11.81250001 0-23.625-5.06249999-32.0625-13.5L133.15625 358.859375c-16.875-17.71875-16.03125-45.5625 1.68750001-62.4375s45.5625-16.03125 62.43749999 1.6875L512 630.546875 826.71875 298.109375c16.875-17.71875 44.71875-18.5625 62.43749999-1.6875 17.71875 16.875 18.5625 44.71875 1.68750001 62.4375l-346.78125 366.18749999c-8.4375 9.28125-20.25 14.34375-32.0625 14.34375001z m0 0" />
                     </svg>
                   </div>
                   <div class="sub-nav">
-                    <a href="https://apeswap.finance/jungle-farms" target="_blank">
-                      <img src="../../assets/svg/nav-icons-ape.svg" alt srcset />
-                      ApeSwap
+                    <a href="https://apeswap.finance/swap?inputCurrency=0xe9e7cea3dedca5984780bafc599bd69add087d56&outputCurrency=0x89c1af791d7b4cf046dca8fa10a41dd2298a6a3f" target="_blank" style="display: flex;align-items: center">
+                      Buy
+                    </a>
+                    <a href="https://derify.finance/stake" target="_blank">
+                      Stake
+                    </a>
+                    <a href="https://docs.derify.finance/drf-token/distribution-and-release" target="_blank">
+                      Distribution
+                    </a>
+                    <a href="https://docs.derify.finance/whitepaper/tokenomics" target="_blank">
+                      Tokenomics
                     </a>
                   </div>
                 </div>
@@ -107,9 +101,66 @@
                   <div class="inner-menu-mask" @click="showMiniNav = false"></div>
                   <div class="inner-menu-main">
                     <router-link to="/">Home</router-link>
-                    <a href="https://docs.derify.finance/" target="_blank">Learn</a>
-                    <a href="https://derify.medium.com/" target="_blank">Blog</a>
-                    <a href="https://derify.medium.com/" target="_blank">Community</a>
+                    <div class="nav-wrapper">
+                      Learn
+                      <div :class="showLearn ? 'toggle-m' : 'toggle-m toggle-m1'" @click="toggle2">
+                        <img src="../../assets/arrow.png" alt srcset />
+                      </div>
+                    </div>
+                    <div class="sub-nav" style="text-indent: 20px" v-show="showLearn">
+                      <a href="https://docs.derify.finance/" target="_blank">Docs</a>
+                      <a href="https://docs.derify.finance/whitepaper/introduction" target="_blank">Whitepaper</a>
+                    </div>
+
+                    <div class="nav-wrapper">
+                      Community
+                      <div :class="showCom ? 'toggle-m' : 'toggle-m toggle-m1'" @click="toggle3">
+                        <img src="../../assets/arrow.png" alt srcset />
+                      </div>
+                    </div>
+                    <div class="sub-nav" style="text-indent: 20px" v-show="showCom">
+                      <a href="https://github.com/derivationlab" target="_blank">
+                        <img src="../../assets/svg/nav-icons-github.svg" alt srcset />
+                        Github
+                      </a>
+                      <a href="https://twitter.com/DerifyProtocol" target="_black">
+                        <img src="../../assets/svg/nav-icons-twitter.svg" alt srcset />Twitter
+                      </a>
+                      <a href="https://discord.gg/kSR6tz2pdm" target="_black">
+                        <img src="../../assets/svg/nav-discord-icon.svg" alt srcset />Discord
+                      </a>
+                      <a href="https://derify.medium.com/" target="_black">
+                        <img src="../../assets/svg/nav-medium-icon.svg" alt srcset />Medium
+                      </a>
+                      <a href="https://t.me/DerifyProtocol_Official" target="_black">
+                        <img src="../../assets/svg/nav-tele-icon.svg" alt srcset />Tele
+                      </a>
+                      <a href="mailto:contact@derify.org" target="_black">
+                        <img src="../../assets/svg/nav-email-icon.svg" alt srcset />Email
+                      </a>
+                    </div>
+
+                    <a href="https://docs.derify.finance/derify-dao/overview" target="_blank">DAO</a>
+                    <div class="nav-wrapper">
+                      DRF
+                      <div :class="showDRF ? 'toggle-m' : 'toggle-m toggle-m1'" @click="toggle1">
+                        <img src="../../assets/arrow.png" alt srcset />
+                      </div>
+                    </div>
+                    <div class="sub-nav" style="text-indent: 20px" v-show="showDRF">
+                      <a href="https://apeswap.finance/swap?inputCurrency=0xe9e7cea3dedca5984780bafc599bd69add087d56&outputCurrency=0x89c1af791d7b4cf046dca8fa10a41dd2298a6a3f" target="_blank" style="display: flex;align-items: center">
+                        Buy
+                      </a>
+                      <a href="https://derify.finance/stake" target="_blank">
+                        Stake
+                      </a>
+                      <a href="https://docs.derify.finance/drf-token/distribution-and-release" target="_blank">
+                        Distribution
+                      </a>
+                      <a href="https://docs.derify.finance/whitepaper/tokenomics" target="_blank">
+                        Tokenomics
+                      </a>
+                    </div>
                     <a href="https://derify.exchange">
                       <img src="../../assets/svg/exchange-btn.svg" alt srcset />
                     </a>
@@ -128,17 +179,50 @@ export default {
   data() {
     return {
       showMiniNav: false,
+      showDRF: false,
+      showLearn: false,
+      showCom: false
     };
   },
   methods: {
     handleExchange() {
       alert("coming soon...");
     },
+    toggle1(){
+      this.showDRF = !this.showDRF;
+    },
+    toggle2(){
+      this.showLearn = !this.showLearn;
+    },
+    toggle3(){
+      this.showCom = !this.showCom;
+    }
   },
 };
 </script>
 <style lang='scss' scoped>
 .app-header {
+  .toggle-m1 {
+    transform: rotate(-90deg);
+  }
+  .toggle-m {
+    transition: all 0.2s;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 20px;
+    width: 30px;
+    text-align: center;
+    cursor: pointer;
+    img {
+      width: 14px;
+    }
+  }
+  .nav-wrapper {
+    a {
+      padding: 0 !important;
+    }
+  }
   &-main {
     text-align: center;
     width: 100%;
@@ -216,7 +300,7 @@ export default {
                 position: absolute;
                 top: 6rem;
                 left: 3rem;
-                background-color: rgba(255, 255, 255, 0.1);
+                background-color: rgba(0, 0, 0, 0.8);
                 min-width: 100%;
                 border-radius: 2px;
                 box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.2),
@@ -290,20 +374,18 @@ export default {
               }
 
               &-main {
-                position: relative;
                 z-index: 100;
                 animation: Menu-fade-up 0.24s cubic-bezier(0.4, 0, 0.2, 1);
                 display: none;
                 position: absolute;
                 top: 6rem;
                 right: 1rem;
-                background-color: rgba(255, 255, 255, 0.1);
+                background-color: rgba(0, 0, 0, 0.9);
                 border-radius: 2px;
                 box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.2),
                   0 3px 4px 0 rgba(0, 0, 0, 0.14),
                   0 1px 8px 0 rgba(0, 0, 0, 0.12);
-
-                a {
+                a, .nav-wrapper {
                   display: block;
                   text-align: left;
                   cursor: pointer;
@@ -312,10 +394,14 @@ export default {
                   min-width: 140px;
                   padding: 1rem 2rem;
                   line-height: 1.5;
+                  position: relative;
 
                   &.router-link-active {
                     color: #fff;
                   }
+                }
+                a img {
+                  margin-right: 5px;
                 }
               }
             }
