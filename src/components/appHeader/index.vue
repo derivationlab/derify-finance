@@ -101,12 +101,58 @@
                   <div class="inner-menu-mask" @click="showMiniNav = false"></div>
                   <div class="inner-menu-main">
                     <router-link to="/">Home</router-link>
-                    <a href="https://docs.derify.finance/" target="_blank">Learn</a>
-                    <a href="https://derify.medium.com/" target="_blank">Community</a>
+                    <div class="nav-wrapper">
+                      <a href="https://docs.derify.finance/" target="_blank">
+                        Learn
+                      </a>
+                      <div :class="showLearn ? 'toggle-m' : 'toggle-m toggle-m1'" @click="toggle2">
+                        <img src="../../assets/arrow.png" alt srcset />
+                      </div>
+                    </div>
+                    <div class="sub-nav" style="text-indent: 20px" v-show="showLearn">
+                      <a href="https://docs.derify.finance/" target="_blank">Docs</a>
+                      <a href="https://docs.derify.finance/whitepaper/introduction" target="_blank">Whitepaper</a>
+                    </div>
+
+                    <div class="nav-wrapper">
+                      <a href="https://derify.medium.com/" target="_blank">
+                        Community
+                      </a>
+                      <div :class="showCom ? 'toggle-m' : 'toggle-m toggle-m1'" @click="toggle3">
+                        <img src="../../assets/arrow.png" alt srcset />
+                      </div>
+                    </div>
+                    <div class="sub-nav" style="text-indent: 20px" v-show="showCom">
+                      <a href="https://github.com/derivationlab" target="_blank">
+                        <img src="../../assets/svg/nav-icons-github.svg" alt srcset />
+                        Github
+                      </a>
+                      <a href="https://twitter.com/DerifyProtocol" target="_black">
+                        <img src="../../assets/svg/nav-icons-twitter.svg" alt srcset />Twitter
+                      </a>
+                      <a href="https://discord.gg/kSR6tz2pdm" target="_black">
+                        <img src="../../assets/svg/nav-discord-icon.svg" alt srcset />Discord
+                      </a>
+                      <a href="https://derify.medium.com/" target="_black">
+                        <img src="../../assets/svg/nav-medium-icon.svg" alt srcset />Medium
+                      </a>
+                      <a href="https://t.me/DerifyProtocol_Official" target="_black">
+                        <img src="../../assets/svg/nav-tele-icon.svg" alt srcset />Tele
+                      </a>
+                      <a href="mailto:contact@derify.org" target="_black">
+                        <img src="../../assets/svg/nav-email-icon.svg" alt srcset />Email
+                      </a>
+                    </div>
+
                     <a href="https://docs.derify.finance/derify-dao/overview" target="_blank">DAO</a>
-                    <div class="nav-wrapper">DRF</div>
-                    <div class="sub-nav" style="padding-left: 20px">
-                      <a href="https://apeswap.finance/jungle-farms" target="_blank" style="display: flex;align-items: center">
+                    <div class="nav-wrapper">
+                      DRF
+                      <div :class="showDRF ? 'toggle-m' : 'toggle-m toggle-m1'" @click="toggle1">
+                        <img src="../../assets/arrow.png" alt srcset />
+                      </div>
+                    </div>
+                    <div class="sub-nav" style="text-indent: 20px" v-show="showDRF">
+                      <a href="https://apeswap.finance/swap?inputCurrency=0xe9e7cea3dedca5984780bafc599bd69add087d56&outputCurrency=0x89c1af791d7b4cf046dca8fa10a41dd2298a6a3f" target="_blank" style="display: flex;align-items: center">
                         Buy
                       </a>
                       <a href="https://derify.finance/stake" target="_blank">
@@ -137,17 +183,50 @@ export default {
   data() {
     return {
       showMiniNav: false,
+      showDRF: false,
+      showLearn: false,
+      showCom: false
     };
   },
   methods: {
     handleExchange() {
       alert("coming soon...");
     },
+    toggle1(){
+      this.showDRF = !this.showDRF;
+    },
+    toggle2(){
+      this.showLearn = !this.showLearn;
+    },
+    toggle3(){
+      this.showCom = !this.showCom;
+    }
   },
 };
 </script>
 <style lang='scss' scoped>
 .app-header {
+  .toggle-m1 {
+    transform: rotate(-90deg);
+  }
+  .toggle-m {
+    transition: all 0.2s;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 20px;
+    width: 30px;
+    text-align: center;
+    cursor: pointer;
+    img {
+      width: 14px;
+    }
+  }
+  .nav-wrapper {
+    a {
+      padding: 0 !important;
+    }
+  }
   &-main {
     text-align: center;
     width: 100%;
@@ -324,15 +403,6 @@ export default {
                   &.router-link-active {
                     color: #fff;
                   }
-                }
-                .toggle-m {
-                  position: absolute;
-                  right: 10px;
-                  top: 0;
-                  font-size: 20px;
-                  width: 30px;
-                  text-align: center;
-                  cursor: pointer;
                 }
               }
             }
