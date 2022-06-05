@@ -20,7 +20,7 @@
                   <a href="/">Home</a>
                 </div>
                 <div class="nav-main-item">
-                  <a href="https://docs.derify.finance/" target="_blank">Learn</a>
+                  <span style="color: #96a7c7">Learn</span>
                   <div class="sub-nav-arrow">
                     <svg viewBox="0 0 1024 1024" fill="currentColor">
                       <path d="M512 739.390625c-11.81250001 0-23.625-5.06249999-32.0625-13.5L133.15625 358.859375c-16.875-17.71875-16.03125-45.5625 1.68750001-62.4375s45.5625-16.03125 62.43749999 1.6875L512 630.546875 826.71875 298.109375c16.875-17.71875 44.71875-18.5625 62.43749999-1.6875 17.71875 16.875 18.5625 44.71875 1.68750001 62.4375l-346.78125 366.18749999c-8.4375 9.28125-20.25 14.34375-32.0625 14.34375001z m0 0" />
@@ -32,7 +32,7 @@
                   </div>
                 </div>
                 <div class="nav-main-item">
-                  <a href="https://derify.medium.com/" target="_blank">Community</a>
+                  <span style="color: #96a7c7">Community</span>
                   <div class="sub-nav-arrow">
                     <svg viewBox="0 0 1024 1024" fill="currentColor">
                       <path d="M512 739.390625c-11.81250001 0-23.625-5.06249999-32.0625-13.5L133.15625 358.859375c-16.875-17.71875-16.03125-45.5625 1.68750001-62.4375s45.5625-16.03125 62.43749999 1.6875L512 630.546875 826.71875 298.109375c16.875-17.71875 44.71875-18.5625 62.43749999-1.6875 17.71875 16.875 18.5625 44.71875 1.68750001 62.4375l-346.78125 366.18749999c-8.4375 9.28125-20.25 14.34375-32.0625 14.34375001z m0 0" />
@@ -300,7 +300,7 @@ export default {
                 position: absolute;
                 top: 6rem;
                 left: 3rem;
-                background-color: rgba(0, 0, 0, 0.4);
+                background-color: rgba(0, 0, 0, 0.8);
                 min-width: 100%;
                 border-radius: 2px;
                 box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.2),
@@ -399,6 +399,9 @@ export default {
                   &.router-link-active {
                     color: #fff;
                   }
+                }
+                a img {
+                  margin-right: 5px;
                 }
               }
             }
