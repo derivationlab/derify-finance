@@ -102,9 +102,7 @@
                   <div class="inner-menu-main">
                     <router-link to="/">Home</router-link>
                     <div class="nav-wrapper">
-                      <a href="https://docs.derify.finance/" target="_blank">
-                        Learn
-                      </a>
+                      Learn
                       <div :class="showLearn ? 'toggle-m' : 'toggle-m toggle-m1'" @click="toggle2">
                         <img src="../../assets/arrow.png" alt srcset />
                       </div>
@@ -115,9 +113,7 @@
                     </div>
 
                     <div class="nav-wrapper">
-                      <a href="https://derify.medium.com/" target="_blank">
-                        Community
-                      </a>
+                      Community
                       <div :class="showCom ? 'toggle-m' : 'toggle-m toggle-m1'" @click="toggle3">
                         <img src="../../assets/arrow.png" alt srcset />
                       </div>
@@ -384,7 +380,7 @@ export default {
                 position: absolute;
                 top: 6rem;
                 right: 1rem;
-                background-color: rgba(0, 0, 0, 0.5);
+                background-color: rgba(0, 0, 0, 0.9);
                 border-radius: 2px;
                 box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.2),
                   0 3px 4px 0 rgba(0, 0, 0, 0.14),
