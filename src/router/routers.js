@@ -21,6 +21,11 @@ export default [
     name: "home",
     component: () => import("@/views/home"),
   },
+   {
+    path: "/terms",
+    name: "terms",
+    component: () => import("@/views/terms"),
+  },
   {
     path: "/stake",
     name: "stake",
