@@ -1,5 +1,6 @@
 import type { FC } from 'react'
 import ALink from '@@/common/ALink'
+import Button from '@@/common/Button'
 
 const Header: FC = () => {
   return (
@@ -55,9 +56,9 @@ const Header: FC = () => {
               </li>
             </ul>
           </li>
-          <button>
-            <ALink to="https://derify.exchange/">Exchange</ALink>
-          </button>
+          <Button size="mini" to="https://derify.exchange/">
+            Exchange
+          </Button>
         </ul>
       </nav>
     </header>
