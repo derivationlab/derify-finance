@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import ALink from '@/components/ALink'
+import ALink from '@@/common/ALink'
 
 const Header: FC = () => {
   return (
