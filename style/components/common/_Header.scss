@@ -2,8 +2,13 @@
   .web-header {
     position: fixed;top: 0;left: 0;right: 0;z-index: 10;
     display: flex;justify-content: space-between;align-items: center;
-    height: 100px;padding: 0 40px;
-    // background: rgba($web-bg, .8);
+    height: 80px;padding: 0 40px;
+    @include dz();
+    @extend .web_;
+
+    &-top {
+      height: 100px;
+    }
 
     .web-logo {
       height: 80px;width: 300px;
@@ -23,12 +28,23 @@
           opacity: .8;
 
         }
+        & > span {
+          display: flex;align-items: center;
+          &:after {
+            content: '';display: block;width: 8px;height: 8px;margin-left: 8px;
+            background: url($res + 'website/icon/arrow-up.svg') center/contain no-repeat;
+            @include dz();
+          }
+        }
         &:hover {
           & > span, & > a {
             opacity: 1;
           }
           ul {
             max-height: 350px
+          }
+          & > span:after {
+            @include xz(180);
           }
         }
         ul {
@@ -66,7 +82,7 @@
       height: 100px;
     }
     &-bg {
-      position: fixed;top: 0;left: 0;right: 0;z-index: 9;height: 100px;
+      position: fixed;top: 0;left: 0;right: 0;z-index: 9;height: 80px;
       @include mh(40px);
     }
   }

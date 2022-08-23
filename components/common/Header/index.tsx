@@ -1,5 +1,7 @@
-import type { FC } from 'react'
+import { FC, useMemo, useEffect, useRef } from 'react'
 import useTranslation from 'next-translate/useTranslation'
+import { useWindowScroll } from 'react-use'
+import classNames from 'classnames'
 
 import ALink from '@@/common/ALink'
 import Image from '@@/common/Image'
@@ -7,9 +9,11 @@ import Button from '@@/common/Button'
 
 const Header: FC = () => {
   const { t } = useTranslation('Home')
+  const { y } = useWindowScroll()
+  const isTop = useMemo(() => y < 50, [y])
   return (
     <>
-      <header className="web-header">
+      <header className={classNames('web-header', { 'web-header-top': isTop })}>
         <h1 className="web-logo"></h1>
         <nav className="web-header-nav">
           <ul>
@@ -23,24 +27,23 @@ const Header: FC = () => {
               <span>{t('Nav.Community')}</span>
               <ul>
                 <li>
-                <Image src="website/icon/twitter.svg" />
-                  <ALink to="https://twitter.com/DerifyProtocol">
-                  Twitter</ALink>
+                  <Image src="website/icon/twitter.svg" />
+                  <ALink to="https://twitter.com/DerifyProtocol">Twitter</ALink>
                 </li>
                 <li>
-                <Image src="website/icon/telegram.svg" />
+                  <Image src="website/icon/telegram.svg" />
                   <ALink to="https://t.me/DerifyProtocol_Official">Telegram</ALink>
                 </li>
                 <li>
-                <Image src="website/icon/discord.svg" />
+                  <Image src="website/icon/discord.svg" />
                   <ALink to="https://discord.gg/kSR6tz2pdm">Discord</ALink>
                 </li>
                 <li>
-                <Image src="website/icon/medium.svg" />
+                  <Image src="website/icon/medium.svg" />
                   <ALink to="https://derify.medium.com/">Medium</ALink>
                 </li>
                 <li>
-                <Image src="website/icon/github.svg" />
+                  <Image src="website/icon/github.svg" />
                   <ALink to="https://github.com/derivationlab">Github</ALink>
                 </li>
               </ul>
@@ -60,7 +63,9 @@ const Header: FC = () => {
                   <ALink to="https://derify.finance/stake">{t('Nav.Stake')}</ALink>
                 </li>
                 <li>
-                  <ALink to="https://docs.derify.finance/drf-token/distribution-and-release">{t('Nav.Distribution')}</ALink>
+                  <ALink to="https://docs.derify.finance/drf-token/distribution-and-release">
+                    {t('Nav.Distribution')}
+                  </ALink>
                 </li>
                 <li>
                   <ALink to="https://docs.derify.finance/whitepaper/tokenomics">{t('Nav.Tokenomics')}</ALink>
@@ -73,7 +78,7 @@ const Header: FC = () => {
           </ul>
         </nav>
       </header>
-      <div className="web-header-bg" />
+      <div className={classNames('web-header-bg', { 'web-header-top': isTop })} />
       <div className="web-header-blank" />
     </>
   )
