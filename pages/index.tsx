@@ -1,4 +1,4 @@
-import type { NextPage } from 'next'
+import { NextPage } from 'next'
 import Header from '@@/common/Header'
 import Footer from '@@/common/Footer'
 import HeadMeta from '@@/common/HeadMeta'

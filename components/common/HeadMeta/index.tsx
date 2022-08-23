@@ -1,5 +1,6 @@
 import { FC, ReactNode } from 'react'
 import Head from 'next/head'
+import Script from 'next/script'
 
 interface Props {
   title?: string
@@ -10,13 +11,17 @@ interface Props {
 
 const HeadMeta: FC<Props> = ({ title, keywords, description, children }) => {
   return (
-    <Head>
-      <title>{title}</title>
-      <meta name="keywords" content={keywords} />
-      <meta name="description" content={description} />
-      <link rel="icon" href="/favicon.ico" />
-      {children}
-    </Head>
+    <>
+      <Head>
+        <title>{title}</title>
+        <meta name="keywords" content={keywords} />
+        <meta name="description" content={description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+        <link rel="icon" href="/favicon.ico" />
+        {children}
+      </Head>
+      <Script src="/js/rem.js" />
+    </>
   )
 }
 
