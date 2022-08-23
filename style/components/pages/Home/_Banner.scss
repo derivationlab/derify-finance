@@ -1,6 +1,23 @@
 .web-mode {
   .web-home-banner {
-    height: 1372px;
+    height: 1500px;
     background: url($res + 'website/banner.png') center top no-repeat;
+    @extend .web_;
+
+    &-inner {
+      @extend .web;padding-top: 100px;
+    }
+    h2 {
+      font-size: 100px;font-weight: 800;line-height: 1.2;width: 960px;
+    }
+    p {
+      font-size: 48px;line-height: 1.2;width: 800px;margin: 72px 0;
+    }
+
+    aside {
+      button + button {
+        margin-left: 48px;
+      }
+    }
   }
 }
