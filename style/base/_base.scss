@@ -1,11 +1,7 @@
 // base by fungleo
 html {
-  background-color: $cff;
-  color: $c22;
-  &.dark {
-    background: $c22;
-    color: $cff;
-  }
+  background-color: $web-bg;
+  color: $cff;
 }
 body {
   line-height: 1;
@@ -65,15 +61,15 @@ body {
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
-  // background: #000;
+  background: $c00;
 }
 ::-webkit-scrollbar-thumb {
-  background: $ce7;
+  background: $c00;
   border-radius: 5px;
-  border: 2px solid rgba($ce7, .5);
+  border: 1px solid $web-bg;
 }
 ::-webkit-scrollbar-track-piece {
-  background: $cff;
+  background: $web-bg;
 }
 
 .mobile-mode {

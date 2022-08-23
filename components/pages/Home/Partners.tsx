@@ -12,8 +12,8 @@ const Partners: FC = () => {
       <ul>
         {list.map((_, index) => (
           <li key={index}>
-            <Image src={`website/partner/friends/${index}.png`} />
-            <Image src={`website/partner/friends/${index}-active.png`} />
+            <Image src={`website/partner/friends/${index + 1}.png`} />
+            <Image src={`website/partner/friends/${index + 1}-active.png`} />
           </li>
         ))}
       </ul>

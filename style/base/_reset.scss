@@ -1,6 +1,6 @@
 // Setting parameters by fungleo
 
-$BaseC: $c22;
+$BaseC: $cff;
 
 body,
 ul,
@@ -120,13 +120,7 @@ a {
   &:hover,
   &:focus {
     outline: none;
-    color: $red;
-  }
-}
-.dark a {
-  color: $cff;
-  &:hover, &:focus {
-    color: $yellow;
+    // color: $red;
   }
 }
 * {

@@ -26,5 +26,7 @@
       })(),
       false
     )
+  } else {
+    document.querySelector('html').classList.add('web-mode')
   }
 })()

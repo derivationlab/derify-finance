@@ -4,7 +4,7 @@ select,
 button {
   font-family: 'Urbanist', 'PingFang SC', 'Heiti SC', 'Droidsansfallback', Helvetica, 'Droid Sans';
   -webkit-appearance: none;
-  color: $c22;
+  color: $cff;
   &[type='radio'] {
     -webkit-appearance: radio;
   }
@@ -19,13 +19,4 @@ input[type='number']::-webkit-inner-spin-button {
 }
 input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
-}
-
-.dark {
-  input,
-  textarea,
-  select,
-  button {
-    color: $c88;
-  }
 }
