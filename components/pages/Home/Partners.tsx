@@ -1,12 +1,14 @@
-import { FC, ReactNode } from 'react'
+import { FC } from 'react'
+import useTranslation from 'next-translate/useTranslation'
 
 import Image from '@@/common/Image'
 
 const Partners: FC = () => {
+  const { t } = useTranslation('Home')
   const list = [...new Array(15)]
   return (
     <section className="web-home-partners">
-      <h2>Our partners</h2>
+      <h2>{t('Partners')}</h2>
       <ul>
         {list.map((_, index) => (
           <li key={index}>

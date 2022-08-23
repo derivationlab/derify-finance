@@ -1,43 +1,45 @@
-import { FC, ReactNode } from 'react'
+import { FC } from 'react'
+import useTranslation from 'next-translate/useTranslation'
 
 import ALink from '@@/common/ALink'
 
-const list: { name: string; info: string; link: string }[] = [
-  {
-    name: 'Position Mining',
-    info: 'Holding position is providing liquidity. Hold position to get mining rewards and DRF tokens.',
-    link: 'https://docs.derify.finance/whitepaper/mechanism/position-mining'
-  },
-  {
-    name: 'No Funding Fees',
-    info: 'Unlike traditional CEX, no Funding Fee, holding positions no longer incur additional cost.',
-    link: 'https://docs.derify.finance/whitepaper/mechanism/risk-control/position-change-fee'
-  },
-  {
-    name: 'No Slippage',
-    info: 'The visible price is the settled price, no price slippage or deviation cost.',
-    link: 'https://docs.derify.finance/whitepaper/mechanism/indexes'
-  },
-  {
-    name: 'DAO Operation',
-    info: 'A decentralized derivative protocol that is created, operated and owned by DAO',
-    link: 'https://docs.derify.finance/derify-dao/overview'
-  },
-  {
-    name: 'No Price Manipulation',
-    info: 'Price are provided by external oracles, no liquidity squeeze caused by the system',
-    link: 'https://docs.derify.finance/whitepaper/mechanism/indexes'
-  },
-  {
-    name: 'Fully Decentralized',
-    info: 'All major functions run by smart contracts',
-    link: 'https://docs.derify.finance/whitepaper/implementation/side-chain-rollup-and-cross-chain'
-  }
-]
-
 const Features: FC = () => {
+  const { t } = useTranslation('Home')
+  const list: { name: string; info: string; link: string }[] = [
+    {
+      name: t('Features.Name1'),
+      info: t('Features.Info1'),
+      link: 'https://docs.derify.finance/whitepaper/mechanism/position-mining'
+    },
+    {
+      name: t('Features.Name2'),
+      info: t('Features.Info2'),
+      link: 'https://docs.derify.finance/whitepaper/mechanism/risk-control/position-change-fee'
+    },
+    {
+      name: t('Features.Name3'),
+      info: t('Features.Info3'),
+      link: 'https://docs.derify.finance/whitepaper/mechanism/indexes'
+    },
+    {
+      name: t('Features.Name4'),
+      info: t('Features.Info4'),
+      link: 'https://docs.derify.finance/derify-dao/overview'
+    },
+    {
+      name: t('Features.Name5'),
+      info: t('Features.Info5'),
+      link: 'https://docs.derify.finance/whitepaper/mechanism/indexes'
+    },
+    {
+      name: t('Features.Name6'),
+      info: t('Features.Info6'),
+      link: 'https://docs.derify.finance/whitepaper/implementation/side-chain-rollup-and-cross-chain'
+    }
+  ]
   return (
     <section className="web-home-features">
+      <h2></h2>
       <ul>
         {list.map(({ name, info, link }, index) => (
           <li key={index}>

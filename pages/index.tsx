@@ -1,7 +1,6 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
 import Header from '@@/common/Header'
+import Footer from '@@/common/Footer'
 import HeadMeta from '@@/common/HeadMeta'
 import Banner from '@@/pages/Home/Banner'
 import Features from '@@/pages/Home/Features'
@@ -9,6 +8,8 @@ import DEXaas from '@@/pages/Home/DEXaas'
 import Dao from '@@/pages/Home/Dao'
 import Roadmap from '@@/pages/Home/Roadmap'
 import Partners from '@@/pages/Home/Partners'
+import Community from '@@/pages/Home/Community'
+import SiteMap from '@@/pages/Home/SiteMap'
 
 const Home: NextPage = () => {
   return (
@@ -21,7 +22,9 @@ const Home: NextPage = () => {
       <Dao />
       <Roadmap />
       <Partners />
-      <div className="web-home">2222</div>
+      <Community />
+      <SiteMap />
+      <Footer />
     </>
   )
 }

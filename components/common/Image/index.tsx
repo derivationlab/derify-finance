@@ -1,4 +1,4 @@
-import React, { FC, useMemo, ImgHTMLAttributes } from 'react'
+import React, { FC, useMemo } from 'react'
 import classNames from 'classnames'
 import { STATIC } from '@/config'
 

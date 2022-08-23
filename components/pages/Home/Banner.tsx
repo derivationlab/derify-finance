@@ -1,21 +1,19 @@
-import { FC, ReactNode } from 'react'
+import { FC } from 'react'
+import useTranslation from 'next-translate/useTranslation'
 
 import Button from '@@/common/Button'
 
 const Banner: FC = () => {
+  const { t } = useTranslation('Home')
   return (
     <section className="web-home-banner">
-      <h2>
-        Decentralized <br /> Perpetual Contracts
-      </h2>
-      <p>
-        A perpetual contracts exchange that <br /> mining through holding positions
-      </p>
+      <h2>{t('Banner.Title')}</h2>
+      <p>{t('Banner.Info')}</p>
       <aside>
         <Button dark to="https://docs.derify.finance/whitepaper/introduction">
-          Learn More
+          {t('Banner.LearnMore')}
         </Button>
-        <Button to="https://derify.exchange/">Launch App</Button>
+        <Button to="https://derify.exchange/">{t('Banner.LaunchApp')}</Button>
       </aside>
     </section>
   )

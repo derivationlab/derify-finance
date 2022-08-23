@@ -1,4 +1,5 @@
-import { FC, ReactNode } from 'react'
+import { FC } from 'react'
+import useTranslation from 'next-translate/useTranslation'
 
 import Button from '@@/common/Button'
 import Image from '@@/common/Image'
@@ -6,26 +7,17 @@ import Image from '@@/common/Image'
 const list = [...new Array(10)]
 
 const DEXaas: FC = () => {
+  const { t } = useTranslation('Home')
   return (
     <>
       <section className="web-home-dexaas">
-        <h2>
-          DEXaas: <br />
-          DEX-as-a-service
-        </h2>
-        <p>
-          Derify is not operated by a centralized team but individual Brokers all over the world. Every user needs a
-          Broker to access Derify, including but not limited to trading, mining, governance. etc. This is so-called
-          DEXaas (DEX-as-a-Service) model. Brokers can use Derify Protocol to create a derivative DEX of their own and
-          provide products and services to their users. Derify cores are shared with every Brokers' derivative DEX,
-          including liquidity pool, insurance pool, risk control system and profit (30% of the total trading fees and
-          DRF token rewards)
-        </p>
+        <h2>{t('DEXaas.Title')}</h2>
+        <p>{t('DEXaas.Info')}</p>
         <aside>
           <Button dark to="https://docs.derify.finance/whitepaper/community-and-governance/broker">
-            Learn More
+            {t('DEXaas.LearnMore')}
           </Button>
-          <Button to="https://derify.exchange/broker">Apply Broker</Button>
+          <Button to="https://derify.exchange/broker">{t('DEXaas.ApplyBroker')}</Button>
         </aside>
       </section>
       <section className="web-home-dexaas-logos">
