@@ -2,6 +2,7 @@ import { FC } from 'react'
 import useTranslation from 'next-translate/useTranslation'
 
 import Button from '@@/common/Button'
+import AnimateBox from '@@/common/AnimateBox'
 
 const Banner: FC = () => {
   const { t } = useTranslation('Home')

@@ -5,7 +5,7 @@
     li {
       @include mh(40px);overflow: hidden;
 
-      &:before {
+      &:before, &:after {
         content: '';display: block;
         background: center/contain no-repeat;
       }
@@ -55,7 +55,7 @@
         &:before {
           background-image: url($res + 'website/features/1.svg');
         }
-        &:hover:before {
+        &:hover:before, &:after {
           background-image: url($res + 'website/features/1-active.svg');
         }
       }
@@ -64,7 +64,7 @@
         &:before {
           background-image: url($res + 'website/features/2.svg');
         }
-        &:hover:before {
+        &:hover:before, &:after {
           background-image: url($res + 'website/features/2-active.svg');
         }
       }
@@ -73,7 +73,7 @@
         &:before {
           background-image: url($res + 'website/features/3.svg');
         }
-        &:hover:before {
+        &:hover:before, &:after {
           background-image: url($res + 'website/features/3-active.svg');
         }
       }
@@ -82,7 +82,7 @@
         &:before {
           background-image: url($res + 'website/features/4.svg');
         }
-        &:hover:before {
+        &:hover:before, &:after {
           background-image: url($res + 'website/features/4-active.svg');
         }
       }
@@ -91,7 +91,7 @@
         &:before {
           background-image: url($res + 'website/features/5.svg');
         }
-        &:hover:before {
+        &:hover:before, &:after {
           background-image: url($res + 'website/features/5-active.svg');
         }
       }
@@ -100,7 +100,7 @@
         &:before {
           background-image: url($res + 'website/features/6.svg');
         }
-        &:hover:before {
+        &:hover:before, &:after {
           background-image: url($res + 'website/features/6-active.svg');
         }
       }
@@ -135,7 +135,7 @@
       li {
         width: 900px;height: 436px;border-radius: 64px;
         background: rgba($c11, .6);padding: 80px;
-        position: absolute;
+        position: absolute;opacity: 0;
         display: flex;align-items: center;
 
 
