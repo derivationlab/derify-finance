@@ -1,0 +1,40 @@
+.web-mode {
+  .web-home-dexaas {
+    @extend .web_;height: 1120px;
+    background: url($res + 'website/man.jpg')  no-repeat;
+    background-position: right 10% top;
+    main {
+      @extend .web;
+    }
+
+    h2 {
+      font-size: 100px;line-height: 1.2;font-weight: 800;width: 900px;
+    }
+
+    p {
+      margin: 72px 0;width: 620px;font-size: 28px;line-height: 1.4;
+    }
+
+    aside {
+      button {
+        margin-right: 48px;
+      }
+    }
+
+    &-logos {
+      @extend .web_;
+      img {
+        @include dz();opacity: .2;cursor: pointer;
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .web-mode .web-home-dexaas {
+    background-position: right -10% top;
+  }
+}
