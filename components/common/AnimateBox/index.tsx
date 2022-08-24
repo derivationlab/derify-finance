@@ -39,7 +39,7 @@ const AnimateBox: FC<Props> = ({ children, type = '', tag }) => {
   if (mobile) {
     return createElement(tag, {}, children)
   }
-  // if (!init) return null
+  if (!init) return null
   return (
     <InView
       as={tag}

@@ -43,12 +43,6 @@
 
 .mobile-mode {
   .web-home-dexaas {
-    // height: 1120px;
-    // background: url($res + 'website/man.jpg')  no-repeat;
-    // background-position: right 10% top;
-    // main {
-    //   @extend .web;
-    // }
 
     h2 {
       font-size: rem(36);line-height: 1.2;font-weight: 800;
@@ -63,7 +57,7 @@
     aside {
       padding: 0 rem(30);
       button {
-        margin-bottom: rem(30);
+        margin-bottom: rem(30);display: block;
       }
     }
 
