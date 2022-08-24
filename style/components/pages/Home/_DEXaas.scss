@@ -8,23 +8,25 @@
     }
 
     h2 {
-      font-size: 100px;line-height: 1.2;font-weight: 800;width: 900px;
+      font-size: 100px;line-height: 1.2;font-weight: 800;width: 900px;opacity: 0;
     }
 
     p {
-      margin: 72px 0;width: 620px;font-size: 28px;line-height: 1.4;
+      margin: 72px 0;width: 620px;font-size: 28px;line-height: 1.4;opacity: 0;
     }
 
     aside {
+      opacity: 0;
       button {
         margin-right: 48px;
       }
     }
 
     &-logos {
-      @extend .web_;
+      @extend .web_;padding-bottom: 200px;
       img {
         @include dz();opacity: .2;cursor: pointer;
+        display: block;width: 390px;height: 230px;
         &:hover {
           opacity: 1;
         }

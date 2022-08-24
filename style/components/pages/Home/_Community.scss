@@ -1,0 +1,8 @@
+.web-mode {
+  .web-home-community {
+    @extend .web;
+    h2 {
+      font-size: 100px;line-height: 1.2;font-weight: 800;text-align: center;height: 200px;
+    }
+  }
+}

@@ -2,6 +2,7 @@ import { FC } from 'react'
 import useTranslation from 'next-translate/useTranslation'
 
 import Image from '@@/common/Image'
+import AnimateBox from '@@/common/AnimateBox'
 
 const Partners: FC = () => {
   const { t } = useTranslation('Home')
@@ -11,10 +12,10 @@ const Partners: FC = () => {
       <h2>{t('Partners')}</h2>
       <ul>
         {list.map((_, index) => (
-          <li key={index}>
+          <AnimateBox tag="li" type="fadeInUp" key={index}>
             <Image src={`website/partner/friends/${index + 1}.png`} />
             <Image src={`website/partner/friends/${index + 1}-active.png`} />
-          </li>
+          </AnimateBox>
         ))}
       </ul>
     </section>

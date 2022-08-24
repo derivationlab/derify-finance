@@ -3,6 +3,7 @@ import useTranslation from 'next-translate/useTranslation'
 
 import ALink from '@@/common/ALink'
 import Image from '@@/common/Image'
+import AnimateBox from '@@/common/AnimateBox'
 
 const Dao: FC = () => {
   const { t } = useTranslation('Home')
@@ -34,13 +35,13 @@ const Dao: FC = () => {
         <h2>{t('Dao.Title')}</h2>
         <ul>
           {list.map(({ name, info, link }, index) => (
-            <li key={index}>
+            <AnimateBox tag="li" type="fadeInUpBig" key={index}>
               <ALink to={link}>
                 <Image src={`website/dao/${index + 1}.svg`} alt={name} />
                 <h4>{name}</h4>
                 <p>{info}</p>
               </ALink>
-            </li>
+            </AnimateBox>
           ))}
         </ul>
       </section>
