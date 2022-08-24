@@ -40,3 +40,39 @@
     background-position: right -10% top;
   }
 }
+
+.mobile-mode {
+  .web-home-dexaas {
+    // height: 1120px;
+    // background: url($res + 'website/man.jpg')  no-repeat;
+    // background-position: right 10% top;
+    // main {
+    //   @extend .web;
+    // }
+
+    h2 {
+      font-size: rem(36);line-height: 1.2;font-weight: 800;
+      height: rem(346);text-align: center;padding-top: rem(230);
+      background: url($res + 'website/man.jpg') center/contain no-repeat;
+    }
+
+    p {
+      font-size: rem(14);line-height: 1.4;padding: rem(30);
+    }
+
+    aside {
+      padding: 0 rem(30);
+      button {
+        margin-bottom: rem(30);
+      }
+    }
+
+    &-logos {
+      margin-bottom: rem(30);
+      img {
+        @include dz();opacity: .4;cursor: pointer;
+        display: block;width: rem(120);height: auto;
+      }
+    }
+  }
+}

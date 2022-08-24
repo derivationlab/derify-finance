@@ -1,4 +1,5 @@
 .web-home-features {
+  background: url($res + 'website/ribbon.png') center top no-repeat;
 
   h2 {
     font-weight: 800;text-align: center;line-height: 1.2;
@@ -9,6 +10,8 @@
 
     li {
       @include mh(40px);overflow: hidden;
+      background: rgba($c11, .6);
+      display: flex;align-items: center;
 
       &:before, &:after {
         content: '';display: block;
@@ -116,7 +119,6 @@
 .web-mode {
   .web-home-features {
     @extend .web_;
-    background: url($res + 'website/ribbon.png') center top no-repeat;
     background-size: 100% 100%;
     &-inner {
       @extend .web;
@@ -139,9 +141,8 @@
 
       li {
         width: 900px;height: 436px;border-radius: 64px;
-        background: rgba($c11, .6);padding: 80px;
+        padding: 80px;
         position: absolute;opacity: 0;
-        display: flex;align-items: center;
 
 
         &:before {
@@ -211,11 +212,64 @@
 
 .mobile-mode {
   .web-home-features {
+    background-size: 100% 100%;
     h2 {
       font-size: rem(36);margin-bottom: rem(32);
     }
     ul {
-      li {}
+      li {
+        width: rem(351); height: rem(150);margin: 0 auto rem(12);
+        border-radius: rem(22);padding: rem(16);
+        justify-content: space-between;
+        &:before {
+          width: rem(110);height: rem(110);
+        }
+        &:after {
+          display: none;
+        }
+        main {
+          width: rem(189);
+
+          h4 {
+            font-size: rem(16);line-height: 1.2;
+          }
+
+          p {
+            font-size: rem(10);line-height: 1.3;margin: rem(8) 0 rem(12);
+          }
+
+          a {
+            width: rem(68);height: rem(24);border-radius: rem(12);
+
+            &:before {
+              height: rem(2);width: rem(16);
+            }
+
+            &:after {
+              width: rem(5);height: rem(5);
+              border-width: rem(2);border-style: solid;
+              margin-top: rem(-4.5);margin-left: 0;
+            }
+          }
+        }
+
+        &:nth-child(3), &:nth-child(4) {
+          width: rem(170);height: rem(316);padding: rem(24) rem(16);
+          flex-flow: column;justify-content: flex-start;margin-left: rem(12);
+          main {
+            width: rem(145);text-align: center;margin-top: rem(24);
+            p {
+              margin: rem(16) 0 rem(24);
+            }
+            a {
+              margin: 0 auto;
+            }
+          }
+        }
+        &:nth-child(4) {
+          position: absolute;right: rem(12); top: rem(323);
+        }
+      }
     }
   }
 }
