@@ -1,41 +1,69 @@
+.web-home-partners {
+  h2 {
+    line-height: 1.2;font-weight: 800;text-align: center;
+  }
+  ul {
+    display: grid;
+    li {
+      position: relative;cursor: pointer;
+      img {
+        display: block;position: absolute;top: 0;left: 0;
+        &:first-child {
+          z-index: 1;opacity: .8;
+        }
+        &:last-child {
+          z-index: 0;opacity: 0;
+        }
+      }
+      &:hover {
+        img {
+          &:first-child {
+            opacity: 0;
+          }
+          &:last-child {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
 .web-mode {
   .web-home-partners {
     @extend .web;margin-bottom: 200px;
     h2 {
-      font-size: 100px;line-height: 1.2;font-weight: 800;
-      text-align: center;height: 220px;
+      font-size: 100px;height: 220px;
     }
     ul {
-      display: grid;grid-template-columns: repeat(5,1fr);height: 864px;
+      grid-template-columns: repeat(5,1fr);height: 864px;
       li {
-        position: relative;cursor: pointer;opacity: 0;
+        opacity: 0;
         &, img {
           width: 288px;height: 288px;
           @include dz();
-        }
-        img {
-          display: block;position: absolute;top: 0;left: 0;
-          &:first-child {
-            z-index: 1;opacity: .8;
-          }
-          &:last-child {
-            z-index: 0;opacity: 0;
-          }
-        }
-        &:hover {
-          img {
-            &:first-child {
-              opacity: 0;
-            }
-            &:last-child {
-              opacity: 1;
-            }
-          }
         }
         @for $i from 1 through 15 {
           &:nth-child(#{$i}) {
             animation-delay: $i * .1s;
           }
+        }
+      }
+    }
+  }
+}
+
+.mobile-mode {
+  .web-home-partners {
+    margin-bottom: rem(72);
+    h2 {
+      font-size: rem(32);height: rem(80);
+    }
+    ul {
+      grid-template-columns: repeat(3,1fr);padding: rem(6);
+      li {
+        &, img {
+          width: rem(121);height: rem(121);
+          // width: 100%;
         }
       }
     }
