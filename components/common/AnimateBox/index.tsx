@@ -1,7 +1,7 @@
-import { FC, memo, useMemo, ReactNode, ElementType, useState, createElement } from 'react'
+import { FC, memo, useMemo, ReactNode, ElementType, useState, createElement, useEffect } from 'react'
 import { InView } from 'react-intersection-observer'
 import classNames from 'classnames'
-import { useEffectOnce } from 'react-use'
+// import { useEffectOnce } from 'react-use'
 import { isMobile } from '@/utils/tools'
 
 interface Props {
@@ -17,14 +17,21 @@ const AnimateBox: FC<Props> = ({ children, type = '', tag }) => {
 
   const className = useMemo(() => (inView ? `animate__${type}` : ''), [inView])
 
-  useEffectOnce(() => {
-    return () => {
-      setMobile(isMobile())
-      setTimeout(() => {
-        setInit(true)
-      }, 1000)
-    }
-  })
+  // useEffectOnce(() => {
+  //   return () => {
+  //     setMobile(isMobile())
+  //     setTimeout(() => {
+  //       setInit(true)
+  //     }, 1000)
+  //   }
+  // })
+
+  useEffect(() => {
+    setMobile(isMobile())
+    setTimeout(() => {
+      setInit(true)
+    }, 1000)
+  }, [])
 
   const onChange = (inView: boolean, entry: any) => {
     setInView(inView)
