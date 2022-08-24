@@ -34,4 +34,3 @@ HeadMeta.defaultProps = {
 }
 
 export default HeadMeta
-// <link rel="stylesheet" href="/font.css" />

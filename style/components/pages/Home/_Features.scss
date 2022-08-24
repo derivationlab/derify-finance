@@ -1,4 +1,9 @@
 .web-home-features {
+
+  h2 {
+    font-weight: 800;text-align: center;line-height: 1.2;
+  }
+
   ul {
     position: relative;
 
@@ -118,7 +123,7 @@
     }
 
     h2 {
-      font-size: 100px;font-weight: 800;text-align: center;margin-bottom: 165px;
+      font-size: 100px;margin-bottom: 165px;
     }
 
     ul {
@@ -200,6 +205,14 @@
           top: 250px + 828px + 120px + 436px;right: 0;
         }
       }
+    }
+  }
+}
+
+.mobile-mode {
+  .web-home-features {
+    h2 {
+      font-size: rem(36);margin-bottom: rem(32);
     }
   }
 }

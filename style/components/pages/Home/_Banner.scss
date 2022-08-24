@@ -1,3 +1,12 @@
+.web-home-banner {
+  background: url($res + 'website/banner.png') center top no-repeat;
+  line-height: 1.2;
+
+  h2 {
+    font-weight: 800;
+  }
+}
+
 .web-mode {
   .web-home-banner {
     height: 1500px;
@@ -8,15 +17,39 @@
       @extend .web;padding-top: 100px;
     }
     h2 {
-      font-size: 100px;font-weight: 800;line-height: 1.2;width: 960px;
+      font-size: 100px;width: 960px;
     }
     p {
-      font-size: 48px;line-height: 1.2;width: 800px;margin: 72px 0;
+      font-size: 48px;width: 800px;margin: 72px 0;
     }
 
     aside {
       button + button {
         margin-left: 48px;
+      }
+    }
+  }
+}
+
+.mobile-mode {
+  .web-home-banner {
+    height: rem(820);
+    background-size: 180%;
+    background-position: center bottom rem(40);
+
+    &-inner {
+      padding: rem(48) rem(56);
+    }
+    h2 {
+      font-size: rem(36);width: rem(230);
+    }
+    p {
+      font-size: rem(20);width: rem(260);margin: rem(25) 0 rem(35);
+    }
+
+    aside {
+      button {
+        display: block;margin-bottom: rem(36);
       }
     }
   }
