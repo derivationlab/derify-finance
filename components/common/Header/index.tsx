@@ -12,7 +12,7 @@ const Header: FC = () => {
   const { t } = useTranslation('Home')
   const { y } = useWindowScroll()
   const [show, setShow] = useState<boolean>(false)
-  const [activeIndex, setActiveIndex] = useState<boolean>(0)
+  const [activeIndex, setActiveIndex] = useState<number>(0)
 
   const isTop = useMemo(() => y < 50, [y])
 

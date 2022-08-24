@@ -3,14 +3,16 @@ import Router, { useRouter, withRouter } from 'next/router'
 import Link from 'next/link'
 const Footer: FC = () => {
   const router = useRouter()
-  const { locale, locales } = router
+  const { locale, locales = [] } = router
+
+  const [currLang, setCurrLang] = useState<string>('English')
+
   const languages: Record<string, string> = {
     'en-US': 'English',
     'zh-CN': '简体中文'
   }
-  const [currLang, setCurrLang] = useState<string>(languages[locale] ?? 'English')
-
   useEffect(() => {
+    // @ts-ignore
     setCurrLang(languages[locale] ?? 'English')
   }, [locale])
   return (
