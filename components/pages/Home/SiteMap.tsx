@@ -46,16 +46,18 @@ const SiteMap: FC = () => {
   ]
   return (
     <section className="web-home-sitemap">
-      {list.map(({ name, children }) => (
-        <dl key={name}>
-          <dt>{name}</dt>
-          {children.map(({ name: cName, url }) => (
-            <dd key={cName}>
-              <ALink to={url}>{cName}</ALink>
-            </dd>
-          ))}
-        </dl>
-      ))}
+      <main>
+        {list.map(({ name, children }) => (
+          <dl key={name}>
+            <dt>{name}</dt>
+            {children.map(({ name: cName, url }) => (
+              <dd key={cName}>
+                <ALink to={url}>{cName}</ALink>
+              </dd>
+            ))}
+          </dl>
+        ))}
+      </main>
     </section>
   )
 }

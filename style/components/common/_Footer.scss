@@ -1,0 +1,53 @@
+.web-mode {
+  .web-footer {
+    @extend .web_;
+    background: rgba($cff, .05);
+
+    main {
+      @extend .web;height: 100px;
+      display: flex;justify-content: space-between;align-items: center;
+    }
+
+    &-copy {
+      font-size: 20px;color: rgba($cff, .8);
+    }
+
+    &-lang {
+      position: relative;
+      span {
+        display: flex;align-items: center;font-size: 20px;cursor: pointer;text-decoration: underline;
+        height: 60px;
+        &:before {
+          content: '';display: block;width: 26px;height: 26px;margin-right: 12px;
+          background: url($res + 'website/icon/lang.svg') center/contain no-repeat;
+        }
+      }
+      ul {
+        position: absolute;bottom: 60px;right: 0;overflow: hidden;max-height: 0;
+        background: rgba($cff, .1);border-radius: 12px;font-size: 18px;
+        @include dz();
+        li {
+          a {
+            white-space: nowrap;
+            line-height: 20px;display: flex;align-items: center;padding: 12px 24px;min-width: 120px;
+
+            &:hover {
+              background: rgba($cff, .2);
+              // color: $c00;
+            }
+          }
+          &:first-child a {
+            padding-top: 24px;
+          }
+          &:last-child a {
+            padding-bottom: 24px;
+          }
+        }
+      }
+
+      &:hover ul {
+        max-height: 150px;
+      }
+    }
+  }
+}

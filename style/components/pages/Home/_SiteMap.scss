@@ -1,0 +1,26 @@
+.web-mode {
+  .web-home-sitemap {
+    @extend .web_;padding: 140px 0;margin-top: 200px;
+    background: rgba($cff, .03);
+    main {
+      @extend .web;line-height: 1.2;
+      display: grid;grid-template-columns: repeat(4, 1fr);
+
+      dl {
+        dt {
+          font-size: 48px;font-weight: 800;margin-bottom: 30px;
+          text-shadow: 0px 0px 40px rgba($cff, 0.2);
+        }
+        dd {
+          font-size: 24px;margin-bottom: 24px;
+          a {
+            display: block;opacity: .6;
+            &:hover {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}

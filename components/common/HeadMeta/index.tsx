@@ -18,7 +18,6 @@ const HeadMeta: FC<Props> = ({ title, keywords, description, children }) => {
         <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="stylesheet" href="/font.css" />
         {children}
       </Head>
       <Script src="/js/rem.js" />
@@ -35,3 +34,4 @@ HeadMeta.defaultProps = {
 }
 
 export default HeadMeta
+// <link rel="stylesheet" href="/font.css" />

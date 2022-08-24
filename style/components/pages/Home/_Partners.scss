@@ -6,7 +6,7 @@
       text-align: center;height: 220px;
     }
     ul {
-      display: grid;grid-template-columns: repeat(5,1fr);
+      display: grid;grid-template-columns: repeat(5,1fr);height: 864px;
       li {
         position: relative;cursor: pointer;opacity: 0;
         &, img {
