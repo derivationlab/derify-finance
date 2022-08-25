@@ -1,10 +1,12 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
+import classNames from 'classnames'
 import useTranslation from 'next-translate/useTranslation'
 
 import ALink from '@@/common/ALink'
 
 const SiteMap: FC = () => {
   const { t } = useTranslation('Home')
+  const [activeIndex, setActiveIndex] = useState<number>(-1)
   const list: { name: string; children: { name: string; url: string }[] }[] = [
     {
       name: t('Other.Resources'),
@@ -44,12 +46,16 @@ const SiteMap: FC = () => {
       ]
     }
   ]
+
+  const onActiveChange = (index: number) => {
+    setActiveIndex(index === activeIndex ? -1 : index)
+  }
   return (
     <section className="web-home-sitemap">
       <main>
-        {list.map(({ name, children }) => (
-          <dl key={name}>
-            <dt>{name}</dt>
+        {list.map(({ name, children }, index) => (
+          <dl key={name} className={classNames({ active: activeIndex === index })}>
+            <dt onClick={() => onActiveChange(index)}>{name}</dt>
             {children.map(({ name: cName, url }) => (
               <dd key={cName}>
                 <ALink to={url}>{cName}</ALink>
