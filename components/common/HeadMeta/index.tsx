@@ -16,8 +16,13 @@ const HeadMeta: FC<Props> = ({ title, keywords, description, children }) => {
         <title>{title}</title>
         <meta name="keywords" content={keywords} />
         <meta name="description" content={description} />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+        />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="stylesheet" href="/font.css" />
+        <link rel="stylesheet" href="/style.css" />
         {children}
       </Head>
       <Script src="/js/rem.js" />
