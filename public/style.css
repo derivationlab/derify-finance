@@ -447,6 +447,7 @@ body > iframe {
 .mobile-mode .web-footer main {
   height: 0.64rem;
   font-size: 0.12rem;
+  padding: 0 0.16rem;
 }
 .mobile-mode .web-footer-lang {
   position: relative;
