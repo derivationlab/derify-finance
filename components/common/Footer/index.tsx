@@ -25,7 +25,7 @@ const Footer: FC = () => {
           <ul>
             {locales.map((code, index) => (
               <li key={index} onClick={() => setShow(false)}>
-                <Link href="/" locale={code}>
+                <Link href={`/${code}`} locale={code}>
                   {languages[code]}
                 </Link>
               </li>
