@@ -12,7 +12,7 @@ const SiteMap: FC = () => {
       name: t('Other.Resources'),
       children: [
         { name: t('Other.Whitepaper'), url: 'https://docs.derify.finance/whitepaper/introduction' },
-        { name: t('Other.AuditReport'), url: '' },
+        { name: t('Other.AuditReport'), url: 'https://www.certik.com/projects/derify-protocol' },
         { name: t('Other.SourceCode'), url: 'https://github.com/derivationlab' }
       ]
     },
