@@ -1,6 +1,7 @@
 import { FC, useMemo, useEffect, useRef, useState } from 'react'
 import useTranslation from 'next-translate/useTranslation'
 import { useWindowScroll, useLockBodyScroll } from 'react-use'
+import Router, { useRouter, withRouter } from 'next/router'
 
 import classNames from 'classnames'
 import Link from 'next/link'
@@ -9,6 +10,9 @@ import Image from '@@/common/Image'
 import Button from '@@/common/Button'
 
 const Header: FC = () => {
+  const router = useRouter()
+  const { locale } = router
+
   const { t } = useTranslation('Home')
   const { y } = useWindowScroll()
   const [show, setShow] = useState<boolean>(false)
@@ -30,7 +34,7 @@ const Header: FC = () => {
           <div className="web-header-nav-menu close" onClick={() => setShow(false)} />
           <ul>
             <li>
-              <Link href="/">{t('Nav.About')}</Link>
+              <Link href={`/${locale}`}>{t('Nav.About')}</Link>
             </li>
             <li>
               <ALink to="https://docs.derify.finance/">{t('Nav.Docs')}</ALink>
