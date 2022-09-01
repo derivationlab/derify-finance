@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation'
 import { useWindowScroll, useLockBodyScroll } from 'react-use'
 
 import classNames from 'classnames'
-
+import Link from 'next/link'
 import ALink from '@@/common/ALink'
 import Image from '@@/common/Image'
 import Button from '@@/common/Button'
@@ -30,7 +30,7 @@ const Header: FC = () => {
           <div className="web-header-nav-menu close" onClick={() => setShow(false)} />
           <ul>
             <li>
-              <ALink to="/">{t('Nav.About')}</ALink>
+              <Link href="/">{t('Nav.About')}</Link>
             </li>
             <li>
               <ALink to="https://docs.derify.finance/">{t('Nav.Docs')}</ALink>

@@ -16,33 +16,32 @@ const Features: FC = () => {
     {
       name: t('Features.Name3'),
       info: t('Features.Info3'),
-      link: 'https://docs.derify.finance/whitepaper/mechanism/indexes',
+      link: 'https://docs.derify.finance/whitepaper/mechanism/risk-control/position-change-fee',
       animate: 'fadeInLeft'
     },
     {
       name: t('Features.Name2'),
       info: t('Features.Info2'),
-      link: 'https://docs.derify.finance/whitepaper/mechanism/risk-control/position-change-fee',
+      link: 'https://docs.derify.finance/whitepaper/mechanism/indexes',
       animate: 'fadeInTopRight'
     },
     {
       name: t('Features.Name6'),
       info: t('Features.Info6'),
-      link: 'https://docs.derify.finance/whitepaper/implementation/side-chain-rollup-and-cross-chain',
+      link: 'https://docs.derify.finance/derify-dao/overview',
       animate: 'fadeInBottomLeft'
     },
     {
       name: t('Features.Name4'),
       info: t('Features.Info4'),
-      link: 'https://docs.derify.finance/derify-dao/overview',
+      link: 'https://docs.derify.finance/whitepaper/mechanism/indexes',
       animate: 'fadeInRight'
     },
     {
       name: t('Features.Name5'),
       info: t('Features.Info5'),
-      link: 'https://docs.derify.finance/whitepaper/mechanism/indexes',
+      link: 'https://docs.derify.finance/whitepaper/implementation/side-chain-rollup-and-cross-chain',
       animate: 'fadeInBottomRight'
-
     }
   ]
   return (
