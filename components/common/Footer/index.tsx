@@ -9,7 +9,7 @@ const Footer: FC = () => {
   const [currLang, setCurrLang] = useState<string>('English')
 
   const languages: Record<string, string> = {
-    'en-US': 'English',
+    'en': 'English',
     'zh-CN': '简体中文'
   }
   useEffect(() => {
