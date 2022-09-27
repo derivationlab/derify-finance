@@ -1,5 +1,6 @@
 import { NextPage } from 'next'
-import {useEffect, useMemo, useState} from 'react'
+import {useEffect, useState} from 'react'
+
 import Header from '@@/common/Header'
 import Footer from '@@/common/Footer'
 import HeadMeta from '@@/common/HeadMeta'
