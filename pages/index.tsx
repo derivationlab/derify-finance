@@ -15,18 +15,18 @@ import SiteMap from '@@/pages/Home/SiteMap'
 import Loading from '@@/pages/Home/Loading'
 
 const Home: NextPage = () => {
-  const [display, setDisplay] = useState<boolean>(false)
+  const [visibility, setVisibility] = useState<boolean>(false)
 
   useEffect(() => {
     setTimeout(() => {
-      setDisplay(true)
+      setVisibility(true)
     }, 2000)
   }, [])
 
   return (
     <>
-      <Loading display={!display} />
-      <div style={{ display: display ? 'block' : 'none' }}>
+      <Loading display={!visibility} />
+      <div style={{ visibility: visibility ? 'visible' : 'hidden' }}>
         <HeadMeta />
         <Header />
         <Banner />
