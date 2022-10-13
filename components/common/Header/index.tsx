@@ -76,7 +76,7 @@ const Header: FC = () => {
                   </ALink>
                 </li>
                 <li>
-                  <ALink to="https://stake.derify.finance/stake">{t('Nav.Stake')}</ALink>
+                  <ALink to="https://derify.exchange/earn">{t('Nav.Stake')}</ALink>
                 </li>
                 <li>
                   <ALink to="https://docs.derify.finance/drf-token/distribution-and-release">
