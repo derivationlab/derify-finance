@@ -48,12 +48,32 @@ const Roadmap: FC = () => {
     {
       quarter: t('Roadmap.Name6'),
       tag: t('Roadmap.Name6Sub1'),
-      item: [t('Roadmap.Name6Sub2'), t('Roadmap.Name6Sub3'), t('Roadmap.Name6Sub4')]
+      item: [
+        t('Roadmap.Name6Sub2'),
+        t('Roadmap.Name6Sub3'),
+        t('Roadmap.Name6Sub4'),
+        t('Roadmap.Name6Sub5')
+      ]
     },
     {
       quarter: t('Roadmap.Name7'),
       tag: t('Roadmap.Name7Sub1'),
-      item: [ t('Roadmap.Name7Sub2'), t('Roadmap.Name7Sub3'), t('Roadmap.Name7Sub4')]
+      item: [
+        t('Roadmap.Name7Sub2'),
+        t('Roadmap.Name7Sub3'),
+        t('Roadmap.Name7Sub4'),
+        t('Roadmap.Name7Sub5')
+      ]
+    },
+    {
+      quarter: t('Roadmap.Name8'),
+      tag: t('Roadmap.Name8Sub1'),
+      item: [ t('Roadmap.Name8Sub2'), t('Roadmap.Name8Sub3'), t('Roadmap.Name8Sub4')]
+    },
+    {
+      quarter: t('Roadmap.Name9'),
+      tag: t('Roadmap.Name9Sub1'),
+      item: [ t('Roadmap.Name9Sub2'), t('Roadmap.Name9Sub3'), t('Roadmap.Name9Sub4')]
     }
   ]
   return (
