@@ -20,18 +20,18 @@ const Footer: FC = () => {
     <footer className="web-footer">
       <main>
         <div className="web-footer-copy">&copy; 2022 Derivation Lab</div>
-        <div className={classNames('web-footer-lang', { show })}>
-          <span onClick={() => setShow(!show)}>{currLang}</span>
-          <ul>
-            {locales.map((code, index) => (
-              <li key={index} onClick={() => setShow(false)}>
-                <Link href={`/${code}`} locale={code}>
-                  {languages[code]}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {/*<div className={classNames('web-footer-lang', { show })}>*/}
+        {/*  <span onClick={() => setShow(!show)}>{currLang}</span>*/}
+        {/*  <ul>*/}
+        {/*    {locales.map((code, index) => (*/}
+        {/*      <li key={index} onClick={() => setShow(false)}>*/}
+        {/*        <Link href={`/${code}`} locale={code}>*/}
+        {/*          {languages[code]}*/}
+        {/*        </Link>*/}
+        {/*      </li>*/}
+        {/*    ))}*/}
+        {/*  </ul>*/}
+        {/*</div>*/}
       </main>
     </footer>
   )
