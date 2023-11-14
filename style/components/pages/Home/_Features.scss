@@ -61,55 +61,55 @@
 
       &:nth-child(1) {
         &:before {
-          background-image: url($res + 'website/features/1.svg');
+          background-image: url($res + 'website/features/1.png');
         }
         &:hover:before, &:after {
-          background-image: url($res + 'website/features/1-active.svg');
+          background-image: url($res + 'website/features/1-active.png');
         }
       }
 
       &:nth-child(2) {
         &:before {
-          background-image: url($res + 'website/features/2.svg');
+          background-image: url($res + 'website/features/2.png');
         }
         &:hover:before, &:after {
-          background-image: url($res + 'website/features/2-active.svg');
+          background-image: url($res + 'website/features/2-active.png');
         }
       }
 
       &:nth-child(3) {
         &:before {
-          background-image: url($res + 'website/features/3.svg');
+          background-image: url($res + 'website/features/3.png');
         }
         &:hover:before, &:after {
-          background-image: url($res + 'website/features/3-active.svg');
+          background-image: url($res + 'website/features/3-active.png');
         }
       }
 
       &:nth-child(4) {
         &:before {
-          background-image: url($res + 'website/features/4.svg');
+          background-image: url($res + 'website/features/4.png');
         }
         &:hover:before, &:after {
-          background-image: url($res + 'website/features/4-active.svg');
+          background-image: url($res + 'website/features/4-active.png');
         }
       }
 
       &:nth-child(5) {
         &:before {
-          background-image: url($res + 'website/features/5.svg');
+          background-image: url($res + 'website/features/5.png');
         }
         &:hover:before, &:after {
-          background-image: url($res + 'website/features/5-active.svg');
+          background-image: url($res + 'website/features/5-active.png');
         }
       }
 
       &:nth-child(6) {
         &:before {
-          background-image: url($res + 'website/features/6.svg');
+          background-image: url($res + 'website/features/6.png');
         }
         &:hover:before, &:after {
-          background-image: url($res + 'website/features/6-active.svg');
+          background-image: url($res + 'website/features/6-active.png');
         }
       }
     }
