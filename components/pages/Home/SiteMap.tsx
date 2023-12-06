@@ -20,8 +20,8 @@ const SiteMap: FC = () => {
       name: t('Other.Product'),
       children: [
         { name: t('Other.Tutorial'), url: 'https://docs.derify.finance/getting-started/tutorial' },
-        { name: t('Other.BasicKnowledge'), url: 'https://docs.derify.finance/getting-started/basic-knowledge' },
-        { name: t('Other.FAQ'), url: 'https://docs.derify.finance/getting-started/faq' },
+        { name: t('Other.BasicKnowledge'), url: 'https://docs.derify.finance/getting-started/dictionary' },
+        { name: t('Other.FAQ'), url: 'https://docs.derify.finance/about-derify/general' },
         { name: t('Other.Support'), url: 'https://discord.com/channels/822422051099902053/827112242449350686' }
       ]
     },
@@ -40,7 +40,7 @@ const SiteMap: FC = () => {
     {
       name: t('Other.Cooperation'),
       children: [
-        { name: 'Telegram', url: 'https://t.me/jack8135' },
+        { name: 'Telegram', url: 'https://t.me/Sophia_2310' },
         { name: 'Discord', url: 'https://discord.com/channels/822422051099902053/977454935484551218' },
         { name: 'Email', url: 'mailto:contact@derify.org' }
       ]

@@ -13,7 +13,7 @@
   },
   "Banner": {
     "Title": "Decentralized Perpetual contracts",
-    "Info": "A perpetual contracts exchange that mining through holding positions",
+    "Info": "Derify Protocol is a decentralized perpetual contracts exchange that can support any fungible tokens as collateral for perpetual future trading, such as ERC20/BEP20",
     "LearnMore": "Learn more",
     "LaunchApp": "Launch App"
   },
@@ -29,8 +29,8 @@
     "Info4": "Price are provided by external oracles, no liquidity squeeze caused by the system",
     "Name5": "Fully Decentralized",
     "Info5": "All major functions run by smart contracts",
-    "Name6": "DAO Operation",
-    "Info6": "A decentralized derivative protocol that is created, operated and owned by DAO"
+    "Name6": "Multiple collateral",
+    "Info6": "Support any fungible tokens as collateral for perpetual future trading, such as ERC20/BEP20"
   },
   "DEXaas": {
     "Title": "DEXaas: <br />DEX-as-a-service",

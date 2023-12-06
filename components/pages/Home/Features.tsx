@@ -20,16 +20,16 @@ const Features: FC = () => {
       animate: 'fadeInLeft'
     },
     {
+      name: t('Features.Name6'),
+      info: t('Features.Info6'),
+      link: 'https://docs.derify.finance/about-derify/margin-token',
+      animate: 'fadeInBottomLeft'
+    },
+    {
       name: t('Features.Name2'),
       info: t('Features.Info2'),
       link: 'https://docs.derify.finance/whitepaper/mechanism/indexes',
       animate: 'fadeInTopRight'
-    },
-    {
-      name: t('Features.Name6'),
-      info: t('Features.Info6'),
-      link: 'https://docs.derify.finance/derify-dao/overview',
-      animate: 'fadeInBottomLeft'
     },
     {
       name: t('Features.Name4'),
