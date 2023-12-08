@@ -12,17 +12,7 @@ const Roadmap: FC = () => {
     {
       quarter: t('Roadmap.Name2'),
       tag: t('Roadmap.Name2Sub1'),
-      item: [ t('Roadmap.Name2Sub2'), t('Roadmap.Name2Sub3'), t('Roadmap.Name2Sub4')]
-    },
-    {
-      quarter: t('Roadmap.Name3'),
-      tag: t('Roadmap.Name3Sub1'),
-      item: [
-        t('Roadmap.Name3Sub2'),
-        t('Roadmap.Name3Sub3'),
-        t('Roadmap.Name3Sub4'),
-        t('Roadmap.Name3Sub5')
-      ]
+      item: [ t('Roadmap.Name2Sub2'), t('Roadmap.Name2Sub3'), t('Roadmap.Name2Sub4'), t('Roadmap.Name2Sub5')]
     },
     {
       quarter: t('Roadmap.Name4'),
@@ -32,7 +22,7 @@ const Roadmap: FC = () => {
         t('Roadmap.Name4Sub3'),
         t('Roadmap.Name4Sub4'),
         t('Roadmap.Name4Sub5'),
-        t('Roadmap.Name4Sub6')
+        t('Roadmap.Name4Sub6'),
       ]
     },
     {
@@ -51,8 +41,7 @@ const Roadmap: FC = () => {
       item: [
         t('Roadmap.Name6Sub2'),
         t('Roadmap.Name6Sub3'),
-        t('Roadmap.Name6Sub4'),
-        t('Roadmap.Name6Sub5')
+        t('Roadmap.Name6Sub4')
       ]
     },
     {
@@ -60,15 +49,17 @@ const Roadmap: FC = () => {
       tag: t('Roadmap.Name7Sub1'),
       item: [
         t('Roadmap.Name7Sub2'),
-        t('Roadmap.Name7Sub3'),
-        t('Roadmap.Name7Sub4'),
-        t('Roadmap.Name7Sub5')
+        t('Roadmap.Name7Sub3')
       ]
     },
     {
       quarter: t('Roadmap.Name8'),
       tag: t('Roadmap.Name8Sub1'),
-      item: [ t('Roadmap.Name8Sub2'), t('Roadmap.Name8Sub3'), t('Roadmap.Name8Sub4')]
+      item: [
+        t('Roadmap.Name8Sub2'),
+        t('Roadmap.Name8Sub3'),
+        t('Roadmap.Name8Sub4')
+      ]
     },
     {
       quarter: t('Roadmap.Name9'),
