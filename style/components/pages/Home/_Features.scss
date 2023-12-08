@@ -79,19 +79,19 @@
 
       &:nth-child(3) {
         &:before {
-          background-image: url($res + 'website/features/3.png');
+          background-image: url($res + 'website/features/4.png');
         }
         &:hover:before, &:after {
-          background-image: url($res + 'website/features/3-active.png');
+          background-image: url($res + 'website/features/4-active.png');
         }
       }
 
       &:nth-child(4) {
         &:before {
-          background-image: url($res + 'website/features/4.png');
+          background-image: url($res + 'website/features/3.png');
         }
         &:hover:before, &:after {
-          background-image: url($res + 'website/features/4-active.png');
+          background-image: url($res + 'website/features/3-active.png');
         }
       }
 
