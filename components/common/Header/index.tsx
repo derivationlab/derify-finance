@@ -71,7 +71,7 @@ const Header: FC = () => {
               <span onClick={() => changeActiveFunc(2)}>{t('Nav.DRFToken')}</span>
               <ul>
                 <li>
-                  <ALink to="https://pancakeswap.finance/swap?inputCurrency=0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56&outputCurrency=0x89C1Af791d7B4cf046Dca8Fa10a41Dd2298A6a3F">
+                  <ALink to="https://pancakeswap.finance/swap?inputCurrency=0x55d398326f99059fF775485246999027B3197955&outputCurrency=0x89C1Af791d7B4cf046Dca8Fa10a41Dd2298A6a3F">
                     {t('Nav.Buy')}
                   </ALink>
                 </li>
